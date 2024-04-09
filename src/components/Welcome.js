@@ -29,7 +29,7 @@ const Welcome = () => {
   };
   return (
     <div className="flex justify-center items-center" style={body}>
-      <div className="bg-white w-[90%] flex justify-center items-center h-[90%] rounded-[24px] flex-col">
+      <div className="bg-white w-[90%] flex justify-center items-center h-[90%] rounded-[24px] flex-col ">
         <img
           src={logo}
           alt="logo"
