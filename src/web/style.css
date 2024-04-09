@@ -1,0 +1,8 @@
+body {
+  background-image: url(../assists/imgs/ggggg.png);
+}
+/* This may not work consistently across all browsers */
+/* This may not work consistently across all browsers */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+}

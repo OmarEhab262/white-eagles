@@ -1,0 +1,172 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+:root {
+  --main-color: #041461;
+}
+@font-face {
+  font-family: "Cairo";
+  src: url("./assists/font/Cairo.ttf");
+}
+body {
+  font-family: "Cairo", sans-serif;
+  background-image: url(./assists/imgs/mainbg.png) !important;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  direction: rtl;
+}
+.parties::-webkit-scrollbar {
+  width: 12px;
+  height: 12px; /* Adjust the height if needed */
+}
+
+/* Track styles */
+.parties::-webkit-scrollbar-track {
+  background: transparent;
+  /* Change color when hovered */
+}
+
+/* Handle styles */
+.parties::-webkit-scrollbar-thumb {
+  background: #041461;
+  border-radius: 6px;
+}
+.userssss::-webkit-scrollbar {
+  width: 12px;
+  height: 12px; /* Adjust the height if needed */
+}
+.userssss::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 6px;
+}
+/* Handle hover styles */
+.parties::-webkit-scrollbar-thumb:hover {
+  background: #041461;
+}
+.ssc::-webkit-scrollbar {
+  width: 12px;
+  height: 12px; /* Adjust the height if needed */
+}
+
+/* Track styles */
+.ssc::-webkit-scrollbar-track {
+  background: transparent;
+  /* Change color when hovered */
+}
+
+/* Handle styles */
+.ssc::-webkit-scrollbar-thumb {
+  background: #041461;
+  /* /////////////?///////////////////////////
+//////
+///*/
+  border-radius: 6px;
+}
+
+/* Handle hover styles */
+.ssc::-webkit-scrollbar-thumb:hover {
+  background: #041461;
+}
+.partyContainer {
+  width: 220px;
+}
+.spinner {
+  position: absolute;
+  width: 9px;
+  height: 9px;
+}
+
+.spinner div {
+  position: absolute;
+  width: 50%;
+  height: 150%;
+  background: #000000;
+  transform: rotate(calc(var(--rotation) * 1deg))
+    translate(0, calc(var(--translation) * 1%));
+  animation: spinner-fzua35 1s calc(var(--delay) * 1s) infinite ease;
+}
+
+.spinner div:nth-child(1) {
+  --delay: 0.1;
+  --rotation: 36;
+  --translation: 150;
+}
+
+.spinner div:nth-child(2) {
+  --delay: 0.2;
+  --rotation: 72;
+  --translation: 150;
+}
+
+.spinner div:nth-child(3) {
+  --delay: 0.3;
+  --rotation: 108;
+  --translation: 150;
+}
+
+.spinner div:nth-child(4) {
+  --delay: 0.4;
+  --rotation: 144;
+  --translation: 150;
+}
+
+.spinner div:nth-child(5) {
+  --delay: 0.5;
+  --rotation: 180;
+  --translation: 150;
+}
+
+.spinner div:nth-child(6) {
+  --delay: 0.6;
+  --rotation: 216;
+  --translation: 150;
+}
+
+.spinner div:nth-child(7) {
+  --delay: 0.7;
+  --rotation: 252;
+  --translation: 150;
+}
+
+.spinner div:nth-child(8) {
+  --delay: 0.8;
+  --rotation: 288;
+  --translation: 150;
+}
+
+.spinner div:nth-child(9) {
+  --delay: 0.9;
+  --rotation: 324;
+  --translation: 150;
+}
+
+.spinner div:nth-child(10) {
+  --delay: 1;
+  --rotation: 360;
+  --translation: 150;
+}
+
+@keyframes spinner-fzua35 {
+  0%,
+  10%,
+  20%,
+  30%,
+  50%,
+  60%,
+  70%,
+  80%,
+  90%,
+  100% {
+    transform: rotate(calc(var(--rotation) * 1deg))
+      translate(0, calc(var(--translation) * 1%));
+  }
+
+  50% {
+    transform: rotate(calc(var(--rotation) * 1deg))
+      translate(0, calc(var(--translation) * 1.5%));
+  }
+}
