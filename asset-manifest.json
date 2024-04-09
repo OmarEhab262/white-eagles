@@ -1,0 +1,41 @@
+{
+  "files": {
+    "main.css": "/white-eagles/static/css/main.fbd7b699.css",
+    "main.js": "/white-eagles/static/js/main.04e70d80.js",
+    "static/media/party55.jpeg": "/white-eagles/static/media/party55.a8f78f522e9f04397b43.jpeg",
+    "static/media/ContactUs.jpeg": "/white-eagles/static/media/ContactUs.2e7a2086648c478f711a.jpeg",
+    "static/media/about.jpeg": "/white-eagles/static/media/about.4fdabecff170b3cf63e5.jpeg",
+    "static/media/aboutt.png": "/white-eagles/static/media/aboutt.13b9db38b9b8bace1863.png",
+    "static/media/party22.jpeg": "/white-eagles/static/media/party22.b4c32a3d39735131174f.jpeg",
+    "static/media/homeLogo.svg": "/white-eagles/static/media/homeLogo.c16b19dc82a384029036dba8aad83808.svg",
+    "static/media/logo.png": "/white-eagles/static/media/logo.5bdefdcc877fbfe70f75.png",
+    "static/media/whiteBg.png": "/white-eagles/static/media/whiteBg.83e10566b27a23237406.png",
+    "static/media/Services.jpeg": "/white-eagles/static/media/Services.702b70ed013114a7e45f.jpeg",
+    "static/media/party11.jpeg": "/white-eagles/static/media/party11.2cf9a66bfb57cdaef2b4.jpeg",
+    "static/media/party33.jpeg": "/white-eagles/static/media/party33.161708026838eac54f81.jpeg",
+    "static/media/bgLogoSide.png": "/white-eagles/static/media/bgLogoSide.f817bbdf0e29c282fbb6.png",
+    "static/media/mainbg.png": "/white-eagles/static/media/mainbg.77f0ba69c35ef5c2d04a.png",
+    "static/media/calender.jpeg": "/white-eagles/static/media/calender.8cb866078acec0a8ad96.jpeg",
+    "static/media/justLogo.png": "/white-eagles/static/media/justLogo.ffc2f941520567a3d2bc.png",
+    "static/media/about2.png": "/white-eagles/static/media/about2.0b2fff62d63cda416a84.png",
+    "static/media/party44.jpeg": "/white-eagles/static/media/party44.b2b031581a019f759e78.jpeg",
+    "static/media/Cairo.ttf": "/white-eagles/static/media/Cairo.32b01d6a21d9433a251c.ttf",
+    "static/media/party66.jpeg": "/white-eagles/static/media/party66.4cef0c5c822ebb22734f.jpeg",
+    "static/media/tittleLogo.png": "/white-eagles/static/media/tittleLogo.7c80a94da37bb9281e0e.png",
+    "static/media/TittleLogo2.png": "/white-eagles/static/media/TittleLogo2.9d6201006b3d3660b84a.png",
+    "static/media/phones.png": "/white-eagles/static/media/phones.a78a3dc3d795c9176a1d.png",
+    "static/media/welcom.png": "/white-eagles/static/media/welcom.bbce5331a6bcdd9c093a.png",
+    "static/media/ggggg.png": "/white-eagles/static/media/ggggg.0e36d853b2c4eea1ada6.png",
+    "static/media/party.png": "/white-eagles/static/media/party.8d648dd8a0bfd56cc066.png",
+    "static/media/crreatedParty.png": "/white-eagles/static/media/crreatedParty.466589772efe0b2add9b.png",
+    "static/media/x-10366.png": "/white-eagles/static/media/x-10366.ed4dee80676f5c98da0f.png",
+    "static/media/Successful-password.png": "/white-eagles/static/media/Successful-password.3e11ca91f046152c3d3e.png",
+    "index.html": "/white-eagles/index.html",
+    "main.fbd7b699.css.map": "/white-eagles/static/css/main.fbd7b699.css.map",
+    "main.04e70d80.js.map": "/white-eagles/static/js/main.04e70d80.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.fbd7b699.css",
+    "static/js/main.04e70d80.js"
+  ]
+}
