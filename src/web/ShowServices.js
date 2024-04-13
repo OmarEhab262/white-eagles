@@ -183,7 +183,7 @@ const ShowServices = () => {
                       >
                         <div className="right lg:w-[35%] w-full h-full">
                           <img
-                            src={`https://api.whiteeagles.net/public/api/storage/${event.event.banner}`}
+                            src={`https://api.whiteeagles.net/public/storage/${event.event.banner}`}
                             alt=""
                             className="rounded-[16px] w-full h-full"
                           />

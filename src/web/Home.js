@@ -158,7 +158,7 @@ const Home = () => {
               onClick={toggleVideo}
             >
               <source
-                src={`https://api.whiteeagles.net/public/api/storage/${data[party].video}`}
+                src={`https://api.whiteeagles.net/public/storage/${data[party].video}`}
               />
               Your browser does not support the video tag.
             </video>
@@ -178,7 +178,7 @@ const Home = () => {
           style={{
             backgroundImage:
               data && data.length > 0 && data[party] && data[party].banner
-                ? `url(https://api.whiteeagles.net/public/api/storage/${data[party].banner})`
+                ? `url(https://api.whiteeagles.net/public/storage/${data[party].banner})`
                 : "",
             backgroundPosition: "center",
             backgroundSize: "cover",

@@ -43,7 +43,7 @@ const AddEvents = () => {
   const [boxDataPlus, setBoxDataPlus] = useState([]);
   const [boxDataVip, setBoxDataVip] = useState([]);
   const [boxDataVvip, setBoxDataVvip] = useState([]);
-
+  const [showWarning, setShowWarning] = useState(false);
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
   let eventId;
@@ -184,10 +184,19 @@ const AddEvents = () => {
   const goBack = () => {
     window.history.back();
   };
-
   const handleImageChange = (event) => {
     const file = event.target.files[0];
-    setImage(file);
+
+    // Check if the file type is SVG
+    if (file && file.type !== "image/svg+xml") {
+      setImage(file);
+    } else {
+      // Show the warning message for 2 seconds
+      setShowWarning(true);
+      setTimeout(() => {
+        setShowWarning(false);
+      }, 2000);
+    }
   };
 
   useEffect(() => {
@@ -941,7 +950,7 @@ const AddEvents = () => {
           style={{ background: "#66666657" }}
         >
           <div className="w-[393px] h-[194px] bg-white rounded-[24px] flex justify-center items-center  flex-col">
-            <h3 className="text-[24px] font-[700]">هناك تكرار فى بيانات</h3>
+            <h3 className="text-[24px] font-[700]">اضع صورة بامتداد اخر</h3>
           </div>
         </div>
       )}
@@ -955,7 +964,16 @@ const AddEvents = () => {
           </div>
         </div>
       )} */}
-
+      {showWarning && (
+        <div
+          className="fixed h-screen w-full top-0 left-0 flex justify-center items-center text-[#041461]"
+          style={{ background: "#66666657" }}
+        >
+          <div className="w-[393px] h-[194px] bg-white rounded-[24px] flex justify-center items-center  flex-col">
+            <h3 className="text-[24px] font-[700]">ضع صورة بامتداد اخر</h3>
+          </div>
+        </div>
+      )}
       {loading && (
         <div
           className="fixed h-screen w-full top-0 left-0 flex justify-center items-center text-[#041461]"
