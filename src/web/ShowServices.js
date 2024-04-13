@@ -17,7 +17,7 @@ const ShowServices = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://api.whiteeagles.net/public/api/api/category_events?category=${category}`,
+          `https://api.whiteeagles.net/public/api/category_events?category=${category}`,
           {
             headers: {
               "Content-Type": "application/json",
@@ -171,7 +171,7 @@ const ShowServices = () => {
                   {!data || data.length === 0 ? (
                     <div className="box border-dashed border-2 w-[60%] py-[55px] px-[13px] flex justify-center items-center border-white rounded-[10px] mx-auto mt-[20px] mb-[72px]">
                       <h3 className="text-[30px] font-bold text-white text-center">
-                        لا توجد الحفلة بعد
+                        لا توجد حفلة بعد
                       </h3>
                     </div>
                   ) : (
