@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/white-eagles/static/css/main.fbd7b699.css",
-    "main.js": "/white-eagles/static/js/main.b56ed09f.js",
+    "main.js": "/white-eagles/static/js/main.ec97100e.js",
     "static/media/party55.jpeg": "/white-eagles/static/media/party55.a8f78f522e9f04397b43.jpeg",
     "static/media/ContactUs.jpeg": "/white-eagles/static/media/ContactUs.2e7a2086648c478f711a.jpeg",
     "static/media/about.jpeg": "/white-eagles/static/media/about.4fdabecff170b3cf63e5.jpeg",
@@ -32,10 +32,10 @@
     "static/media/Successful-password.png": "/white-eagles/static/media/Successful-password.3e11ca91f046152c3d3e.png",
     "index.html": "/white-eagles/index.html",
     "main.fbd7b699.css.map": "/white-eagles/static/css/main.fbd7b699.css.map",
-    "main.b56ed09f.js.map": "/white-eagles/static/js/main.b56ed09f.js.map"
+    "main.ec97100e.js.map": "/white-eagles/static/js/main.ec97100e.js.map"
   },
   "entrypoints": [
     "static/css/main.fbd7b699.css",
-    "static/js/main.b56ed09f.js"
+    "static/js/main.ec97100e.js"
   ]
 }
