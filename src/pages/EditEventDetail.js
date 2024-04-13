@@ -3,6 +3,7 @@ import SideBar from "../components/SideBar";
 import location2 from "../assists/icon/location2.png";
 import arrow from "../assists/icon/arrow.png";
 import axios from "axios";
+import { toast } from "react-toastify";
 import cam from "../assists/icon/cam.png";
 const EditEventDetail = () => {
   const [nameParty, setNameParty] = useState("");
@@ -16,6 +17,7 @@ const EditEventDetail = () => {
   const [imgs, setImgs] = useState(null);
   const [video, setVideo] = useState("");
   const [status, setStatus] = useState("");
+  const [loading, setLoading] = useState(false);
   const [selectedOption, setSelectedOption] = useState("open");
   const handleOptionChange = (value) => {
     setSelectedOption(value);
@@ -23,8 +25,10 @@ const EditEventDetail = () => {
   };
   // Function to handle file change for main image
   const handleMainImageChange = (event) => {
-    const file = event.target.files[0]; // Get the first selected file
-    setMainImage(file); // Set main image using data URL
+    const files = Array.from(event.target.files);
+
+    // Set main image using the first selected file
+    setMainImage(files[0]);
   };
 
   // Function to trigger file input click when camera icon is clicked
@@ -111,10 +115,14 @@ const EditEventDetail = () => {
 
   const handleImageChange = (event) => {
     const files = Array.from(event.target.files);
+
+    // Add all selected images to the state
     setImages((prevImages) => [...prevImages, ...files]);
   };
 
   const handleSaveData = async () => {
+    setLoading(true); // Step 2: Set loading to true
+
     try {
       const formData = new FormData();
       formData.append("title", nameParty);
@@ -141,9 +149,15 @@ const EditEventDetail = () => {
           },
         }
       );
-      window.location.reload();
+      toast.success("Party has been changed successfully");
+      setTimeout(function () {
+        window.location.reload();
+      }, 1000); // 2000 milliseconds = 2 seconds
     } catch (error) {
       console.error("Error updating user data:", error);
+      toast.error("Error changed a party");
+    } finally {
+      setLoading(false); // Step 3: Set loading back to false
     }
   };
 
@@ -362,7 +376,7 @@ const EditEventDetail = () => {
                   <input
                     type="file"
                     id="uploadImage"
-                    accept="image/*"
+                    accept="image/png+jpeg"
                     style={{ display: "none" }}
                     multiple
                     onChange={handleImageChange}
@@ -434,6 +448,25 @@ const EditEventDetail = () => {
           </div>
         </div>
       </div>
+      {loading && (
+        <div
+          className="fixed h-screen w-full top-0 left-0 flex justify-center items-center text-[#041461]"
+          style={{ background: "#66666657" }}
+        >
+          <div className="w-[393px] h-[194px] bg-white rounded-[24px] flex justify-center items-center flex-col">
+            <div className="flex justify-center items-center">
+              <div className="spinner flex justify-center items-center h-full">
+                {[...Array(10)].map((_, index) => (
+                  <div
+                    key={index}
+                    className="w-4 h-4 bg-black rounded-full mx-1 animate-bounce"
+                  ></div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
