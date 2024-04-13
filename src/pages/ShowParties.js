@@ -36,7 +36,7 @@ const ShowParties = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://sterling-owl-profound.ngrok-free.app/api/category_events?category=${nameFilter}`,
+          `https://api.whiteeagles.net/public/api/category_events?category=${nameFilter}`,
           {
             headers: {
               "Content-Type": "application/json",
@@ -142,7 +142,7 @@ const ShowParties = () => {
               >
                 <div className="w-full">
                   <img
-                    src={`https://sterling-owl-profound.ngrok-free.app/storage/${party.event.banner}`}
+                    src={`https://api.whiteeagles.net/public/storage/${party.event.banner}`}
                     alt="party"
                     className="w-full h-[125px] rounded-tr-[16px]  rounded-tl-[16px]"
                   />

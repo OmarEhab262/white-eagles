@@ -22,7 +22,7 @@ const ShowNewEventDetails = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://sterling-owl-profound.ngrok-free.app/api/event-show/${id}`,
+          `https://api.whiteeagles.net/public/api/event-show/${id}`,
           {
             headers: {
               "Content-Type": "application/json",
@@ -147,7 +147,7 @@ const ShowNewEventDetails = () => {
         <div className="info flex py-[20px]  w-full h-auto overflow-hidden ">
           <div className="img h-[231px] w-[30%] overflow-hidden rounded-[16px]">
             <img
-              src={`https://sterling-owl-profound.ngrok-free.app/storage/${party.banner}`}
+              src={`https://api.whiteeagles.net/public/storage/${party.banner}`}
               alt="party"
               className="h-full w-full object-cover"
             />
@@ -201,7 +201,7 @@ const ShowNewEventDetails = () => {
             <div>
               <h3 className="text-[24px] font-bold">الصور</h3>
               <div className="box border-dashed border-2 w-[503px] h-[24px] py-[55px] px-[13px] flex justify-center items-center border-[#041461] rounded-[10px] mx-auto mt-[20px] mb-[72px]">
-                <h3 className="text-[20px]">لم تقام الحفلة بعد</h3>
+                <h3 className="text-[20px]">لا يوجد صور</h3>
               </div>
             </div>
           )}
@@ -212,7 +212,7 @@ const ShowNewEventDetails = () => {
                 {imgs.map((img) => (
                   <img
                     key={img.id} // Ensure each image has a unique key
-                    src={`https://sterling-owl-profound.ngrok-free.app/storage/${img.image}`} // Access the 'image' property of each image object
+                    src={`https://api.whiteeagles.net/public/storage/${img.image}`} // Access the 'image' property of each image object
                     alt="party"
                     className="w-[224px] h-[144px] object-cover ml-[18px] block"
                   />
@@ -225,7 +225,7 @@ const ShowNewEventDetails = () => {
               <h3 className="text-[24px] font-bold">الفيديو</h3>
               <div className="containerImgs w-full flex overflow-x-auto ssc mt-[20px] pb-[10px]">
                 <video
-                  src={`https://sterling-owl-profound.ngrok-free.app/storage/${party.video}`}
+                  src={`https://api.whiteeagles.net/public/storage/${party.video}`}
                   alt="party"
                   className="w-[224px] h-[144px] object-cover ml-[18px] block"
                   controls

@@ -28,7 +28,7 @@ const MainPage = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://sterling-owl-profound.ngrok-free.app/api/events",
+          "https://api.whiteeagles.net/public/api/events",
           {
             headers: {
               "Content-Type": "application/json",
@@ -51,7 +51,7 @@ const MainPage = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://sterling-owl-profound.ngrok-free.app/api/users_count",
+          "https://api.whiteeagles.net/public/api/users_count",
           {
             headers: {
               "Content-Type": "application/json",
@@ -73,7 +73,7 @@ const MainPage = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://sterling-owl-profound.ngrok-free.app/api/booking_count",
+          "https://api.whiteeagles.net/public/api/booking_count",
           {
             headers: {
               "Content-Type": "application/json",
@@ -95,7 +95,7 @@ const MainPage = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://sterling-owl-profound.ngrok-free.app/api/events_count",
+          "https://api.whiteeagles.net/public/api/events_count",
           {
             headers: {
               "Content-Type": "application/json",
@@ -420,7 +420,7 @@ const MainPage = () => {
                     <div className="party border-solid border-[1px] border-gray-400 rounded-[18px] ml-[10px] w-[260px] h-[240px] mb-[10px]">
                       <div className="img">
                         <img
-                          src={`https://sterling-owl-profound.ngrok-free.app/storage/${party.event.banner}`}
+                          src={`https://api.whiteeagles.net/public/storage/${party.event.banner}`}
                           alt="MainPage"
                           className="mainImg w-[105%] h-[125px] rounded-tl-[16px] rounded-tr-[16px]"
                         />

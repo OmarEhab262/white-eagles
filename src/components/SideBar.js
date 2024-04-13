@@ -94,7 +94,7 @@ const SideBar = ({ activeItemProp }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://sterling-owl-profound.ngrok-free.app/api/profile",
+          "https://api.whiteeagles.net/public/api/profile",
           {
             headers: {
               "Content-Type": "application/json",
@@ -346,7 +346,7 @@ const SideBar = ({ activeItemProp }) => {
             onClick={goToUserpage}
           >
             <img
-              src={`https://sterling-owl-profound.ngrok-free.app/storage/${userData.image}`}
+              src={`https://api.whiteeagles.net/public/storage/${userData.image}`}
               alt="user1"
               className="rounded-full w-full h-full object-cover  object-center"
             />

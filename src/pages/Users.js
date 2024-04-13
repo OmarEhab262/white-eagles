@@ -16,7 +16,7 @@ const Users = () => {
       setLoading(true); // Start loading
       try {
         const response = await axios.get(
-          "https://sterling-owl-profound.ngrok-free.app/api/users",
+          "https://api.whiteeagles.net/public/api/users",
           {
             headers: {
               "Content-Type": "application/json",
@@ -53,7 +53,7 @@ const Users = () => {
   const deleteUser = async () => {
     try {
       await axios.delete(
-        `https://sterling-owl-profound.ngrok-free.app/api/users/${userToDelete.id}`,
+        `https://api.whiteeagles.net/public/api/users/${userToDelete.id}`,
         {
           headers: {
             "Content-Type": "application/json",
@@ -131,7 +131,7 @@ const Users = () => {
                 >
                   <div className="info text-[15px] text-[#041461] font-bold flex items-center w-[90%] my-[10px]  bg-[#727db5ab] rounded-[24px]  justify-around py-[15px]">
                     <img
-                      src={`https://sterling-owl-profound.ngrok-free.app/storage/${user.image}`}
+                      src={`https://api.whiteeagles.net/public/storage/${user.image}`}
                       alt="User"
                       className="w-[50px] h-[50px] rounded-full text-center"
                     />

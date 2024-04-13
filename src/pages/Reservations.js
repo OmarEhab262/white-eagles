@@ -13,7 +13,7 @@ const Reservations = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://sterling-owl-profound.ngrok-free.app/api/categories",
+          "https://api.whiteeagles.net/public/api/categories",
           {
             headers: {
               "Content-Type": "application/json",
@@ -81,7 +81,7 @@ const Reservations = () => {
                     </div>
                     <div className="mid w-[200px] h-[200px] border border-[#041461] rounded-[10px] flex justify-center items-center my-[10px]">
                       <img
-                        src={`https://sterling-owl-profound.ngrok-free.app/storage/${item.image}`}
+                        src={`https://api.whiteeagles.net/public/storage/${item.image}`}
                         alt={item.name}
                         className="w-full h-[200px]"
                       />

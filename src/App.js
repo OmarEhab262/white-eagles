@@ -63,7 +63,7 @@ function App() {
         <Route path="/About" element={<About />} />
         <Route path="/Services" element={<Services />} />
         <Route path="/ShowServices" element={<ShowServices />} />
-        <Route path="/ContactUs" element={<ContactUs />} />
+        <Route path="/White-Eagles/ContactUs" element={<ContactUs />} />
         <Route path="/Calender" element={<Calender />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>

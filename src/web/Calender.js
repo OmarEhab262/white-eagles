@@ -65,7 +65,7 @@ const Calender = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://sterling-owl-profound.ngrok-free.app/api/events",
+          "https://api.whiteeagles.net/public/api/events",
           {
             headers: {
               "Content-Type": "application/json",

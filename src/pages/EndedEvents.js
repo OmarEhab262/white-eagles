@@ -46,7 +46,7 @@ const EndedEvents = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://sterling-owl-profound.ngrok-free.app/api/events",
+          "https://api.whiteeagles.net/public/api/events",
           {
             headers: {
               "Content-Type": "application/json",
@@ -196,7 +196,7 @@ const EndedEvents = () => {
                     >
                       <div className="w-full">
                         <img
-                          src={`https://sterling-owl-profound.ngrok-free.app/storage/${item.event.banner}`}
+                          src={`https://api.whiteeagles.net/public/storage/${item.event.banner}`}
                           alt="party"
                           className="w-full h-[125px] rounded-tr-[16px]  rounded-tl-[16px]"
                         />
@@ -275,7 +275,7 @@ const EndedEvents = () => {
                     >
                       <div className="w-full">
                         <img
-                          src={`https://sterling-owl-profound.ngrok-free.app/storage/${item.event.banner}`}
+                          src={`https://api.whiteeagles.net/public/storage/${item.event.banner}`}
                           alt="party"
                           className="w-full h-[125px] rounded-tr-[16px]  rounded-tl-[16px]"
                         />
@@ -354,7 +354,7 @@ const EndedEvents = () => {
                     >
                       <div className="w-full">
                         <img
-                          src={`https://sterling-owl-profound.ngrok-free.app/storage/${item.event.banner}`}
+                          src={`https://api.whiteeagles.net/public/storage/${item.event.banner}`}
                           alt="party"
                           className="w-full h-[125px] rounded-tr-[16px]  rounded-tl-[16px]"
                         />
@@ -433,7 +433,7 @@ const EndedEvents = () => {
                     >
                       <div className="w-full">
                         <img
-                          src={`https://sterling-owl-profound.ngrok-free.app/storage/${item.event.banner}`}
+                          src={`https://api.whiteeagles.net/public/storage/${item.event.banner}`}
                           alt="party"
                           className="w-full h-[125px] rounded-tr-[16px]  rounded-tl-[16px]"
                         />
@@ -512,7 +512,7 @@ const EndedEvents = () => {
                     >
                       <div className="w-full">
                         <img
-                          src={`https://sterling-owl-profound.ngrok-free.app/storage/${item.event.banner}`}
+                          src={`https://api.whiteeagles.net/public/storage/${item.event.banner}`}
                           alt="party"
                           className="w-full h-[125px] rounded-tr-[16px]  rounded-tl-[16px]"
                         />
@@ -591,7 +591,7 @@ const EndedEvents = () => {
                     >
                       <div className="w-full">
                         <img
-                          src={`https://sterling-owl-profound.ngrok-free.app/storage/${item.event.banner}`}
+                          src={`https://api.whiteeagles.net/public/storage/${item.event.banner}`}
                           alt="party"
                           className="w-full h-[125px] rounded-tr-[16px]  rounded-tl-[16px]"
                         />

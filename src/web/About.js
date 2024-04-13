@@ -29,7 +29,7 @@ const About = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://sterling-owl-profound.ngrok-free.app/api/events_count`,
+          `https://api.whiteeagles.net/public/api/events_count`,
           {
             headers: {
               "Content-Type": "application/json",
@@ -49,7 +49,7 @@ const About = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://sterling-owl-profound.ngrok-free.app/api/users_count`,
+          `https://api.whiteeagles.net/public/api/users_count`,
           {
             headers: {
               "Content-Type": "application/json",
@@ -69,7 +69,7 @@ const About = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://sterling-owl-profound.ngrok-free.app/api/tickets_count`,
+          `https://api.whiteeagles.net/public/api/tickets_count`,
           {
             headers: {
               "Content-Type": "application/json",

@@ -36,7 +36,7 @@ const User = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://sterling-owl-profound.ngrok-free.app/api/profile",
+          "https://api.whiteeagles.net/public/api/profile",
           {
             headers: {
               "Content-Type": "application/json",
@@ -63,7 +63,7 @@ const User = () => {
       formData.append("image", image);
 
       const response = await axios.post(
-        "https://sterling-owl-profound.ngrok-free.app/api/profile/update",
+        "https://api.whiteeagles.net/public/api/profile/update",
         formData,
         {
           headers: {
@@ -97,7 +97,7 @@ const User = () => {
               <div className="relative">
                 <div className="img w-[140px] h-[140px] overflow-hidden rounded-full flex justify-center items-center">
                   <img
-                    src={`https://sterling-owl-profound.ngrok-free.app/storage/${image}`}
+                    src={`https://api.whiteeagles.net/public/storage/${image}`}
                     alt="user"
                     className="rounded-full w-full h-full object-cover  object-center"
                   />

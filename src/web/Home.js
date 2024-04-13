@@ -44,7 +44,7 @@ const Home = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://sterling-owl-profound.ngrok-free.app/api/past_events`,
+          `https://api.whiteeagles.net/public/api/past_events`,
           {
             headers: {
               "Content-Type": "application/json",
@@ -158,7 +158,7 @@ const Home = () => {
               onClick={toggleVideo}
             >
               <source
-                src={`https://sterling-owl-profound.ngrok-free.app/storage/${data[party].video}`}
+                src={`https://api.whiteeagles.net/public/api/storage/${data[party].video}`}
               />
               Your browser does not support the video tag.
             </video>
@@ -178,7 +178,7 @@ const Home = () => {
           style={{
             backgroundImage:
               data && data.length > 0 && data[party] && data[party].banner
-                ? `url(https://sterling-owl-profound.ngrok-free.app/storage/${data[party].banner})`
+                ? `url(https://api.whiteeagles.net/public/api/storage/${data[party].banner})`
                 : "",
             backgroundPosition: "center",
             backgroundSize: "cover",

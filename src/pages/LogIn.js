@@ -26,7 +26,7 @@ function LogIn() {
 
     try {
       const response = await axios.post(
-        "https://sterling-owl-profound.ngrok-free.app/api/login",
+        "https://api.whiteeagles.net/public/api/login",
         { email, password }
       );
 

@@ -28,7 +28,7 @@ function ForgotUserPass() {
       //   }
 
       const response = await axios.post(
-        "https://sterling-owl-profound.ngrok-free.app/api/forgot-password",
+        "https://api.whiteeagles.net/public/api/forgot-password",
         { email },
         {
           headers: {

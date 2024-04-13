@@ -63,7 +63,7 @@ const EditEventDetail = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://sterling-owl-profound.ngrok-free.app/api/event-show/${storedId}`,
+          `https://api.whiteeagles.net/public/api/event-show/${storedId}`,
           {
             headers: {
               "Content-Type": "application/json",
@@ -84,7 +84,7 @@ const EditEventDetail = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://sterling-owl-profound.ngrok-free.app/api/event-show/${storedId}`,
+          `https://api.whiteeagles.net/public/api/event-show/${storedId}`,
           {
             headers: {
               "Content-Type": "application/json",
@@ -131,7 +131,7 @@ const EditEventDetail = () => {
       });
 
       const response = await axios.post(
-        `https://sterling-owl-profound.ngrok-free.app/api/events/update/${storedId}`,
+        `https://api.whiteeagles.net/public/api/events/update/${storedId}`,
         formData,
         {
           headers: {
@@ -155,7 +155,7 @@ const EditEventDetail = () => {
   const deleteimg = async () => {
     try {
       await axios.delete(
-        `https://sterling-owl-profound.ngrok-free.app/api/images/${deletImg}`,
+        `https://api.whiteeagles.net/public/api/images/${deletImg}`,
         {
           headers: {
             "Content-Type": "application/json",
@@ -171,7 +171,7 @@ const EditEventDetail = () => {
   const deletVideo = async () => {
     try {
       await axios.delete(
-        `https://sterling-owl-profound.ngrok-free.app/api/events/delete_video/${storedId}`,
+        `https://api.whiteeagles.net/public/api/events/delete_video/${storedId}`,
         {
           headers: {
             "Content-Type": "application/json",
@@ -218,7 +218,7 @@ const EditEventDetail = () => {
               </div>
               <div className="img h-[231px]  overflow-hidden rounded-[16px]">
                 <img
-                  src={`https://sterling-owl-profound.ngrok-free.app/storage/${mainImage}`}
+                  src={`https://api.whiteeagles.net/public/storage/${mainImage}`}
                   alt="party"
                   className="h-full w-full object-cover"
                 />
@@ -338,7 +338,7 @@ const EditEventDetail = () => {
                             ? () => handleDeleteImage(img.id)
                             : undefined
                         }
-                        src={`https://sterling-owl-profound.ngrok-free.app/storage/${img.image}`}
+                        src={`https://api.whiteeagles.net/public/storage/${img.image}`}
                         alt="party"
                         className={`w-[224px] h-[144px] cursor-pointer ${
                           removeClicked ? "hover:opacity-80" : ""
@@ -381,7 +381,7 @@ const EditEventDetail = () => {
               <div className="containerImgs w-full flex overflow-x-auto ssc mt-[20px] pb-[10px]">
                 {video ? (
                   <video
-                    src={`https://sterling-owl-profound.ngrok-free.app/storage/${video}`}
+                    src={`https://api.whiteeagles.net/public/storage/${video}`}
                     controls
                     className="w-[211px] h-[145px]"
                   ></video>

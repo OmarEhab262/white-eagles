@@ -34,7 +34,7 @@ const ContactUs = () => {
       formData.append("name", name);
       formData.append("description", description);
       const response = await axios.post(
-        "https://sterling-owl-profound.ngrok-free.app/api/contacts",
+        "https://api.whiteeagles.net/public/api/contacts",
         formData,
         {
           headers: {

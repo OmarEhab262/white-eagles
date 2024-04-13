@@ -202,7 +202,7 @@ const AddEvents = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://sterling-owl-profound.ngrok-free.app/api/states",
+          "https://api.whiteeagles.net/public/api/states",
           {
             headers: {
               "Content-Type": "application/json",
@@ -223,7 +223,7 @@ const AddEvents = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://sterling-owl-profound.ngrok-free.app/api/categories",
+          "https://api.whiteeagles.net/public/api/categories",
           {
             headers: {
               "Content-Type": "application/json",
@@ -254,7 +254,7 @@ const AddEvents = () => {
       formData.append("state_id", numGovernorate);
       formData.append("category_event_id", numCategory);
       const response = await axios.post(
-        "https://sterling-owl-profound.ngrok-free.app/api/events",
+        "https://api.whiteeagles.net/public/api/events",
         formData,
         {
           headers: {
@@ -283,7 +283,7 @@ const AddEvents = () => {
         formData.append("tickets_category_id", 1);
 
         const response = await axios.post(
-          "https://sterling-owl-profound.ngrok-free.app/api/seat_numbers",
+          "https://api.whiteeagles.net/public/api/seat_numbers",
           formData,
           {
             headers: {
@@ -307,7 +307,7 @@ const AddEvents = () => {
         formData.append("seat_number", box.vipValue);
         formData.append("tickets_category_id", 2);
         const response = await axios.post(
-          "https://sterling-owl-profound.ngrok-free.app/api/seat_numbers",
+          "https://api.whiteeagles.net/public/api/seat_numbers",
           formData,
           {
             headers: {
@@ -332,7 +332,7 @@ const AddEvents = () => {
         formData.append("tickets_category_id", 3);
 
         const response = await axios.post(
-          "https://sterling-owl-profound.ngrok-free.app/api/seat_numbers",
+          "https://api.whiteeagles.net/public/api/seat_numbers",
           formData,
           {
             headers: {
@@ -356,7 +356,7 @@ const AddEvents = () => {
       formData.append("tickets_category_id", 1);
       formData.append("event_id", eventId);
       const response = await axios.post(
-        "https://sterling-owl-profound.ngrok-free.app/api/events_ticketcategories",
+        "https://api.whiteeagles.net/public/api/events_ticketcategories",
         formData,
         {
           headers: {
@@ -380,7 +380,7 @@ const AddEvents = () => {
       formData.append("tickets_category_id", 2);
       formData.append("event_id", eventId);
       const response = await axios.post(
-        "https://sterling-owl-profound.ngrok-free.app/api/events_ticketcategories",
+        "https://api.whiteeagles.net/public/api/events_ticketcategories",
         formData,
         {
           headers: {
@@ -404,7 +404,7 @@ const AddEvents = () => {
       formData.append("tickets_category_id", 3);
       formData.append("event_id", eventId);
       const response = await axios.post(
-        "https://sterling-owl-profound.ngrok-free.app/api/events_ticketcategories",
+        "https://api.whiteeagles.net/public/api/events_ticketcategories",
         formData,
         {
           headers: {
@@ -427,7 +427,7 @@ const AddEvents = () => {
       formData.append("tickets_category_id", 1);
       formData.append("event_id", eventId);
       const response = await axios.post(
-        "https://sterling-owl-profound.ngrok-free.app/api/events_ticketcategories",
+        "https://api.whiteeagles.net/public/api/events_ticketcategories",
         formData,
         {
           headers: {

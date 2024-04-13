@@ -17,7 +17,7 @@ const ShowServices = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://sterling-owl-profound.ngrok-free.app/api/category_events?category=${category}`,
+          `https://api.whiteeagles.net/public/api/api/category_events?category=${category}`,
           {
             headers: {
               "Content-Type": "application/json",
@@ -183,7 +183,7 @@ const ShowServices = () => {
                       >
                         <div className="right lg:w-[35%] w-full h-full">
                           <img
-                            src={`https://sterling-owl-profound.ngrok-free.app/storage/${event.event.banner}`}
+                            src={`https://api.whiteeagles.net/public/api/storage/${event.event.banner}`}
                             alt=""
                             className="rounded-[16px] w-full h-full"
                           />
