@@ -35,36 +35,36 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<LogIn />} />
-        <Route path="/ForgotUserPass" element={<ForgotUserPass />} />
-        <Route path="/CheckEmail" element={<CheckEmail />} />
-        <Route path="/SuccessfulPassword" element={<SuccessfulPassword />} />
-        <Route path="/Welcome" element={<Welcome />} />
-        <Route path="/CreatedParty" element={<CreatedParty />} />
-        <Route path="/MainPage" element={<MainPage />} />
-        <Route path="/Users" element={<Users />} />
-        <Route path="/Reservations" element={<Reservations />} />
-        <Route path="/EndedEvents" element={<EndedEvents />} />
-        <Route path="/NewEvents" element={<NewEvents />} />
+        <Route path="/forgotuserpass" element={<ForgotUserPass />} />
+        <Route path="/checkemail" element={<CheckEmail />} />
+        <Route path="/successfulpassword" element={<SuccessfulPassword />} />
+        <Route path="/welcome" element={<Welcome />} />
+        <Route path="/createdparty" element={<CreatedParty />} />
+        <Route path="/mainpage" element={<MainPage />} />
+        <Route path="/users" element={<Users />} />
+        <Route path="/reservations" element={<Reservations />} />
+        <Route path="/endedevents" element={<EndedEvents />} />
+        <Route path="/newevents" element={<NewEvents />} />
         <Route
-          path="/ShowEndedEventDetail/:id"
+          path="/showendedeventdetail/:id"
           element={<ShowEndedEventDetail />}
         />
-        <Route path="/EditEventDetail" element={<EditEventDetail />} />
+        <Route path="/editeventdetail" element={<EditEventDetail />} />
         <Route
-          path="/ShowNewEventDetails/:id"
+          path="/showneweventdetails/:id"
           element={<ShowNewEventDetails />}
         />
-        <Route path="/ShowParties" element={<ShowParties />} />
-        <Route path="/ShowTicket" element={<ShowTicket />} />
-        <Route path="/AddEvents" element={<AddEvents />} />
-        <Route path="/Booking" element={<Booking />} />
-        <Route path="/User" element={<User />} />
-        <Route path="/Home" element={<Home />} />
-        <Route path="/About" element={<About />} />
-        <Route path="/Services" element={<Services />} />
-        <Route path="/ShowServices" element={<ShowServices />} />
-        <Route path="/White-Eagles/ContactUs" element={<ContactUs />} />
-        <Route path="/Calender" element={<Calender />} />
+        <Route path="/showparties" element={<ShowParties />} />
+        <Route path="/showticket" element={<ShowTicket />} />
+        <Route path="/addevents" element={<AddEvents />} />
+        <Route path="/booking" element={<Booking />} />
+        <Route path="/user" element={<User />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/showservices" element={<ShowServices />} />
+        <Route path="/contactus" element={<ContactUs />} />
+        <Route path="/calender" element={<Calender />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
       <ToastContainer />
