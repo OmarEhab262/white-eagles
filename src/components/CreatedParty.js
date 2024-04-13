@@ -14,7 +14,7 @@ const CreatedParty = () => {
 
     // Redirect after an additional 3 seconds
     const redirectTimer = setTimeout(() => {
-      window.location.href = "/WhiteEagles/#/MainPage";
+      window.location.href = "/white-eagles/#/MainPage";
     }, 2000); // Total delay is 5 seconds (2 seconds for welcome image + 3 seconds for redirect)
 
     return () => {

@@ -43,7 +43,7 @@ function ForgotUserPass() {
       // Placeholder functionality to demonstrate submission
       //   console.log("Email submitted:", email);
       // Redirect to CheckEmail page
-      window.location.href = "/WhiteEagles/#/CheckEmail";
+      window.location.href = "/white-eagles/#/CheckEmail";
     } catch (error) {
       console.error("Error:", error);
       if (error.response && error.response.status === 404) {

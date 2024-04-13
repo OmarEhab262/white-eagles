@@ -12,7 +12,7 @@ const Welcome = () => {
 
     // Redirect after an additional 3 seconds
     const redirectTimer = setTimeout(() => {
-      window.location.href = "/WhiteEagles/#/MainPage";
+      window.location.href = "/white-eagles/#/MainPage";
     }, 2000);
 
     return () => {

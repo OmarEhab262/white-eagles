@@ -33,7 +33,7 @@ function LogIn() {
       const token = response.data.data.token;
       setToken(token);
       localStorage.setItem("token", token);
-      window.location.href = "/WhiteEagles/#/Welcome";
+      window.location.href = "/white-eagles/#/Welcome";
     } catch (error) {
       console.error(error.response);
       if (error.response) {
