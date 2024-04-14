@@ -52,7 +52,11 @@ const Calender = () => {
     setSelectedDate(event.target.value);
   };
   const handleDivClick = () => {
+    setFilteredEvents(filWillEvents);
+    setCurrentEvents(filCurrentEvents);
+    setEndEvents(filEndEvents);
     setSelectedDate("");
+    setInputValue("كل الحفلات");
   };
 
   const formatDate = (dateString) => {
@@ -84,9 +88,9 @@ const Calender = () => {
     };
     fetchData();
   }, []);
+
   const currentDate = new Date(); // Get the current date and time on the device
   const endDate = currentDate.toISOString().split("T")[0]; // Extract date part only
-  //   console.log("date" + endDate);
 
   const filnoEvents = data.filter((event) => {
     return event.event.date_time.startsWith(selectedDate);
@@ -106,6 +110,7 @@ const Calender = () => {
         new Date().toDateString()
     );
   });
+
   const filWillEvents = data.filter((event) => {
     return (
       event.event.date_time.startsWith(selectedDate) &&
@@ -123,25 +128,33 @@ const Calender = () => {
       مؤتمرات: 4,
       بازار: 5,
       "حفلات فان داى": 6,
+      "نوع الحفلات": null, // Add this mapping for "كل الحفلات"
     };
 
     const categoryId = categoryMapping[value];
 
     if (categoryId !== undefined) {
-      const filteredWillEvents = filWillEvents.filter(
-        (event) => event.event.category_event_id === categoryId
-      );
-      setFilteredEvents(filteredWillEvents);
+      if (categoryId === null) {
+        // Check if categoryId is null for "كل الحفلات"
+        setFilteredEvents(filWillEvents);
+        setCurrentEvents(filCurrentEvents);
+        setEndEvents(filEndEvents);
+      } else {
+        const filteredWillEvents = filWillEvents.filter(
+          (event) => event.event.category_event_id === categoryId
+        );
+        setFilteredEvents(filteredWillEvents);
 
-      const filteredCurrentEvents = filCurrentEvents.filter(
-        (event) => event.event.category_event_id === categoryId
-      );
-      setCurrentEvents(filteredCurrentEvents);
+        const filteredCurrentEvents = filCurrentEvents.filter(
+          (event) => event.event.category_event_id === categoryId
+        );
+        setCurrentEvents(filteredCurrentEvents);
 
-      const filteredEndEvents = filEndEvents.filter(
-        (event) => event.event.category_event_id === categoryId
-      );
-      setEndEvents(filteredEndEvents);
+        const filteredEndEvents = filEndEvents.filter(
+          (event) => event.event.category_event_id === categoryId
+        );
+        setEndEvents(filteredEndEvents);
+      }
     } else {
       setFilteredEvents(filWillEvents);
       setCurrentEvents(filCurrentEvents);
@@ -203,7 +216,7 @@ const Calender = () => {
                         </p>
                       ) : (
                         <p className="absolute md:right-22 right-14 text-black bg-white rounded-[16px] h-full md:w-[280px] w-[190px] text-center">
-                          كل الحفلات
+                          تاريخ الحفلات
                         </p>
                       )}
                     </div>
@@ -233,11 +246,11 @@ const Calender = () => {
                   className="bg-transparent cursor-pointer text-white text-[25px] px-4 outline-none border-white border-l-0 border-r-0 border border-t-0 ml-5"
                 >
                   <option
-                    value="نوع الحفلة"
+                    value="نوع الحفلات"
                     selected
                     className="text-black cursor-pointer"
                   >
-                    كل الحفلات
+                    نوع الحفلات
                   </option>
                   <option
                     className="text-black  cursor-pointer"
@@ -271,12 +284,12 @@ const Calender = () => {
                   </option>
                 </select>
 
-                {/* <div
+                <div
                   onClick={handleDivClick}
-                  className=" cursor-pointer md:text-[24px] text-[20px]  font-bold text-[#838389] border rounded-[16px] py-[5px]  px-[30px] flex justify-center items-center"
+                  className=" cursor-pointer md:text-[24px] text-[20px]  font-bold text-[#838389] border rounded-[16px] py-[5px]  px-[30px] flex justify-center items-center hover:text-[#041461] hover:bg-white transition duration-300 ease-in-out"
                 >
                   <h3>كل الحفلات</h3>
-                </div> */}
+                </div>
               </div>
             </div>
             <div className="cards my-[50px] grid  xl:grid-cols-7 lg:grid-cols-4 md:grid-cols-3 max-sm:grid-cols-2 gap-10 grid-cols-2 justify-items-center ">

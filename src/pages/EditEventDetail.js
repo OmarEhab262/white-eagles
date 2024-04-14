@@ -156,6 +156,9 @@ const EditEventDetail = () => {
     } catch (error) {
       console.error("Error updating user data:", error);
       toast.error("Error changed a party");
+      setTimeout(function () {
+        window.location.reload();
+      }, 1000);
     } finally {
       setLoading(false); // Step 3: Set loading back to false
     }
