@@ -6,3 +6,9 @@ body {
 input[type="date"]::-webkit-calendar-picker-indicator {
   cursor: pointer;
 }
+/* Hide img when media query matches and input[type="date"] has -webkit-calendar-picker-indicator */
+@media (max-width: 768px) {
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+  }
+}

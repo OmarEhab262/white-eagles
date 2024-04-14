@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import AOS from "aos";
 import calender from "../assists/imgs/calender.jpeg";
-import search2 from "../assists/icon/search2.png";
+import date from "../assists/icon/calendar.svg";
 import ggggg from "../assists/imgs/ggggg.png";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
@@ -207,11 +207,16 @@ const Calender = () => {
                         </p>
                       )}
                     </div>
+                    <img
+                      src={date}
+                      alt=""
+                      className="absolute w-[25px] top-2 right-4 md:hidden block  "
+                    />
                   </div>
                 </div>
               </div>
               <div className="sort flex items-center gap-10 flex-wrap">
-                <div className="search flex gap-3 border-b-2">
+                {/* <div className="search flex gap-3 border-b-2">
                   <img src={search2} alt="" />
                   <input
                     type="search"
@@ -220,13 +225,58 @@ const Calender = () => {
                     onChange={handleChange}
                     value={inputValue}
                   />
-                </div>
-                <div
+                </div> */}
+                <select
+                  onChange={handleChange}
+                  value={inputValue}
+                  id="event-type"
+                  className="bg-transparent cursor-pointer text-white text-[25px] px-4 outline-none border-white border-l-0 border-r-0 border border-t-0 ml-5"
+                >
+                  <option
+                    value="نوع الحفلة"
+                    selected
+                    className="text-black cursor-pointer"
+                  >
+                    كل الحفلات
+                  </option>
+                  <option
+                    className="text-black  cursor-pointer"
+                    value="حفلات غناء"
+                  >
+                    حفلات غناء
+                  </option>
+                  <option
+                    className="text-black cursor-pointer"
+                    value="حفلات التخرج"
+                  >
+                    حفلات التخرج
+                  </option>
+                  <option
+                    className="text-black cursor-pointer"
+                    value="ستاند اب"
+                  >
+                    ستاند اب
+                  </option>
+                  <option className="text-black cursor-pointer" value="مؤتمرات">
+                    مؤتمرات
+                  </option>
+                  <option className="text-black cursor-pointer" value="بازار">
+                    بازار
+                  </option>
+                  <option
+                    className="text-black cursor-pointer"
+                    value="حفلات فان داى"
+                  >
+                    حفلات فان داى
+                  </option>
+                </select>
+
+                {/* <div
                   onClick={handleDivClick}
                   className=" cursor-pointer md:text-[24px] text-[20px]  font-bold text-[#838389] border rounded-[16px] py-[5px]  px-[30px] flex justify-center items-center"
                 >
                   <h3>كل الحفلات</h3>
-                </div>
+                </div> */}
               </div>
             </div>
             <div className="cards my-[50px] grid  xl:grid-cols-7 lg:grid-cols-4 md:grid-cols-3 max-sm:grid-cols-2 gap-10 grid-cols-2 justify-items-center ">

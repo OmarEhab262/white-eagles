@@ -22,7 +22,6 @@ import whiteBg from "../assists/imgs/whiteBg.png";
 import ggggg from "../assists/imgs/ggggg.png";
 import about from "../assists/imgs/about.jpeg";
 import phones from "../assists/imgs/phones.png";
-import welcom from "../assists/imgs/party55.jpeg";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { Link } from "react-router-dom";
@@ -149,10 +148,10 @@ const Home = () => {
       }}
     >
       {showVideo && data[party] && (
-        <div className="div w-full z-[100] video fixed">
-          <div className="vv w-[90%] h-[100vh] relative">
+        <div className="div mx-auto z-[100] video fixed">
+          <div className="vv   relative">
             <video
-              className="w-[90%] h-[100vh] z-[100]  mx-auto"
+              className="  h-fit z-[100]  mx-auto"
               controls
               autoPlay
               onClick={toggleVideo}
@@ -160,7 +159,6 @@ const Home = () => {
               <source
                 src={`https://api.whiteeagles.net/public/storage/${data[party].video}`}
               />
-              Your browser does not support the video tag.
             </video>
           </div>
           <div
