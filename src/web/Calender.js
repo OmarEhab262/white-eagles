@@ -134,27 +134,20 @@ const Calender = () => {
     const categoryId = categoryMapping[value];
 
     if (categoryId !== undefined) {
-      if (categoryId === null) {
-        // Check if categoryId is null for "كل الحفلات"
-        setFilteredEvents(filWillEvents);
-        setCurrentEvents(filCurrentEvents);
-        setEndEvents(filEndEvents);
-      } else {
-        const filteredWillEvents = filWillEvents.filter(
-          (event) => event.event.category_event_id === categoryId
-        );
-        setFilteredEvents(filteredWillEvents);
+      const filteredWillEvents = filWillEvents.filter(
+        (event) => event.event.category_event_id === categoryId
+      );
+      setFilteredEvents(filteredWillEvents);
 
-        const filteredCurrentEvents = filCurrentEvents.filter(
-          (event) => event.event.category_event_id === categoryId
-        );
-        setCurrentEvents(filteredCurrentEvents);
+      const filteredCurrentEvents = filCurrentEvents.filter(
+        (event) => event.event.category_event_id === categoryId
+      );
+      setCurrentEvents(filteredCurrentEvents);
 
-        const filteredEndEvents = filEndEvents.filter(
-          (event) => event.event.category_event_id === categoryId
-        );
-        setEndEvents(filteredEndEvents);
-      }
+      const filteredEndEvents = filEndEvents.filter(
+        (event) => event.event.category_event_id === categoryId
+      );
+      setEndEvents(filteredEndEvents);
     } else {
       setFilteredEvents(filWillEvents);
       setCurrentEvents(filCurrentEvents);
