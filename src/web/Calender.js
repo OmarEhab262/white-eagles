@@ -180,7 +180,7 @@ const Calender = () => {
 
             <div className="info h-[90%] z-10 flex justify-center items-center flex-col gap-10">
               <h3 className="text-[54px] font-[700] text-white z-20  flex justify-center items-center">
-                تقويمي
+                الفعاليات
               </h3>
               <p className="text-center w-[90%] md:w-[700px] text-[16px] font-[500] text-[#E8E9F8]">
                 يعمل الجدول الزمني لدينا على تبسيط تخطيط الأحداث من خلال نظرة
