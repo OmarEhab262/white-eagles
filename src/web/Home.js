@@ -412,14 +412,14 @@ const Home = () => {
               className="box w-[330px] flex flex-col items-center justify-center rounded-[24px] gap-4 border border-white border-[3px] py-[24px]"
             >
               <img src={three} alt="" />
-              <h2 className="">تنظيم و إدارة حفلات الزفاف</h2>
+              <h2 className="">تنظيم وإدارة الحفلات</h2>
             </div>
             <div
               data-aos="fade-left"
               className="box w-[330px] flex flex-col items-center justify-center rounded-[24px] gap-4 border border-white border-[3px] py-[24px]"
             >
               <img src={four} alt="" />
-              <h2 className="">تصوير الحفلات و المناسبات</h2>
+              <h2 className="">تنظيم وادارة ورش العمل المتخصصة</h2>
             </div>
             <div
               data-aos="fade-right"
