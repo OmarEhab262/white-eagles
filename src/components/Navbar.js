@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import ggggg from "../assists/imgs/ggggg.png";
 import homeLogo from "../assists/imgs/homeLogo.svg";
 import logo from "../assists/imgs/logo.png";
+
 const Navbar = ({ activeTab }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [focus, setFocus] = useState(false);
@@ -46,15 +47,18 @@ const Navbar = ({ activeTab }) => {
             الصفحة الرئيسية
           </h3>
         </Link>
-        <Link to="/about" className="cursor-pointer">
+        <Link
+          to="/Calender"
+          className={`cursor-pointerb   ${focus ? "hidden" : "block"}`}
+        >
           <h3
             className={`p-[1rem] ${
-              activeTab === "about"
+              activeTab === "calender"
                 ? "active bg-[#E8E9F8] text-[#041461] rounded-[32px] px-[2rem] p-[1rem] font-bold"
                 : ""
             }`}
           >
-            نبذة عنا
+            الفعاليات
           </h3>
         </Link>
         <Link to="/services" className="cursor-pointer">
@@ -70,22 +74,22 @@ const Navbar = ({ activeTab }) => {
         </Link>
 
         <div className="px-[39]">
-          <img src={homeLogo} alt="" />
+          <Link to="/home" className="cursor-pointer">
+            <img src={homeLogo} alt="" />
+          </Link>
         </div>
-        <Link
-          to="/Calender"
-          className={`cursor-pointerb   ${focus ? "hidden" : "block"}`}
-        >
+        <Link to="/about" className="cursor-pointer">
           <h3
             className={`p-[1rem] ${
-              activeTab === "calender"
+              activeTab === "about"
                 ? "active bg-[#E8E9F8] text-[#041461] rounded-[32px] px-[2rem] p-[1rem] font-bold"
                 : ""
             }`}
           >
-            تقويمي
+            من نحن
           </h3>
         </Link>
+
         <Link
           to="/ContactUs"
           className={`cursor-pointerb   ${focus ? "hidden" : "block"}`}
@@ -100,7 +104,7 @@ const Navbar = ({ activeTab }) => {
             تواصل معنا
           </h3>
         </Link>
-        {/* <input
+        <input
           className={`cursor-pointer
           ${focus ? "w-[40%]" : "w-[10%]"}
           bg-transparent outline-none border-none transition-all duration-300 placeholder:text-white ${
@@ -111,7 +115,7 @@ const Navbar = ({ activeTab }) => {
           placeholder="ابحث معنا"
           onFocus={() => setFocus(true)}
           onBlur={() => setFocus(false)}
-        /> */}
+        />
       </div>
       {visible && (
         <div
@@ -170,16 +174,19 @@ const Navbar = ({ activeTab }) => {
                   ></div>
                 </Link>
                 <Link
-                  to="/about"
+                  to="/Calender"
                   className="cursor-pointer relative  transition ease-in-out delay-150 hover:-translate-x-5  duration-150"
                 >
-                  <h3>نبذة عنا</h3>
+                  <h3>الفعاليات</h3>
                   <div
                     className={`p-[1rem] absolute top-0 ${
-                      activeTab === "about" ? " active border-b-2 w-[20%]" : ""
+                      activeTab === "calender"
+                        ? " active border-b-2 w-[20%]"
+                        : ""
                     }`}
                   ></div>
                 </Link>
+
                 <Link
                   to="/services"
                   className="cursor-pointer relative  transition ease-in-out delay-150 hover:-translate-x-5  duration-150"
@@ -193,17 +200,14 @@ const Navbar = ({ activeTab }) => {
                     }`}
                   ></div>
                 </Link>
-
                 <Link
-                  to="/Calender"
+                  to="/about"
                   className="cursor-pointer relative  transition ease-in-out delay-150 hover:-translate-x-5  duration-150"
                 >
-                  <h3>تقويمي</h3>
+                  <h3>نبذة عنا</h3>
                   <div
                     className={`p-[1rem] absolute top-0 ${
-                      activeTab === "calender"
-                        ? " active border-b-2 w-[20%]"
-                        : ""
+                      activeTab === "about" ? " active border-b-2 w-[20%]" : ""
                     }`}
                   ></div>
                 </Link>
@@ -220,10 +224,10 @@ const Navbar = ({ activeTab }) => {
                     }`}
                   ></div>
                 </Link>
-                {/* <input
-                  className="cursor-pointer relative  bg-transparent outline-none border-none focus:bg-white focus:text-[#041361a6] placeholder:text-white py-[5px] focus:placeholder:text-[#041361a6] rounded-[8px] "
+                <input
+                  className="cursor-pointer relative  px-[5px] bg-transparent outline-none border-none focus:bg-white focus:text-[#041361a6] placeholder:text-white py-[5px] focus:placeholder:text-[#041361a6] rounded-[8px] "
                   placeholder="ابحث معنا"
-                /> */}
+                />
               </div>
             </div>
           )}
