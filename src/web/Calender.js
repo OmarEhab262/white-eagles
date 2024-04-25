@@ -16,6 +16,11 @@ const Calender = () => {
   const [currentEvents, setCurrentEvents] = useState([]);
   const [endEvents, setEndEvents] = useState([]);
   useEffect(() => {
+    // This function will run when the component mounts for the first time
+    setSelectedDate("");
+  }, []);
+
+  useEffect(() => {
     AOS.init({ duration: 1000 });
   }, []);
   const getArabicDayName = (dateString) => {
@@ -62,17 +67,11 @@ const Calender = () => {
       window.location.reload();
     } else {
       setSelectedDate(""); // Clear the selected date
-      setFilteredEvents(filWillEvents);
-      setCurrentEvents(filCurrentEvents);
-      setEndEvents(filEndEvents);
     }
   };
 
   const handleDivClick = () => {
     setSelectedDate("");
-    setFilteredEvents(filWillEvents);
-    setCurrentEvents(filCurrentEvents);
-    setEndEvents(filEndEvents);
     window.location.reload();
   };
 
@@ -138,7 +137,6 @@ const Calender = () => {
     const value = event.target.value;
     setSelectedDate("");
     setInputValue(value);
-    console.log(selectedDate);
     if (selectedDate !== "") {
       window.location.reload();
     }
@@ -225,7 +223,6 @@ const Calender = () => {
                       onChange={handleDateChange}
                     />
                     <div className="d text-center ">
-                      {" "}
                       {selectedDate ? (
                         <p className="absolute md:right-22 right-14  text-black bg-white rounded-[16px] h-full md:w-[280px] w-[190px] ">
                           {formatDate(selectedDate)}
