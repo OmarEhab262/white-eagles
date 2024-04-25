@@ -27,6 +27,7 @@ import Services from "./web/Services";
 import ShowServices from "./web/ShowServices";
 import ContactUs from "./web/ContactUs";
 import Calender from "./web/Calender";
+import FindParty from "./web/FindParty";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -65,6 +66,7 @@ function App() {
         <Route path="/showservices" element={<ShowServices />} />
         <Route path="/contactus" element={<ContactUs />} />
         <Route path="/calender" element={<Calender />} />
+        <Route path="/FindParty" element={<FindParty />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
       <ToastContainer />

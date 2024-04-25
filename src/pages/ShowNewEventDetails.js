@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import SideBar from "../components/SideBar";
 import date from "../assists/icon/date.png";
 import location from "../assists/icon/location.png";
-import time from "../assists/icon/time.png";
 import arrow from "../assists/icon/arrow.png";
-import party from "../assists/imgs/party.png";
+import count from "../assists/icon/count.png";
+import chair from "../assists/icon/chair.png";
 import axios from "axios";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
@@ -142,6 +142,37 @@ const ShowNewEventDetails = () => {
             >
               <h3>تعديل حفلة</h3>
             </Link>
+          </div>
+        </div>
+        <div className=" flex w-[100%] justify-around mt-[30px] mb-[20px]">
+          <div
+            className="flex items-center bg-white rounded-[16px] pr-[24px] py-[5px] w-[32%] h-[70px] border border-[#0413616b]"
+            style={{ boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)" }}
+          >
+            <div className="flex justify-center items-center rounded-full w-[50px] h-[50px] text-white bg-[#041461] text-[14px]">
+              <img src={count} alt="count" />
+            </div>
+
+            <div className=" mr-[20px]">
+              <h3 className="text-[16px] font-bold text-[#041461]">
+                عدد التذاكر المحجوزه
+              </h3>
+              <h3 className="text-[12px]">{} تذكرة</h3>
+            </div>
+          </div>
+          <div
+            className="flex items-center bg-white rounded-[16px] pr-[24px] py-[5px] w-[32%]  h-[70px] border border-[#0413616b]"
+            style={{ boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)" }}
+          >
+            <div className="flex justify-center items-center rounded-full w-[50px] h-[50px] text-white bg-[#041461] text-[14px]">
+              <img src={chair} alt="chair" />
+            </div>
+            <div className=" mr-[20px]">
+              <h3 className="text-[16px] font-bold text-[#041461]">
+                اجمالي المدفوع للتذاكر
+              </h3>
+              <h3 className="text-[12px]">{} المدفوع</h3>
+            </div>
           </div>
         </div>
         <div className="info flex py-[20px]  w-full h-auto overflow-hidden ">

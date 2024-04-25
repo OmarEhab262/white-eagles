@@ -16,18 +16,7 @@ const Calender = () => {
   const [filteredEvents, setFilteredEvents] = useState([]);
   const [currentEvents, setCurrentEvents] = useState([]);
   const [endEvents, setEndEvents] = useState([]);
-  //   const [loading, setLoading] = useState(false);
-  //   useEffect(() => {
-  //     setFilteredEvents(filWillEvents);
-  //     setCurrentEvents(filCurrentEvents);
-  //     setEndEvents(filEndEvents);
-  //     if (savedDate === "") {
-  //       setSelectedDate(selectedDate);
-  //     } else {
-  //       setSelectedDate("");
-  //       window.location.reload();
-  //     }
-  //   }, []);
+
   console.log(selectedDate);
   useEffect(() => {
     AOS.init({ duration: 1000 });
@@ -235,7 +224,7 @@ const Calender = () => {
                           {formatDate(selectedDate)}
                         </p>
                       ) : (
-                        <p className="absolute md:right-22 right-14 text-black bg-white rounded-[16px] h-full md:w-[280px] w-[190px] text-center">
+                        <p className="absolute md:right-22 right-14 text-black bg-white rounded-[16px] h-full md:w-[280px] w-[190px] text-center pd:m-[0] pt-[1px]">
                           تاريخ الحفلات
                         </p>
                       )}

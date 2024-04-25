@@ -29,6 +29,42 @@ const Navbar = ({ activeTab }) => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [prevScrollPos]);
+  const [inputValue, setInputValue] = useState("");
+
+  useEffect(() => {
+    const handleKeyPress = (event) => {
+      if (event.key === "Enter") {
+        window.location.href = "/white-eagles/#/FindParty";
+        window.location.reload();
+      }
+    };
+
+    // Add event listener for key press
+    document.addEventListener("keydown", handleKeyPress);
+
+    // Cleanup: Remove event listener when component unmounts
+    return () => {
+      document.removeEventListener("keydown", handleKeyPress);
+    };
+  }, [inputValue]);
+
+  useEffect(() => {
+    // Load saved value from localStorage when component mounts
+    const savedInputValue = localStorage.getItem("searchInputValue");
+    if (savedInputValue) {
+      setInputValue(savedInputValue);
+    }
+  }, []);
+
+  useEffect(() => {
+    // Save inputValue to localStorage whenever it changes
+    localStorage.setItem("searchInputValue", inputValue);
+  }, [inputValue]);
+
+  const handleChange = (event) => {
+    setInputValue(event.target.value);
+  };
+
   return (
     <div className="z-50 w-[90%]">
       <div
@@ -115,6 +151,8 @@ const Navbar = ({ activeTab }) => {
           placeholder="ابحث معنا"
           onFocus={() => setFocus(true)}
           onBlur={() => setFocus(false)}
+          //   value={inputValue}
+          onChange={handleChange}
         />
       </div>
       {visible && (
@@ -225,8 +263,10 @@ const Navbar = ({ activeTab }) => {
                   ></div>
                 </Link>
                 <input
-                  className="cursor-pointer relative  px-[5px] bg-transparent outline-none border-none focus:bg-white focus:text-[#041361a6] placeholder:text-white py-[5px] focus:placeholder:text-[#041361a6] rounded-[8px] "
+                  className="cursor-pointer relative px-[5px] bg-transparent outline-none border-none focus:bg-white focus:text-[#041361a6] placeholder:text-white py-[5px] focus:placeholder:text-[#041361a6] rounded-[8px]"
                   placeholder="ابحث معنا"
+                  value={inputValue}
+                  onChange={handleChange}
                 />
               </div>
             </div>
