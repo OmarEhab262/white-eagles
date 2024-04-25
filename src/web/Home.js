@@ -293,7 +293,7 @@ const Home = () => {
             }}
           >
             <div className="shade bg-black bg-opacity-50 absolute w-full h-full z-[1] rounded-[16px]"></div>
-            <div className="border border-white border-[4px] rounded-[16px] p-[20px] z-[2] w-[90%] h-[90%] flex justify-center items-center">
+            <div className=" border-white border-[4px] rounded-[16px] p-[20px] z-[2] w-[90%] h-[90%] flex justify-center items-center">
               <h3 className="text-[21px] font-[700] text-white">نبذة عنا</h3>
             </div>
           </div>
@@ -395,35 +395,35 @@ const Home = () => {
           <div className="boxes flex justify-center items-center flex-wrap text-[20px] text-white gap-16">
             <div
               data-aos="fade-left"
-              className="box w-[330px] flex flex-col items-center justify-center rounded-[24px] gap-4 border border-white border-[3px] py-[24px]"
+              className="box w-[330px] flex flex-col items-center justify-center rounded-[24px] gap-4  border-white border-[3px] py-[24px]"
             >
               <img src={one} alt="" />
               <h2 className="">تنظيم المؤتمرات و المعارض</h2>
             </div>
             <div
               data-aos="fade-down"
-              className="box w-[330px] flex flex-col items-center justify-center rounded-[24px] gap-4 border border-white border-[3px] py-[24px]"
+              className="box w-[330px] flex flex-col items-center justify-center rounded-[24px] gap-4  border-white border-[3px] py-[24px]"
             >
               <img src={two} alt="" />
               <h2 className="">تنظيم حفلات التخرج</h2>
             </div>
             <div
               data-aos="fade-right"
-              className="box w-[330px] flex flex-col items-center justify-center rounded-[24px] gap-4 border border-white border-[3px] py-[24px]"
+              className="box w-[330px] flex flex-col items-center justify-center rounded-[24px] gap-4  border-white border-[3px] py-[24px]"
             >
               <img src={three} alt="" />
               <h2 className="">تنظيم وإدارة الحفلات</h2>
             </div>
             <div
               data-aos="fade-left"
-              className="box w-[330px] flex flex-col items-center justify-center rounded-[24px] gap-4 border border-white border-[3px] py-[24px]"
+              className="box w-[330px] flex flex-col items-center justify-center rounded-[24px] gap-4  border-white border-[3px] py-[24px]"
             >
               <img src={four} alt="" />
               <h2 className="">تنظيم وادارة ورش العمل المتخصصة</h2>
             </div>
             <div
               data-aos="fade-right"
-              className="box w-[330px] flex flex-col items-center justify-center rounded-[24px] gap-4 border border-white border-[3px] py-[24px]"
+              className="box w-[330px] flex flex-col items-center justify-center rounded-[24px] gap-4  border-white border-[3px] py-[24px]"
             >
               <img src={five} alt="" />
               <h2 className="">اﻹدارة التسويقية</h2>

@@ -8,8 +8,9 @@ import Navbar from "../components/Navbar";
 import axios from "axios";
 import { format } from "date-fns";
 const Calender = () => {
+  const savedDate = localStorage.getItem("selectedDate");
   const [inputValue, setInputValue] = useState("");
-  const [selectedDate, setSelectedDate] = useState("");
+  const [selectedDate, setSelectedDate] = useState(savedDate);
   const [data, setData] = useState([]);
   const [filteredEvents, setFilteredEvents] = useState([]);
   const [currentEvents, setCurrentEvents] = useState([]);
@@ -48,15 +49,25 @@ const Calender = () => {
     }
   };
 
+  // Save to localStorage when selectedDate changes
+  useEffect(() => {
+    localStorage.setItem("selectedDate", selectedDate);
+  }, [selectedDate]);
+
   const handleDateChange = (event) => {
-    setSelectedDate(event.target.value);
+    const selectedDate = event.target.value;
+
+    if (selectedDate) {
+      setSelectedDate(selectedDate);
+      window.location.reload();
+    } else {
+      setSelectedDate(""); // Clear the selected date
+    }
   };
+
   const handleDivClick = () => {
-    setFilteredEvents(filWillEvents);
-    setCurrentEvents(filCurrentEvents);
-    setEndEvents(filEndEvents);
     setSelectedDate("");
-    setInputValue("كل الحفلات");
+    window.location.reload();
   };
 
   const formatDate = (dateString) => {
@@ -119,8 +130,14 @@ const Calender = () => {
   });
   const handleChange = (event) => {
     const value = event.target.value;
+    setSelectedDate("");
     setInputValue(value);
-
+    console.log(selectedDate);
+    if (selectedDate !== "") {
+      window.location.reload();
+    }
+    // Saving selected category to localStorage
+    localStorage.setItem("selectedCategory", value);
     const categoryMapping = {
       "حفلات غناء": 1,
       "حفلات التخرج": 2,
@@ -128,10 +145,10 @@ const Calender = () => {
       مؤتمرات: 4,
       بازار: 5,
       "حفلات فان داى": 6,
-      "نوع الحفلات": null, // Add this mapping for "كل الحفلات"
+      "نوع الحفلات": undefined,
     };
 
-    const categoryId = categoryMapping[value];
+    const categoryId = categoryMapping[value] ?? undefined;
 
     if (categoryId !== undefined) {
       const filteredWillEvents = filWillEvents.filter(
