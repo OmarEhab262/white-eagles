@@ -40,6 +40,7 @@ const Home = () => {
     AOS.init({ duration: 1000 });
   }, []);
   useEffect(() => {
+    localStorage.setItem("selectedDate", "");
     const fetchData = async () => {
       try {
         const response = await axios.get(

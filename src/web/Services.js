@@ -15,6 +15,7 @@ import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 const Services = () => {
   useEffect(() => {
+    localStorage.setItem("selectedDate", "");
     AOS.init({ duration: 1000 });
   }, []);
   const handleShowClick = (name) => {

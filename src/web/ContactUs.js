@@ -21,7 +21,7 @@ const ContactUs = () => {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return regex.test(email);
   };
-
+  localStorage.setItem("selectedDate", "");
   const fetchData = async () => {
     if (!validateEmail(email)) {
       setEmailError("Invalid email address");

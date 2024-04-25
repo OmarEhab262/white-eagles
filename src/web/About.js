@@ -26,6 +26,7 @@ const About = () => {
   }, []);
 
   useEffect(() => {
+    localStorage.setItem("selectedDate", "");
     const fetchData = async () => {
       try {
         const response = await axios.get(

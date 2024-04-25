@@ -8,13 +8,26 @@ import Navbar from "../components/Navbar";
 import axios from "axios";
 import { format } from "date-fns";
 const Calender = () => {
-  const savedDate = localStorage.getItem("selectedDate");
   const [inputValue, setInputValue] = useState("");
+  const savedDate = localStorage.getItem("selectedDate");
   const [selectedDate, setSelectedDate] = useState(savedDate);
+
   const [data, setData] = useState([]);
   const [filteredEvents, setFilteredEvents] = useState([]);
   const [currentEvents, setCurrentEvents] = useState([]);
   const [endEvents, setEndEvents] = useState([]);
+  //   const [loading, setLoading] = useState(false);
+  //   useEffect(() => {
+  //     setFilteredEvents(filWillEvents);
+  //     setCurrentEvents(filCurrentEvents);
+  //     setEndEvents(filEndEvents);
+  //     if (savedDate === "") {
+  //       setSelectedDate(selectedDate);
+  //     } else {
+  //       setSelectedDate("");
+  //       window.location.reload();
+  //     }
+  //   }, []);
   console.log(selectedDate);
   useEffect(() => {
     AOS.init({ duration: 1000 });
@@ -51,13 +64,8 @@ const Calender = () => {
   };
 
   // Save to localStorage when selectedDate changes
-  useEffect(() => {
-    localStorage.setItem("selectedDate", selectedDate);
-  }, [selectedDate]);
-
   const handleDateChange = (event) => {
     const selectedDate = event.target.value;
-
     if (selectedDate) {
       setSelectedDate(selectedDate);
       window.location.reload();
@@ -65,6 +73,9 @@ const Calender = () => {
       setSelectedDate(""); // Clear the selected date
     }
   };
+  useEffect(() => {
+    localStorage.setItem("selectedDate", selectedDate);
+  }, [selectedDate]);
 
   const handleDivClick = () => {
     setSelectedDate("");
