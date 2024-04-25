@@ -15,11 +15,7 @@ const Calender = () => {
   const [filteredEvents, setFilteredEvents] = useState([]);
   const [currentEvents, setCurrentEvents] = useState([]);
   const [endEvents, setEndEvents] = useState([]);
-  useEffect(() => {
-    // This function will run when the component mounts for the first time
-    setSelectedDate("");
-  }, []);
-
+  console.log(selectedDate);
   useEffect(() => {
     AOS.init({ duration: 1000 });
   }, []);
