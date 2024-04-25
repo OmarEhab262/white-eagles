@@ -62,11 +62,17 @@ const Calender = () => {
       window.location.reload();
     } else {
       setSelectedDate(""); // Clear the selected date
+      setFilteredEvents(filWillEvents);
+      setCurrentEvents(filCurrentEvents);
+      setEndEvents(filEndEvents);
     }
   };
 
   const handleDivClick = () => {
     setSelectedDate("");
+    setFilteredEvents(filWillEvents);
+    setCurrentEvents(filCurrentEvents);
+    setEndEvents(filEndEvents);
     window.location.reload();
   };
 
