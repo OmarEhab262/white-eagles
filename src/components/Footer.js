@@ -26,7 +26,7 @@ const Footer = () => {
               حمل التطبيق الخاص بنا
             </h3>
           </div>
-          <div className="bot flex justify-center flex-wrap w-full gap-7">
+          <div className="bot flex justify-center flex-wrap w-full gap-7 mt-[20px]">
             <img src={google} alt="" className="w-[160px]" />
             <img src={apple} alt="" className="w-[160px]" />
             <img src={gall} alt="" className="w-[160px]" />
@@ -139,7 +139,7 @@ const Footer = () => {
           <img src={homeLogo} alt="" />
         </div>
         <div className=" mb-[20px]">
-          <p className="text-[18px] font-[700] text-[#838389]">
+          <p className="text-[18px] font-[700] text-[#838389] text-center">
             © 2024 جميع الحقوق محفوظة لدى White Eagle
           </p>
         </div>

@@ -141,6 +141,7 @@ const Navbar = ({ activeTab }) => {
           </h3>
         </Link>
         <input
+          type="search"
           className={`cursor-pointer
           ${focus ? "w-[40%]" : "w-[10%]"}
           bg-transparent outline-none border-none transition-all duration-300 placeholder:text-white ${
@@ -151,7 +152,6 @@ const Navbar = ({ activeTab }) => {
           placeholder="ابحث معنا"
           onFocus={() => setFocus(true)}
           onBlur={() => setFocus(false)}
-          //   value={inputValue}
           onChange={handleChange}
         />
       </div>
@@ -265,8 +265,8 @@ const Navbar = ({ activeTab }) => {
                 <input
                   className="cursor-pointer relative px-[5px] bg-transparent outline-none border-none focus:bg-white focus:text-[#041361a6] placeholder:text-white py-[5px] focus:placeholder:text-[#041361a6] rounded-[8px]"
                   placeholder="ابحث معنا"
-                  value={inputValue}
                   onChange={handleChange}
+                  type="search"
                 />
               </div>
             </div>
