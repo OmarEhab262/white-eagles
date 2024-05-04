@@ -3,8 +3,8 @@ import SideBar from "../components/SideBar";
 import date from "../assists/icon/date.png";
 import location from "../assists/icon/location.png";
 import arrow from "../assists/icon/arrow.png";
-import count from "../assists/icon/count.png";
-import chair from "../assists/icon/chair.png";
+import tick from "../assists/icon/tick.svg";
+import mony from "../assists/icon/mony.svg";
 import axios from "axios";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
@@ -16,6 +16,8 @@ const ShowNewEventDetails = () => {
   localStorage.setItem("id", id);
   const [party, setParty] = useState(null);
   const [imgs, setImgs] = useState(null);
+  const [ticketsCount, setTicketsCount] = useState(null);
+  const [eventTotal, setEventTotal] = useState(null);
   const token = localStorage.getItem("token");
   //   console.log(id);
   useEffect(() => {
@@ -35,6 +37,51 @@ const ShowNewEventDetails = () => {
         setImgs(response.data.images); // Set party to response.data instead of response.data.events
         // console.log(response.data.images); // Set party to response.data instead of response.data.events
         // console.log(response.data.event); // Logging the fetched data
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, [id, token]);
+  //   console.log(id);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `https://api.whiteeagles.net/public/api/ticketsCountForEvent/${id}`,
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + token,
+              "ngrok-skip-browser-warning": "69420",
+            },
+          }
+        );
+        // setImgs(response.data.images); // Set party to response.data instead of response.data.events
+        setTicketsCount(response.data.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, [id, token]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `https://api.whiteeagles.net/public/api/eventTotalPayments/${id}`,
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + token,
+              "ngrok-skip-browser-warning": "69420",
+            },
+          }
+        );
+        // setImgs(response.data.images); // Set party to response.data instead of response.data.events
+        setEventTotal(response.data.data);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -150,14 +197,14 @@ const ShowNewEventDetails = () => {
             style={{ boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)" }}
           >
             <div className="flex justify-center items-center rounded-full w-[50px] h-[50px] text-white bg-[#041461] text-[14px]">
-              <img src={count} alt="count" />
+              <img src={tick} alt="count" className="w-[70%]" />
             </div>
 
             <div className=" mr-[20px]">
               <h3 className="text-[16px] font-bold text-[#041461]">
                 عدد التذاكر المحجوزه
               </h3>
-              <h3 className="text-[12px]">{} تذكرة</h3>
+              <h3 className="text-[12px]">{ticketsCount} تذكرة</h3>
             </div>
           </div>
           <div
@@ -165,13 +212,13 @@ const ShowNewEventDetails = () => {
             style={{ boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)" }}
           >
             <div className="flex justify-center items-center rounded-full w-[50px] h-[50px] text-white bg-[#041461] text-[14px]">
-              <img src={chair} alt="chair" />
+              <img src={mony} alt="chair" className="w-[70%]" />
             </div>
             <div className=" mr-[20px]">
               <h3 className="text-[16px] font-bold text-[#041461]">
                 اجمالي المدفوع للتذاكر
               </h3>
-              <h3 className="text-[12px]">{} المدفوع</h3>
+              <h3 className="text-[12px]">{eventTotal} المدفوع</h3>
             </div>
           </div>
         </div>

@@ -3,6 +3,8 @@ import SideBar from "../components/SideBar";
 import arrow from "../assists/icon/arrow.png";
 import date from "../assists/icon/date.png";
 import location from "../assists/icon/location.png";
+import tick from "../assists/icon/tick.svg";
+import mony from "../assists/icon/mony.svg";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 
@@ -13,7 +15,8 @@ const ShowEndedEventDetail = () => {
 
   const { id } = useParams();
   localStorage.setItem("id", id);
-
+  const [ticketsCount, setTicketsCount] = useState(null);
+  const [eventTotal, setEventTotal] = useState(null);
   const [party, setParty] = useState(null);
   const [imgs, setImgs] = useState(null);
   const token = localStorage.getItem("token");
@@ -43,6 +46,50 @@ const ShowEndedEventDetail = () => {
     fetchData();
   }, [id, token]);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `https://api.whiteeagles.net/public/api/ticketsCountForEvent/${id}`,
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + token,
+              "ngrok-skip-browser-warning": "69420",
+            },
+          }
+        );
+        // setImgs(response.data.images); // Set party to response.data instead of response.data.events
+        setTicketsCount(response.data.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, [id, token]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `https://api.whiteeagles.net/public/api/eventTotalPayments/${id}`,
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + token,
+              "ngrok-skip-browser-warning": "69420",
+            },
+          }
+        );
+        // setImgs(response.data.images); // Set party to response.data instead of response.data.events
+        setEventTotal(response.data.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, [id, token]);
   if (!party) {
     return (
       <div className="flex justify-center items-center w-full h-[100vh]">
@@ -141,6 +188,37 @@ const ShowEndedEventDetail = () => {
             >
               <h3>تعديل حفلة</h3>
             </Link>
+          </div>
+        </div>
+        <div className=" flex w-[100%] justify-around mt-[30px] mb-[20px]">
+          <div
+            className="flex items-center bg-white rounded-[16px] pr-[24px] py-[5px] w-[32%] h-[70px] border border-[#0413616b]"
+            style={{ boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)" }}
+          >
+            <div className="flex justify-center items-center rounded-full w-[50px] h-[50px] text-white bg-[#041461] text-[14px]">
+              <img src={tick} alt="count" className="w-[70%]" />
+            </div>
+
+            <div className=" mr-[20px]">
+              <h3 className="text-[16px] font-bold text-[#041461]">
+                عدد التذاكر المحجوزه
+              </h3>
+              <h3 className="text-[12px]">{ticketsCount} تذكرة</h3>
+            </div>
+          </div>
+          <div
+            className="flex items-center bg-white rounded-[16px] pr-[24px] py-[5px] w-[32%]  h-[70px] border border-[#0413616b]"
+            style={{ boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)" }}
+          >
+            <div className="flex justify-center items-center rounded-full w-[50px] h-[50px] text-white bg-[#041461] text-[14px]">
+              <img src={mony} alt="chair" className="w-[70%]" />
+            </div>
+            <div className=" mr-[20px]">
+              <h3 className="text-[16px] font-bold text-[#041461]">
+                اجمالي المدفوع للتذاكر
+              </h3>
+              <h3 className="text-[12px]">{eventTotal} المدفوع</h3>
+            </div>
           </div>
         </div>
         <div className="info flex py-[20px]  w-full h-auto overflow-hidden">
