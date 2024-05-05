@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/white-eagles/static/css/main.d25ea5f8.css",
-    "main.js": "/white-eagles/static/js/main.8ab16113.js",
+    "main.css": "/white-eagles/static/css/main.2b6ca153.css",
+    "main.js": "/white-eagles/static/js/main.16f3945a.js",
     "static/media/party55.jpeg": "/white-eagles/static/media/party55.a8f78f522e9f04397b43.jpeg",
     "static/media/ContactUs.jpeg": "/white-eagles/static/media/ContactUs.2e7a2086648c478f711a.jpeg",
     "static/media/about.jpeg": "/white-eagles/static/media/about.4fdabecff170b3cf63e5.jpeg",
@@ -33,11 +33,11 @@
     "static/media/mony.svg": "/white-eagles/static/media/mony.4847a61dfcce41a09cb4975c8fd2f007.svg",
     "index.html": "/white-eagles/index.html",
     "static/media/calendar.svg": "/white-eagles/static/media/calendar.1ca4dc3f22db0d49e0d0308a3954a38f.svg",
-    "main.d25ea5f8.css.map": "/white-eagles/static/css/main.d25ea5f8.css.map",
-    "main.8ab16113.js.map": "/white-eagles/static/js/main.8ab16113.js.map"
+    "main.2b6ca153.css.map": "/white-eagles/static/css/main.2b6ca153.css.map",
+    "main.16f3945a.js.map": "/white-eagles/static/js/main.16f3945a.js.map"
   },
   "entrypoints": [
-    "static/css/main.d25ea5f8.css",
-    "static/js/main.8ab16113.js"
+    "static/css/main.2b6ca153.css",
+    "static/js/main.16f3945a.js"
   ]
 }
