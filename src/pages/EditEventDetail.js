@@ -83,7 +83,8 @@ const EditEventDetail = () => {
       }
     };
     fetchData();
-  }, [token]);
+  }, [token, storedId]); // Include 'token' and 'storedId' in the dependency array
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -138,7 +139,7 @@ const EditEventDetail = () => {
         formData.append(`image[${index}]`, image);
       });
 
-      const response = await axios.post(
+      await axios.post(
         `https://api.whiteeagles.net/public/api/events/update/${storedId}`,
         formData,
         {

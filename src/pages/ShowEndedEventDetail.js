@@ -110,17 +110,6 @@ const ShowEndedEventDetail = () => {
     const [hours, minutes, seconds] = time.split(":");
     const parsedDate = new Date(year, month - 1, day, hours, minutes, seconds);
 
-    const options = {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-      hour: "numeric",
-      minute: "numeric",
-      second: "numeric",
-      hour12: true,
-      locale: "ar",
-    };
-
     // Customize the AM/PM strings
     const localeOptions = {
       hour: "numeric",
@@ -135,7 +124,6 @@ const ShowEndedEventDetail = () => {
       .replace("ص", "صباحا")
       .replace("م", "مساءا");
 
-    const formattedDate = parsedDate.toLocaleString("ar", options);
     return {
       dateComponent: parsedDate.toLocaleDateString("ar", {
         year: "numeric",
@@ -146,27 +134,6 @@ const ShowEndedEventDetail = () => {
     };
   }
 
-  function formatDate(dateTimeString) {
-    const options = {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    };
-    const date = new Date(dateTimeString).toLocaleDateString("ar", options);
-
-    const timeOptions = {
-      hour: "numeric",
-      minute: "numeric",
-      hour12: true,
-      hourCycle: "h23", // Use 24-hour cycle to avoid AM/PM indicator
-    };
-    let time = new Date(dateTimeString).toLocaleTimeString("ar", timeOptions);
-
-    // Replace ص with صباحًا and م with مساءً
-    time = time.replace("ص", "صباحًا").replace("م", "مساءً");
-
-    return `${date}، ${time}`;
-  }
   const { dateComponent, timeComponent } = parseDateString(party.date_time);
   return (
     <div className="grid grid-cols-5 h-screen">
@@ -229,7 +196,7 @@ const ShowEndedEventDetail = () => {
               className="h-full w-full object-cover rounded-[16px]"
             />
           </div>
-          <div className="content w-[70%] px-[32px]">
+          <div className="content w-[70%] px-[32px] pb-[150px]">
             <div className="header mb-[36px] ">
               <div className="top mb-[10px]">
                 <h3 className="text-[32px] font-[700] text-[#041461]">
@@ -241,13 +208,11 @@ const ShowEndedEventDetail = () => {
                   <img src={date} alt="date" className="w-[16px] h-[16px]" />
                   <h3 className="text-[15px] mr-[10px]">{dateComponent}</h3>
                 </div>
-                <div className="time flex mt-[5px] mx-[12px] items-center">
-                  <div className="h-[150%] w-[2px] bg-gray-400  ml-[10px]"></div>
+                <div className="time flex mt-[5px] mx-[12px] items-center border-r-4 border-gray-500 pr-[15px]">
                   <img src={date} alt="date" className="w-[16px] h-[16px]" />
                   <h3 className="text-[15px] mr-[10px]">{timeComponent}</h3>
                 </div>
-                <div className="location flex mt-[5px] mx-[32px] items-center">
-                  <div className="h-[150%] w-[2px] bg-gray-400  ml-[10px]"></div>
+                <div className="location flex mt-[5px] mx-[32px] items-center w-[40%] border-r-4 border-gray-500 pr-[15px]">
                   <img
                     src={location}
                     alt="location"
@@ -256,7 +221,7 @@ const ShowEndedEventDetail = () => {
                   <a
                     target="blank"
                     href={party.location}
-                    className="text-[15px] mr-[10px] hover:font-bold"
+                    className="text-[15px] mr-[10px] "
                   >
                     {party.location}
                   </a>
@@ -273,12 +238,20 @@ const ShowEndedEventDetail = () => {
             </div>
           </div>
         </div>
-        <div className="h-[50vh] overflow-auto w-full  ssc">
-          <div className="img mt-[40px] h-[200px]  ">
-            <h3 className="text-[24px] font-bold">الصور</h3>
-            <div className="containerImgs  w-full flex overflow-x-auto ssc  mt-[20px] pb-[10px]">
-              {imgs &&
-                imgs.map((img) => (
+        <div className="h-[50vh] overflow-auto w-full ssc">
+          {(!imgs || imgs.length === 0) && (
+            <div>
+              <h3 className="text-[24px] font-bold">الصور</h3>
+              <div className="box border-dashed border-2 w-[503px] h-[24px] py-[55px] px-[13px] flex justify-center items-center border-[#041461] rounded-[10px] mx-auto mt-[20px] mb-[72px]">
+                <h3 className="text-[20px]">لا يوجد صور</h3>
+              </div>
+            </div>
+          )}
+          {imgs && imgs.length > 0 && (
+            <div className="img mt-[40px] h-[200px]">
+              <h3 className="text-[24px] font-bold">الصور</h3>
+              <div className="containerImgs w-full flex overflow-x-auto ssc mt-[20px] pb-[10px]">
+                {imgs.map((img) => (
                   <img
                     key={img.id} // Ensure each image has a unique key
                     src={`https://api.whiteeagles.net/public/storage/${img.image}`} // Access the 'image' property of each image object
@@ -286,8 +259,9 @@ const ShowEndedEventDetail = () => {
                     className="w-[224px] h-[144px] object-cover ml-[18px] block"
                   />
                 ))}
+              </div>
             </div>
-          </div>
+          )}
           {party.video ? (
             <div className="video mt-[40px] h-[200px] w-full overflow-hidden">
               <h3 className="text-[24px] font-bold">الفيديو</h3>

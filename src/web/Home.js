@@ -78,17 +78,6 @@ const Home = () => {
     const [hours, minutes, seconds] = time.split(":");
     const parsedDate = new Date(year, month - 1, day, hours, minutes, seconds);
 
-    const options = {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-      hour: "numeric",
-      minute: "numeric",
-      second: "numeric",
-      hour12: true,
-      locale: "ar",
-    };
-
     const localeOptions = {
       hour: "numeric",
       minute: "numeric",
@@ -100,8 +89,6 @@ const Home = () => {
       .toLocaleTimeString("ar", localeOptions)
       .replace("ص", "صباحًا")
       .replace("م", "مساءً");
-
-    const formattedDate = parsedDate.toLocaleString("ar", options);
     return {
       dateComponent: parsedDate.toLocaleDateString("ar", {
         year: "numeric",
@@ -110,27 +97,6 @@ const Home = () => {
       }),
       timeComponent: timeComponent,
     };
-  }
-
-  function formatDate(dateTimeString) {
-    const options = {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    };
-    const date = new Date(dateTimeString).toLocaleDateString("ar", options);
-
-    const timeOptions = {
-      hour: "numeric",
-      minute: "numeric",
-      hour12: true,
-      hourCycle: "h23", // Use 24-hour cycle to avoid AM/PM indicator
-    };
-    let time = new Date(dateTimeString).toLocaleTimeString("ar", timeOptions);
-
-    time = time.replace("ص", "صباحًا").replace("م", "مساءً");
-
-    return `${date}، ${time}`;
   }
 
   const { dateComponent, timeComponent } =

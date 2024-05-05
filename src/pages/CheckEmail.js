@@ -63,7 +63,7 @@ const CheckEmail = () => {
       //   console.log(token);
 
       // Send a POST request to verify PIN API
-      const pinResponse = await axios.post(
+      await axios.post(
         "https://api.whiteeagles.net/public/api/verify/pin",
         { email, token: enteredCode },
         {
@@ -79,7 +79,7 @@ const CheckEmail = () => {
       // Check if PIN verification was successful
 
       // Send a POST request to reset password API
-      const resetResponse = await axios.post(
+      await axios.post(
         "https://api.whiteeagles.net/public/api/reset-password",
         {
           email,
@@ -116,8 +116,7 @@ const CheckEmail = () => {
         return;
       }
 
-      // Send a POST request to resend PIN code
-      const resetCode = await axios.post(
+      await axios.post(
         "https://api.whiteeagles.net/public/api/password/resend-pin",
         { email },
         {

@@ -144,17 +144,6 @@ const MainPage = () => {
     const [hours, minutes, seconds] = time.split(":");
     const parsedDate = new Date(year, month - 1, day, hours, minutes, seconds);
 
-    const options = {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-      hour: "numeric",
-      minute: "numeric",
-      second: "numeric",
-      hour12: true,
-      locale: "ar",
-    };
-
     const localeOptions = {
       hour: "numeric",
       minute: "numeric",
@@ -166,8 +155,6 @@ const MainPage = () => {
       .toLocaleTimeString("ar", localeOptions)
       .replace("ص", "صباحا")
       .replace("م", "مساءا");
-
-    const formattedDate = parsedDate.toLocaleString("ar", options);
     return {
       dateComponent: parsedDate.toLocaleDateString("ar", {
         year: "numeric",

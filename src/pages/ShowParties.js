@@ -12,13 +12,9 @@ import { Link } from "react-router-dom";
 const ShowParties = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const [parties, setParties] = useState([]);
   const [searchInput, setSearchInput] = useState(""); // State variable for search input
   const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
   const nameFilter = location.state.name;
-  const idFilter = location.state.id;
-  const [data, setData] = useState([]);
   const token = localStorage.getItem("token");
   const [events, setEvents] = useState([]);
   const [searchResults, setSearchResults] = useState([]); // State variable for filtered search results
@@ -45,12 +41,10 @@ const ShowParties = () => {
             },
           }
         );
-        setData(response.data.data);
         setEvents(response.data.data); // Set events data
         setIsLoading(false); // Set loading to false after data fetch
       } catch (error) {
         console.error("Error fetching user profile:", error);
-        setError(error); // Set error state
       }
     };
     fetchData();

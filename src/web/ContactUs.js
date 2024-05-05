@@ -33,7 +33,7 @@ const ContactUs = () => {
       formData.append("email", email);
       formData.append("name", name);
       formData.append("description", description);
-      const response = await axios.post(
+      await axios.post(
         "https://api.whiteeagles.net/public/api/contacts",
         formData,
         {
@@ -42,7 +42,6 @@ const ContactUs = () => {
           },
         }
       );
-      //   console.log("Data sent successfully:", response.data);
       toast.success("Message sent successfully");
       setEmail("");
       setName("");
@@ -115,7 +114,11 @@ const ContactUs = () => {
               <div className="img bg-[#3e4774] rounded-full w-[100px] h-[100px] flex justify-center items-center">
                 <img src={phone} alt="" />
               </div>
-              <a href="https://wa.me/201022550799" target="_blank">
+              <a
+                href="https://wa.me/201022550799"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 01022550799
               </a>
             </div>
@@ -126,6 +129,7 @@ const ContactUs = () => {
               <a
                 href="https://maps.app.goo.gl/X9uJ3nyoy6SMWTbV8?g_st=ic"
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 Mansouraa Elgalaaaa
               </a>

@@ -6,7 +6,6 @@ import LogoSide from "../components/LogoSide";
 function LogIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [tokenn, setToken] = useState("");
   const [loading, setLoading] = useState(false);
 
   const [errorMessage, setErrorMessage] = useState("");
@@ -31,7 +30,6 @@ function LogIn() {
       );
 
       const token = response.data.data.token;
-      setToken(token);
       localStorage.setItem("token", token);
       window.location.href = "/white-eagles/#/Welcome";
     } catch (error) {

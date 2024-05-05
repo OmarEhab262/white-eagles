@@ -1,24 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import crreatedParty from "../assists/imgs/crreatedParty.png";
-import arrow from "../assists/icon/arrow.png";
 import SideBar from "./SideBar";
 
 const CreatedParty = () => {
-  const [showWelcome, setShowWelcome] = useState(false);
-
   useEffect(() => {
-    // Display welcome image after 2 seconds
-    const firstTimer = setTimeout(() => {
-      setShowWelcome(true);
-    }, 2000);
-
-    // Redirect after an additional 3 seconds
     const redirectTimer = setTimeout(() => {
       window.location.href = "/white-eagles/#/MainPage";
     }, 2000); // Total delay is 5 seconds (2 seconds for welcome image + 3 seconds for redirect)
 
     return () => {
-      clearTimeout(firstTimer);
       clearTimeout(redirectTimer);
     };
   }, []);

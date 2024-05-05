@@ -61,8 +61,7 @@ const User = () => {
       formData.append("nameEN", username);
       formData.append("nameAR", fullName);
       formData.append("image", image);
-
-      const response = await axios.post(
+      await axios.post(
         "https://api.whiteeagles.net/public/api/profile/update",
         formData,
         {
@@ -73,7 +72,7 @@ const User = () => {
           },
         }
       );
-      //   console.log("User data updated:", response.data);
+
       window.location.reload();
     } catch (error) {
       console.error("Error updating user data:", error);

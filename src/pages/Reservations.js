@@ -30,7 +30,7 @@ const Reservations = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [token]); // Include 'token' in the dependency array
 
   const navigateToParty = (item) => {
     navigate("/ShowParties", {

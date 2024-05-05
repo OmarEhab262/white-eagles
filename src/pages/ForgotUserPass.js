@@ -6,7 +6,6 @@ import axios from "axios";
 
 function ForgotUserPass() {
   const [email, setEmail] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
   const [emailExists, setEmailExists] = useState(true);
 
   const handleEmailChange = (e) => {
@@ -18,16 +17,7 @@ function ForgotUserPass() {
     e.preventDefault();
 
     try {
-      // Retrieve token from localStorage
-      //   const token = localStorage.getItem("token");
-      //   //   console.log(token);
-      //   if (!token) {
-      //     console.error("Token not found in localStorage");
-      //     // Handle case where token is not available
-      //     return;
-      //   }
-
-      const response = await axios.post(
+      await axios.post(
         "https://api.whiteeagles.net/public/api/forgot-password",
         { email },
         {
@@ -38,11 +28,7 @@ function ForgotUserPass() {
         }
       );
       localStorage.setItem("email", email);
-      //   console.log("Response from server:", response.data);
 
-      // Placeholder functionality to demonstrate submission
-      //   console.log("Email submitted:", email);
-      // Redirect to CheckEmail page
       window.location.href = "/white-eagles/#/CheckEmail";
     } catch (error) {
       console.error("Error:", error);
@@ -50,10 +36,6 @@ function ForgotUserPass() {
         // If email does not exist, set the emailExists state to false
         setEmailExists(false);
       } else {
-        // For other errors, set a generic error message
-        setErrorMessage(
-          "Failed to send forgot password email. Please try again."
-        );
         setEmailExists(false);
       }
     }

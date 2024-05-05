@@ -4,8 +4,6 @@ import home from "../assists/icon/home.png";
 import bhome from "../assists/icon/bhome.png";
 import users from "../assists/icon/users.png";
 import busers from "../assists/icon/busers.png";
-import classification from "../assists/icon/classification.png";
-import bclassification from "../assists/icon/bclassification.png";
 import reservations from "../assists/icon/reservations.png";
 import breservations from "../assists/icon/breservations.png";
 import parties from "../assists/icon/parties.png";
@@ -30,7 +28,7 @@ const SideBar = ({ activeItemProp }) => {
   }, [activeItemProp]);
 
   useEffect(() => {
-    // Set activeItem based on the current location pathname
+    // Set activeItem based on the current location pathname and the id variable
     const pathname = location.pathname;
     if (pathname === "/MainPage") {
       setActiveItem("home");
@@ -77,7 +75,8 @@ const SideBar = ({ activeItemProp }) => {
       setActiveItem("endedEvents");
     }
     // Add more conditions for other pages if needed
-  }, [location.pathname]);
+  }, [location.pathname, id]); // Include 'id' in the dependency array
+
   const handleInputChange = () => {
     setIsRotated(!isRotated);
   };
@@ -105,14 +104,13 @@ const SideBar = ({ activeItemProp }) => {
         );
         setUserData(response.data);
         setLoading(false);
-        // console.log(response.data); // Log entire response data
       } catch (error) {
         console.error("Error fetching user profile:", error);
         setLoading(false);
       }
     };
     fetchData();
-  }, []); // Empty dependency array to fetch data only once when component mounts
+  }, [token]); // Include 'token' in the dependency array
 
   if (loading) {
     return (
@@ -356,7 +354,7 @@ const SideBar = ({ activeItemProp }) => {
               <p>Loading...</p>
             ) : userData ? (
               <>
-                <h3 className="text-[16px] font-bold text-white mb-[5px]">
+                <h3 className="text-[14px] font-bold text-white mb-[5px]">
                   {userData.nameEN}
                 </h3>
                 <h4

@@ -1,22 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import bgLogoSide from "../assists/imgs/bgLogoSide.png";
 import welcom from "../assists/imgs/welcom.png";
 import logo from "../assists/imgs/logo.png";
 const Welcome = () => {
-  const [showWelcom, setShowWelcom] = useState(false);
   useEffect(() => {
-    // Display welcome image after 3 seconds
-    const firstTimer = setTimeout(() => {
-      setShowWelcom(true);
-    }, 2000);
-
-    // Redirect after an additional 3 seconds
     const redirectTimer = setTimeout(() => {
       window.location.href = "/white-eagles/#/MainPage";
     }, 2000);
 
     return () => {
-      clearTimeout(firstTimer);
       clearTimeout(redirectTimer);
     };
   }, []);

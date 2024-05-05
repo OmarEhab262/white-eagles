@@ -95,17 +95,6 @@ const NewEvents = () => {
     const [hours, minutes, seconds] = time.split(":");
     const parsedDate = new Date(year, month - 1, day, hours, minutes, seconds);
 
-    const options = {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-      hour: "numeric",
-      minute: "numeric",
-      second: "numeric",
-      hour12: true,
-      locale: "ar",
-    };
-
     // Customize the AM/PM strings
     const localeOptions = {
       hour: "numeric",
@@ -120,7 +109,6 @@ const NewEvents = () => {
       .replace("ص", "صباحا")
       .replace("م", "مساءا");
 
-    const formattedDate = parsedDate.toLocaleString("ar", options);
     return {
       dateComponent: parsedDate.toLocaleDateString("ar", {
         year: "numeric",
@@ -242,9 +230,9 @@ const NewEvents = () => {
                                 }
                               </h3>
                             </div>
-                            <div className="location flex mt-[10px]">
+                            <div className="location flex mt-[10px] w-full overflow-hidden">
                               <img src={location} alt="location" />
-                              <h3 className="text-[12px] mr-[10px] overflow-hidden hover:font-bold">
+                              <h3 className="text-[12px] mr-[10px] overflow-hidden hover:font-bold  w-full h-[15px]">
                                 {item.event.location}
                               </h3>
                             </div>

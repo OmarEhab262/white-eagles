@@ -35,55 +35,7 @@ const ShowServices = () => {
     };
     fetchData();
   }, [category]);
-  function parseDateString(dateString) {
-    const [date, time] = dateString.split(" ");
-    const [year, month, day] = date.split("-");
-    const [hours, minutes, seconds] = time.split(":");
-    const parsedDate = new Date(year, month - 1, day, hours, minutes, seconds);
-
-    const options = {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-      hour: "numeric",
-      minute: "numeric",
-      second: "numeric",
-      hour12: true,
-      locale: "ar",
-    };
-
-    const localeOptions = {
-      hour: "numeric",
-      minute: "numeric",
-      hour12: true,
-      locale: "ar",
-    };
-
-    const timeComponent = parsedDate
-      .toLocaleTimeString("ar", localeOptions)
-      .replace("ص", "صباحا")
-      .replace("م", "مساءا");
-
-    const formattedDate = parsedDate.toLocaleString("ar", options);
-    return {
-      dateComponent: parsedDate.toLocaleDateString("ar", {
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-      }),
-      timeComponent: timeComponent,
-    };
-  }
-
   function formatDateTime(dateTimeString) {
-    const options = {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    };
-
-    const date = new Date(dateTimeString).toLocaleDateString("ar", options);
-
     const timeOptions = {
       hour: "numeric",
       minute: "numeric",
@@ -104,17 +56,6 @@ const ShowServices = () => {
     };
 
     const date = new Date(dateTimeString).toLocaleDateString("ar", options);
-
-    const timeOptions = {
-      hour: "numeric",
-      minute: "numeric",
-      hour12: true,
-      hourCycle: "h23",
-    };
-    let time = new Date(dateTimeString).toLocaleTimeString("ar", timeOptions);
-
-    time = time.replace("ص", "صباحًا").replace("م", "مساءً");
-
     return `${date}`;
   }
 

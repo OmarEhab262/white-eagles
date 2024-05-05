@@ -17,9 +17,6 @@ const AddEvents = () => {
   const [next, setNext] = useState(false);
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
-  const [plusSeats, setPlusSeats] = useState("");
-  const [vipSeats, setVipSeats] = useState("");
-  const [vvipSeats, setVvipSeats] = useState("");
   const [ticketPricesVVIP, setTicketPricesVVIP] = useState("");
   const [ticketPricesPlus, setTicketPricesPlus] = useState("");
   const [ticketPricesVIP, setTicketPricesVIP] = useState("");
@@ -37,9 +34,6 @@ const AddEvents = () => {
   const [numCategory, setNumCategory] = useState("");
   const [loading, setLoading] = useState(false);
   const [showError, setShowError] = useState(false);
-  const [numBoxesPlus, setNumBoxesPlus] = useState(0);
-  const [numBoxesVip, setNumBoxesVip] = useState(0);
-  const [numBoxesVvip, setNumBoxesVvip] = useState(0);
   const [boxDataPlus, setBoxDataPlus] = useState([]);
   const [boxDataVip, setBoxDataVip] = useState([]);
   const [boxDataVvip, setBoxDataVvip] = useState([]);
@@ -56,8 +50,6 @@ const AddEvents = () => {
   };
   const handleSeatsPlus = (e) => {
     const value = parseInt(e.target.value);
-    setPlusSeats(value);
-    setNumBoxesPlus(value);
     setBoxDataPlus(
       Array.from({ length: value }, (_, index) => ({
         id: index + 1,
@@ -67,8 +59,6 @@ const AddEvents = () => {
   };
   const handleSeatsVip = (e) => {
     const value = parseInt(e.target.value);
-    setVipSeats(value);
-    setNumBoxesVip(value);
     setBoxDataVip(
       Array.from({ length: value }, (_, index) => ({
         id: index + 1,
@@ -78,8 +68,6 @@ const AddEvents = () => {
   };
   const handleSeatsVvip = (e) => {
     const value = parseInt(e.target.value);
-    setVvipSeats(value);
-    setNumBoxesVvip(value);
     setBoxDataVvip(
       Array.from({ length: value }, (_, index) => ({
         id: index + 1,
@@ -291,7 +279,7 @@ const AddEvents = () => {
         formData.append("seat_number", box.plusValue);
         formData.append("tickets_category_id", 1);
 
-        const response = await axios.post(
+        await axios.post(
           "https://api.whiteeagles.net/public/api/seat_numbers",
           formData,
           {
@@ -315,7 +303,7 @@ const AddEvents = () => {
         formData.append("event_id", eventId);
         formData.append("seat_number", box.vipValue);
         formData.append("tickets_category_id", 2);
-        const response = await axios.post(
+        await axios.post(
           "https://api.whiteeagles.net/public/api/seat_numbers",
           formData,
           {
@@ -340,7 +328,7 @@ const AddEvents = () => {
         formData.append("seat_number", box.vvipValue);
         formData.append("tickets_category_id", 3);
 
-        const response = await axios.post(
+        await axios.post(
           "https://api.whiteeagles.net/public/api/seat_numbers",
           formData,
           {
@@ -364,7 +352,7 @@ const AddEvents = () => {
       formData.append("is_available", 1);
       formData.append("tickets_category_id", 1);
       formData.append("event_id", eventId);
-      const response = await axios.post(
+      await axios.post(
         "https://api.whiteeagles.net/public/api/events_ticketcategories",
         formData,
         {
@@ -388,7 +376,7 @@ const AddEvents = () => {
       formData.append("is_available", 1);
       formData.append("tickets_category_id", 2);
       formData.append("event_id", eventId);
-      const response = await axios.post(
+      await axios.post(
         "https://api.whiteeagles.net/public/api/events_ticketcategories",
         formData,
         {
@@ -412,7 +400,7 @@ const AddEvents = () => {
       formData.append("is_available", 1);
       formData.append("tickets_category_id", 3);
       formData.append("event_id", eventId);
-      const response = await axios.post(
+      await axios.post(
         "https://api.whiteeagles.net/public/api/events_ticketcategories",
         formData,
         {
@@ -435,7 +423,7 @@ const AddEvents = () => {
       formData.append("is_available", 1);
       formData.append("tickets_category_id", 1);
       formData.append("event_id", eventId);
-      const response = await axios.post(
+      await axios.post(
         "https://api.whiteeagles.net/public/api/events_ticketcategories",
         formData,
         {

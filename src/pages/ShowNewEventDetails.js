@@ -110,17 +110,6 @@ const ShowNewEventDetails = () => {
     const [hours, minutes, seconds] = time.split(":");
     const parsedDate = new Date(year, month - 1, day, hours, minutes, seconds);
 
-    const options = {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-      hour: "numeric",
-      minute: "numeric",
-      second: "numeric",
-      hour12: true,
-      locale: "ar",
-    };
-
     // Customize the AM/PM strings
     const localeOptions = {
       hour: "numeric",
@@ -135,7 +124,6 @@ const ShowNewEventDetails = () => {
       .replace("ص", "صباحا")
       .replace("م", "مساءا");
 
-    const formattedDate = parsedDate.toLocaleString("ar", options);
     return {
       dateComponent: parsedDate.toLocaleDateString("ar", {
         year: "numeric",
@@ -144,28 +132,6 @@ const ShowNewEventDetails = () => {
       }),
       timeComponent: timeComponent,
     };
-  }
-
-  function formatDate(dateTimeString) {
-    const options = {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    };
-    const date = new Date(dateTimeString).toLocaleDateString("ar", options);
-
-    const timeOptions = {
-      hour: "numeric",
-      minute: "numeric",
-      hour12: true,
-      hourCycle: "h23", // Use 24-hour cycle to avoid AM/PM indicator
-    };
-    let time = new Date(dateTimeString).toLocaleTimeString("ar", timeOptions);
-
-    // Replace ص with صباحًا and م with مساءً
-    time = time.replace("ص", "صباحًا").replace("م", "مساءً");
-
-    return `${date}، ${time}`;
   }
 
   const { dateComponent, timeComponent } = parseDateString(party.date_time);
@@ -230,7 +196,7 @@ const ShowNewEventDetails = () => {
               className="h-full w-full object-cover"
             />
           </div>
-          <div className="content w-[70%] px-[32px] mb-[50px]">
+          <div className="content w-[70%] px-[32px] pb-[150px]">
             <div className="header mb-[36px] ">
               <div className="top mb-[10px]">
                 <h3 className="text-[32px] font-[700] text-[#041461]">
@@ -242,13 +208,11 @@ const ShowNewEventDetails = () => {
                   <img src={date} alt="date" className="w-[16px] h-[16px]" />
                   <h3 className="text-[15px] mr-[10px]">{dateComponent}</h3>
                 </div>
-                <div className="time flex mt-[5px] mx-[12px] items-center">
-                  <div className="h-[150%] w-[2px] bg-gray-400  ml-[10px]"></div>
+                <div className="time flex mt-[5px] mx-[12px] items-center border-r-4 border-gray-500 pr-[15px]">
                   <img src={date} alt="date" className="w-[16px] h-[16px]" />
                   <h3 className="text-[15px] mr-[10px]">{timeComponent}</h3>
                 </div>
-                <div className="location flex mt-[5px] mx-[32px] items-center">
-                  <div className="h-[150%] w-[2px] bg-gray-400  ml-[10px]"></div>
+                <div className="location flex mt-[5px] mx-[32px] items-center w-[40%] border-r-4 border-gray-500 pr-[15px]">
                   <img
                     src={location}
                     alt="location"
@@ -257,7 +221,7 @@ const ShowNewEventDetails = () => {
                   <a
                     target="blank"
                     href={party.location}
-                    className="text-[15px] mr-[10px] hover:font-bold"
+                    className="text-[15px] mr-[10px] "
                   >
                     {party.location}
                   </a>

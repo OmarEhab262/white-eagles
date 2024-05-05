@@ -1,6 +1,5 @@
-import React, { useEffect } from "react";
+import React from "react";
 import homeLogo from "../assists/imgs/homeLogo.svg";
-import { Link } from "react-router-dom";
 import google from "../assists/imgs/google2.png";
 import apple from "../assists/imgs/apple2.png";
 import gall from "../assists/imgs/gall.png";
@@ -10,13 +9,6 @@ import i from "../assists/icon/i.png";
 import l from "../assists/icon/l.png";
 import t from "../assists/icon/t.png";
 const Footer = () => {
-  const handleShowClick = (name) => {
-    localStorage.setItem("nameCategory", name);
-    setTimeout(() => {
-      window.location.reload();
-    }, 1000); // 1000 milliseconds = 1 second
-  };
-
   return (
     <div className="div ">
       <div className="footer grid md:grid-cols-6 grid-cols-1 justify-items-start gap-10 px-[35px] ">

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./style.css";
-import homeLogo from "../assists/imgs/homeLogo.svg";
 import ggggg from "../assists/imgs/ggggg.png";
 import about from "../assists/imgs/aboutt.png";
 import about2 from "../assists/imgs/about2.png";
@@ -14,7 +13,6 @@ import whiteBg from "../assists/imgs/whiteBg.png";
 import Footer from "../components/Footer";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import axios from "axios";
 const About = () => {

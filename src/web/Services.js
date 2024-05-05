@@ -9,7 +9,6 @@ import party44 from "../assists/imgs/party44.jpeg";
 import party55 from "../assists/imgs/party55.jpeg";
 import party66 from "../assists/imgs/party66.jpeg";
 import ggggg from "../assists/imgs/ggggg.png";
-import homeLogo from "../assists/imgs/homeLogo.svg";
 import whiteBg from "../assists/imgs/whiteBg.png";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";

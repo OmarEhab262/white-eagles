@@ -9,12 +9,6 @@ const Booking = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [searchInput, setSearchInput] = useState("");
-  const [bookingId, setBookingId] = useState("");
-  const [eventCategoryEventId, setEventCategoryEventId] = useState("");
-  const [ticketsNumber, setTicketsNumber] = useState("");
-  const [nameEN, setNameEN] = useState("");
-  const [email, setEmail] = useState("");
-  const [img, setImg] = useState("");
   const [data, setData] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
   const token = localStorage.getItem("token");
@@ -122,7 +116,7 @@ const Booking = () => {
         </div>
         <div className="w-full ">
           <div className="headerInfo text-[18px] text-[#041461] font-bold grid grid-cols-4 items-center w-[85%] my-[10px]  justify-items-center ">
-            <h3 className=" "></h3>
+            <h3 className="hidden">.</h3>
             <h3 className=" ">عدد التذاكر</h3>
             <h3 className="">الحفلة</h3>
             <h3 className="">المبلغ</h3>
@@ -161,14 +155,6 @@ const Booking = () => {
                 <Link
                   to="/ShowTicket"
                   onClick={() => {
-                    setBookingId(user.booking.id);
-                    setEventCategoryEventId(
-                      user.booking.event.category_event_id
-                    );
-                    setEmail(user.user.email);
-                    setNameEN(user.user.nameEN);
-                    setImg(user.user.image);
-                    setTicketsNumber(user.booking.tickets_number);
                     saveBookingIdToLocal(
                       user.booking.id,
                       user.booking.event.category_event_id,
