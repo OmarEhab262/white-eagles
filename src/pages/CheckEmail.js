@@ -98,7 +98,7 @@ const CheckEmail = () => {
 
       // Placeholder functionality to demonstrate submission
       //   console.log("Form submitted:", { email, num: enteredCode });
-      window.location.href = "/white-eagles/#/SuccessfulPassword";
+      window.location.href = "/white-eagles/SuccessfulPassword";
     } catch (error) {
       console.error("Error:", error);
       // Handle error

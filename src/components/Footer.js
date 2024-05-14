@@ -132,7 +132,7 @@ const Footer = () => {
         </div>
         <div className=" mb-[20px]">
           <p className="text-[18px] font-[700] text-[#838389] text-center">
-            © 2024 جميع الحقوق محفوظة لدى White Eagle
+            © 2024 جميع الحقوق محفوظة لدى White Eagle Event
           </p>
         </div>
       </div>

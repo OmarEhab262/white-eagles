@@ -31,7 +31,7 @@ function LogIn() {
 
       const token = response.data.data.token;
       localStorage.setItem("token", token);
-      window.location.href = "/white-eagles/#/Welcome";
+      window.location.href = "/white-eagles/Welcome";
     } catch (error) {
       console.error(error.response);
       if (error.response) {

@@ -44,7 +44,7 @@ const Home = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://api.whiteeagles.net/public/api/past_events`,
+          `https://api.whiteeagles.net/public/api/most-viewed-events`,
           {
             headers: {
               "Content-Type": "application/json",

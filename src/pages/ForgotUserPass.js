@@ -29,7 +29,7 @@ function ForgotUserPass() {
       );
       localStorage.setItem("email", email);
 
-      window.location.href = "/white-eagles/#/CheckEmail";
+      window.location.href = "/white-eagles/CheckEmail";
     } catch (error) {
       console.error("Error:", error);
       if (error.response && error.response.status === 404) {
@@ -86,7 +86,7 @@ function ForgotUserPass() {
                 >
                   ارسال
                 </button>
-                <Link to="/" className="text-[#041461] text-[14px] ">
+                <Link to="/dashboard" className="text-[#041461] text-[14px] ">
                   العودة لتسجيل الدخول
                   <img
                     src={leftarrow}

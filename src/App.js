@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 import LogIn from "./pages/LogIn";
 import ErrorPage from "./pages/ErrorPage";
-import { HashRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import ForgotUserPass from "./pages/ForgotUserPass";
 import CheckEmail from "./pages/CheckEmail";
 import SuccessfulPassword from "./components/SuccessfulPassword";
@@ -35,7 +35,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<LogIn />} />
+        <Route path="/dashboard" element={<LogIn />} />
         <Route path="/forgotuserpass" element={<ForgotUserPass />} />
         <Route path="/checkemail" element={<CheckEmail />} />
         <Route path="/successfulpassword" element={<SuccessfulPassword />} />
@@ -60,7 +60,7 @@ function App() {
         <Route path="/addevents" element={<AddEvents />} />
         <Route path="/booking" element={<Booking />} />
         <Route path="/user" element={<User />} />
-        <Route path="/home" element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/services" element={<Services />} />
         <Route path="/showservices" element={<ShowServices />} />

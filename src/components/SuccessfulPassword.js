@@ -6,7 +6,7 @@ import logo from "../assists/imgs/logo.png";
 const SuccessfulPassword = () => {
   useEffect(() => {
     const redirectTimer = setTimeout(() => {
-      window.location.href = "/white-eagles/#/MainPage";
+      window.location.href = "/white-eagles/MainPage";
     }, 2000);
 
     return () => {

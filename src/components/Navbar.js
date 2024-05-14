@@ -34,7 +34,7 @@ const Navbar = ({ activeTab }) => {
   useEffect(() => {
     const handleKeyPress = (event) => {
       if (event.key === "Enter") {
-        window.location.href = "/white-eagles/#/FindParty";
+        window.location.href = "/white-eagles/FindParty";
         window.location.reload();
       }
     };
@@ -72,7 +72,7 @@ const Navbar = ({ activeTab }) => {
         style={{ backgroundImage: `url(${ggggg})` }}
         data-aos="fade-down"
       >
-        <Link to="/home" className="cursor-pointer">
+        <Link to="/" className="cursor-pointer">
           <h3
             className={`p-[1rem] ${
               activeTab === "home"
@@ -110,7 +110,7 @@ const Navbar = ({ activeTab }) => {
         </Link>
 
         <div className="px-[39]">
-          <Link to="/home" className="cursor-pointer">
+          <Link to="/" className="cursor-pointer">
             <img src={homeLogo} alt="" />
           </Link>
         </div>

@@ -485,7 +485,7 @@ const Calender = () => {
                           </a>
                         </div>
                       </div>
-                      <div className="tick border border-white w-[60%] mx-auto text-center text-white mt-[30px] text-[8px] py-[4px] rounded-[2px]">
+                      <div className="tick cursor-pointer border border-white w-[60%] mx-auto text-center text-white mt-[30px] text-[8px] py-[4px] rounded-[2px]">
                         <h3>اطلب تذكرتك</h3>
                       </div>
                     </div>
@@ -544,7 +544,7 @@ const Calender = () => {
                           </a>
                         </div>
                       </div>
-                      <div className="tick border border-white w-[60%] mx-auto text-center text-white mt-[30px] text-[8px] py-[4px] rounded-[2px]">
+                      <div className="tick border cursor-pointer border-white w-[60%] mx-auto text-center text-white mt-[30px] text-[8px] py-[4px] rounded-[2px]">
                         <h3>اطلب تذكرتك</h3>
                       </div>
                     </div>
@@ -603,7 +603,7 @@ const Calender = () => {
                           </a>
                         </div>
                       </div>
-                      <div className="tick border border-[#041461] w-[60%] mx-auto text-center text-white bg-[#041461] py-[4px] rounded-[2px] mt-[30px] text-[8px]">
+                      <div className="tick border cursor-pointer border-[#041461] w-[60%] mx-auto text-center text-white bg-[#041461] py-[4px] rounded-[2px] mt-[30px] text-[8px]">
                         <h3>اطلب تذكرتك</h3>
                       </div>
                     </div>
@@ -660,7 +660,7 @@ const Calender = () => {
                           </a>
                         </div>
                       </div>
-                      <div className="tick border border-[#041461] w-[60%] mx-auto text-center text-white bg-[#041461] py-[4px] rounded-[2px] mt-[30px] text-[8px]">
+                      <div className="tick border border-[#041461] cursor-pointer w-[60%] mx-auto text-center text-white bg-[#041461] py-[4px] rounded-[2px] mt-[30px] text-[8px]">
                         <h3>اطلب تذكرتك</h3>
                       </div>
                     </div>

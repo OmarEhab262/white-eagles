@@ -127,6 +127,7 @@ const ShowServices = () => {
                           <img
                             src={`https://api.whiteeagles.net/public/storage/${event.event.banner}`}
                             alt=""
+                            loading="lazy"
                             className="rounded-[16px] w-full h-full"
                           />
                         </div>
@@ -148,13 +149,14 @@ const ShowServices = () => {
                                 {formatDateTime(event.event.date_time)}
                               </h3>
                             </div>
-                            <div className="location flex mt-[5px] items-center overflow-hidden">
+                            <div className="location flex mt-[5px] items-center overflow-hidden  w-[50%]">
                               <div className="h-[120%] w-[2px] bg-gray-400 ml-[10px]"></div>
                               <a
                                 href={event.event.location}
                                 title={event.event.location}
                                 target="_blank"
                                 rel="noopener noreferrer"
+                                className="text-[12px] w-[100%] h-[20px] overflow-hidden"
                               >
                                 {event.event.location}
                               </a>
