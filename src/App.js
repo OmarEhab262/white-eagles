@@ -28,12 +28,13 @@ import ShowServices from "./web/ShowServices";
 import ContactUs from "./web/ContactUs";
 import Calender from "./web/Calender";
 import FindParty from "./web/FindParty";
+import PrivacyPolicy from "./web/PrivacyPolicy";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
-    <Router>
+    <Router basename="/">
       <Routes>
         <Route path="/dashboard" element={<LogIn />} />
         <Route path="/forgotuserpass" element={<ForgotUserPass />} />
@@ -46,6 +47,7 @@ function App() {
         <Route path="/reservations" element={<Reservations />} />
         <Route path="/endedevents" element={<EndedEvents />} />
         <Route path="/newevents" element={<NewEvents />} />
+        <Route path="/privacyPolicy" element={<PrivacyPolicy />} />
         <Route
           path="/showendedeventdetail/:id"
           element={<ShowEndedEventDetail />}

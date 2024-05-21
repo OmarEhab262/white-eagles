@@ -8,11 +8,12 @@ import f from "../assists/icon/f.png";
 import i from "../assists/icon/i.png";
 import l from "../assists/icon/l.png";
 import t from "../assists/icon/t.png";
+import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <div className="div ">
-      <div className="footer grid md:grid-cols-6 grid-cols-1 justify-items-start gap-10 px-[35px] ">
-        <div className="download text-[18px] font-[700] text-white w-full col-span-2 ">
+      <div className="footer grid md:grid-cols-9 grid-cols-1 justify-items-start gap-10 px-[35px] ">
+        <div className="download text-[18px] font-[700] text-white w-full col-span-3 ">
           <div className="top mb-[10px]">
             <h3 className="text-[#838389] text-center">
               حمل التطبيق الخاص بنا
@@ -24,17 +25,25 @@ const Footer = () => {
             <img src={gall} alt="" className="w-[160px]" />
           </div>
         </div>
-        <div className="policy text-[18px] font-[700] text-white  text-center w-full md:col-span-1 col-span-2">
+        <div className="policy text-[18px] font-[700] text-white flex flex-col items-center col-span-3 w-full gap-3">
           <div className="top mb-[10px] ">
             <h3 className="text-[#838389] ">سياسة الخصوصية</h3>
           </div>
-        </div>
-        <div className="questions text-[18px] font-[700] text-white  text-center w-full md:col-span-1 col-span-2">
-          <div className="top mb-[10px]">
-            <h3 className="text-[#838389] text-center">اﻷسئلة الشائعة</h3>
+          <div className="bot text-[17px]">
+            <p className="leading-9">
+              نحن في شركة وايت إيجل إفنت ملتزمون بحماية خصوصية مستخدمي تطبيقنا.
+              يهدف هذا المستند إلى توضيح كيفية جمع واستخدام ومشاركة البيانات
+              الشخصية التي نتلقاها. يرجى قراءة هذه السياسة ...{" "}
+              <Link
+                to="/PrivacyPolicy"
+                className="bg-white hover:opacity-60 ease-in duration-150 rounded-[16px] text-black px-[14px] "
+              >
+                المزيد
+              </Link>
+            </p>
           </div>
         </div>
-        <div className="connect text-[18px] font-[700] text-white flex flex-col items-center col-span-2 w-full gap-3">
+        <div className="connect text-[18px] font-[700] text-white flex flex-col items-center col-span-3 w-full gap-3">
           <div className="top ">
             <h3 className="text-[#838389]">تواصل معنا</h3>
           </div>

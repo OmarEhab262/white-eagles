@@ -5,7 +5,7 @@ import logo from "../assists/imgs/logo.png";
 const Welcome = () => {
   useEffect(() => {
     const redirectTimer = setTimeout(() => {
-      window.location.href = "/white-eagles/MainPage";
+      window.location.href = "/MainPage";
     }, 2000);
 
     return () => {

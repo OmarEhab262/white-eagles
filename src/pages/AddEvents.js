@@ -607,7 +607,7 @@ const AddEvents = () => {
           </div>
 
           <div className="bandParty col-span-1 flex w-full h-[80px] items-center mt-[20px] mr-[20px] mb-[10px]">
-            <h3 className="text-[24px] font-[700] w-[200px]">الفرقة</h3>
+            <h3 className="text-[24px] font-[700] w-[200px]">الراعى</h3>
             <input
               type="text"
               className="w-full h-[80px] outline-0 border border-2 bg-transparent rounded-[8px] text-[30px] pr-[24px]"

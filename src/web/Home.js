@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./style.css";
 import rightArrow from "../assists/icon/rightArrow.png";
 import rrr from "../assists/icon/rrr.png";
@@ -44,7 +44,7 @@ const Home = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://api.whiteeagles.net/public/api/most-viewed-events`,
+          `https://api.whiteeagles.net/public/api/past-events`,
           {
             headers: {
               "Content-Type": "application/json",
@@ -53,7 +53,7 @@ const Home = () => {
           }
         );
         setData(response.data.events);
-        // console.log("data" + data);
+        // console.log(response.data.events);
       } catch (error) {
         // Handle errors
         console.error("Error fetching data:", error);
@@ -63,15 +63,17 @@ const Home = () => {
   }, []);
 
   const handleNextParty = () => {
-    if (data && data.length > party + 1) {
-      setParty(party + 1);
+    if (data && data.length > 0) {
+      setParty((party + 1) % data.length);
     }
   };
+
   const handleLastParty = () => {
-    if (party > 0) {
-      setParty(party - 1);
+    if (data && data.length > 0) {
+      setParty((party - 1 + data.length) % data.length);
     }
   };
+
   function parseDateString(dateString) {
     const [date, time] = dateString.split(" ");
     const [year, month, day] = date.split("-");
@@ -103,7 +105,23 @@ const Home = () => {
     data && data.length > 0 && data[party]
       ? parseDateString(data[party].date_time)
       : { dateComponent: "", timeComponent: "" };
+  const videoRef = useRef(null);
+  const handleClickOutside = (event) => {
+    if (videoRef.current && !videoRef.current.contains(event.target)) {
+      setShowVideo(false);
+    }
+  };
 
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  const handleCloseVideo = () => {
+    setShowVideo(false);
+  };
   return (
     <div
       className=""
@@ -114,32 +132,31 @@ const Home = () => {
         backgroundRepeat: "no-repeat",
       }}
     >
-      {showVideo && data[party] && (
-        <div className="div mx-auto z-[100] video fixed">
-          <div className="vv   relative">
+      <div className="div z-[80] video fixed w-full">
+        {showVideo && data[party] && (
+          <div className="vv relative w-fit mx-auto " ref={videoRef}>
             <video
-              className="  h-fit z-[100]  mx-auto"
+              className="h-[600px] z-[90] mx-auto relative "
               controls
               autoPlay
-              onClick={toggleVideo}
             >
               <source
                 src={`https://api.whiteeagles.net/public/storage/${data[party].video}`}
               />
             </video>
+            <button
+              className="close-button absolute top-4 right-4 z-[100]"
+              onClick={handleCloseVideo}
+            >
+              <img src={x} className="w-[40px]" alt="" />
+            </button>
           </div>
-          <div
-            className="x absolute top-[5%] right-[7%] z-[101] w-5 h-5 cursor-pointer"
-            onClick={toggleVideo}
-          >
-            <img src={x} alt="" />
-          </div>
-        </div>
-      )}
+        )}
+      </div>
 
       <div className="w-[99%] p-1 mx-auto">
         <div
-          className="home w-full m-4 mx-auto   flex flex-col items-center relative   gap-20 rounded-[24px] lg:h-[90vh] overflow-hidden"
+          className="home w-full m-4 mx-auto   flex flex-col items-center relative  justify-between  rounded-[24px] lg:h-[90vh] "
           style={{
             backgroundImage:
               data && data.length > 0 && data[party] && data[party].banner
@@ -153,24 +170,23 @@ const Home = () => {
           <Navbar activeTab="home" />
           <div
             data-aos="fade-up"
-            className="center w-full flex justify-center flex-col  h-[70vh]  z-[3] "
+            className="center w-full flex justify-center flex-col  z-[3] "
           >
-            <div className="arrows">
-              <div
-                onClick={handleNextParty}
-                data-aos="fade-left"
-                className="rArrow   border-white border-solid border-2 rounded-[8px] m-4 cursor-pointer md:w-[50px] md:h-[50px] w-[30px] h-[30px] flex justify-center items-center absolute right-0"
-              >
-                <img src={rrr} alt="" className="md:w-[24px] w-[19px]" />
-              </div>
-              <div
-                onClick={handleLastParty}
-                data-aos="fade-right"
-                className="lArrow  border-white border-solid border-2 rounded-[8px] m-4 cursor-pointer  md:w-[50px] md:h-[50px] w-[30px] h-[30px]  flex justify-center items-center absolute left-0"
-              >
-                <img src={llll} alt="" className=" md:w-[24px] w-[19px] " />
-              </div>
+            <div
+              onClick={handleNextParty}
+              data-aos="fade-left"
+              className="rArrow   border-white border-solid border-2 rounded-[8px] m-4 cursor-pointer md:w-[50px] md:h-[50px] w-[30px] h-[30px] flex justify-center items-center absolute right-0 top-[150px]"
+            >
+              <img src={rrr} alt="" className="md:w-[24px] w-[19px]" />
             </div>
+            <div
+              onClick={handleLastParty}
+              data-aos="fade-right"
+              className="lArrow  border-white border-solid border-2 rounded-[8px] m-4 cursor-pointer  md:w-[50px] md:h-[50px] w-[30px] h-[30px]  flex justify-center items-center absolute left-0  top-[150px]"
+            >
+              <img src={llll} alt="" className=" md:w-[24px] w-[19px] " />
+            </div>
+
             <div className="typography flex justify-center gap-[24px] lg:mt-[0px] mt-[50px] items-center flex-col text-[#E8E9F8] text-[37px] font-[600]  w-full text-center">
               <h3 className="sm:text-[37px] text-[27px] text-center w-[50%]">
                 {dateComponent}
@@ -179,41 +195,51 @@ const Home = () => {
                 {data && data.length > 0 && data[party].title}
               </h2>
               <div className="flex md:justify-between justify-center gap-10 items-center text-[16px] mt-[10px] my-3   flex-wrap">
-                <div
-                  className="right flex justify-center items-center w-[150px] py-4  rounded-[16px] cursor-pointer text-center mx-4 "
-                  style={{
-                    backgroundImage: `url(${ggggg})`,
-                    backgroundPosition: "center",
-                    backgroundSize: "cover",
-                    backgroundRepeat: "no-repeat",
-                  }}
-                >
-                  <img
-                    src={rightArrow}
-                    alt=""
-                    className="bg-white ml-[16px] p-[5px] rounded-full "
-                  />
-                  <h3>احجز اﻷن</h3>
-                </div>
-                <div
-                  className="left flex justify-center items-center w-[150px] border-white border-solid border-2 py-4 rounded-[16px] cursor-pointer text-center mx-4"
-                  onClick={toggleVideo}
-                >
-                  <h3>شاهد الفيديو</h3>
-                </div>
+                {data && data[party] ? (
+                  data[party].status === 1 ? (
+                    <div
+                      className="right flex justify-center items-center w-[150px] py-4  rounded-[16px] cursor-pointer text-center mx-4 "
+                      style={{
+                        backgroundImage: `url(${ggggg})`,
+                        backgroundPosition: "center",
+                        backgroundSize: "cover",
+                        backgroundRepeat: "no-repeat",
+                      }}
+                    >
+                      <img
+                        src={rightArrow}
+                        alt=""
+                        className="bg-white ml-[16px] p-[5px] rounded-full "
+                      />
+                      <h3>احجز اﻷن</h3>
+                    </div>
+                  ) : (
+                    <h3></h3>
+                  )
+                ) : (
+                  <h3>Loading...</h3> // Optional: Provide a fallback in case data is not yet loaded
+                )}
+                {data && party !== undefined && data[party]?.video && (
+                  <div
+                    className="left flex justify-center items-center w-[150px] border-white border-solid border-2 py-4 rounded-[16px] cursor-pointer text-center mx-4"
+                    onClick={toggleVideo}
+                  >
+                    <h3>شاهد الفيديو</h3>
+                  </div>
+                )}
               </div>
             </div>
           </div>
           <div
             data-aos="fade-up"
-            className={`foot grid lg:grid-cols-5 md:grid-cols-2 grid-cols-2 items-start w-[80%] mb-[20px] py-[13px] px-[32px] rounded-[16px] z-[3]  gap-7 lg:justify-items-center`}
+            className={`foot grid lg:grid-cols-4 md:grid-cols-2 grid-cols-2 items-start w-[95%] mb-[20px] py-[13px] px-[32px] rounded-[16px] z-[3]  gap-7 lg:justify-items-start`}
             style={{ backgroundImage: `url(${ggggg})` }}
           >
             <div className=" flex items-center gap-3 flex-col lg:flex-row justify-center">
               <img src={uiwDate} alt="" className="w-[40px] h-[40px]" />
               <div className="info flex flex-col  justify-center lg:items-start   items-center">
                 <h3 className="text-[16px] font-[600] text-white">التاريخ</h3>
-                <h3 className="text-[#838389] text-[14px] lg:text-start text-center">
+                <h3 className="text-[#838389] text-[14px] lg:text-start text-center ">
                   {dateComponent}
                 </h3>
               </div>
@@ -222,25 +248,25 @@ const Home = () => {
               <img src={mingcute} alt="" className="w-[40px] h-[40px]" />
               <div className="info flex flex-col  justify-center lg:items-start   items-center">
                 <h3 className="text-[16px] font-[600] text-white">الميعاد</h3>
-                <h3 className="text-[#838389] text-[14px] lg:text-start text-center">
+                <h3 className="text-[#838389] text-[14px] lg:text-start text-center ">
                   {timeComponent}
                 </h3>
               </div>
             </div>
-            <div className=" flex items-center gap-3 lg:col-span-2 col-span-1 flex-col lg:flex-row justify-center">
+            <div className=" flex items-center gap-3 flex-col lg:flex-row justify-center">
               <img src={carbon_location} alt="" className="w-[40px] h-[40px]" />
               <div className="info flex flex-col  justify-center lg:items-start   items-center">
                 <h3 className="text-[16px] font-[600] text-white">المكان</h3>
-                <h3 className="text-[#838389] text-[14px] lg:text-start text-center">
-                  {data && data.length > 0 && data[party].band}
+                <h3 className="text-[#838389] text-[14px] lg:text-start text-center ">
+                  {data && data.length > 0 && data[party].location}
                 </h3>
               </div>
             </div>
-            <div className=" flex items-center gap-3 flex-col lg:flex-row justify-center">
+            <div className=" flex items-center gap-3 flex-col   lg:flex-row justify-center">
               <img src={ion_mic} alt="" className="w-[40px] h-[40px]" />
               <div className="info flex flex-col  justify-center lg:items-start   items-center">
                 <h3 className="text-[16px] font-[600] text-white">الراعي</h3>
-                <h3 className="text-[#838389] text-[14px] lg:text-start text-center">
+                <h3 className="text-[#838389] text-[14px] lg:text-start text-center ">
                   {data && data.length > 0 && data[party].band}
                 </h3>
               </div>

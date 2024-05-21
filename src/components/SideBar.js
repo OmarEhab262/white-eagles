@@ -20,7 +20,7 @@ const SideBar = ({ activeItemProp }) => {
   const location = useLocation();
   const { id } = useParams();
   const goToUserpage = () => {
-    window.location.href = "/white-eagles/User";
+    window.location.href = "/User";
   };
   useEffect(() => {
     // Update activeItem based on the activeItemProp whenever the prop changes

@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import SideBar from "../components/SideBar";
+import Progressbar from "../components/Progressbar";
 import location2 from "../assists/icon/location2.png";
 import arrow from "../assists/icon/arrow.png";
+import x from "../assists/icon/x-10366.png";
 import axios from "axios";
+
 import { toast } from "react-toastify";
 import cam from "../assists/icon/cam.png";
 const EditEventDetail = () => {
@@ -13,12 +16,15 @@ const EditEventDetail = () => {
   const [mainImage, setMainImage] = useState("");
   const [deletImg, setDeletImg] = useState("");
   const [removeClicked, setRemoveClicked] = useState(false);
-  const [images, setImages] = useState([]);
   const [imgs, setImgs] = useState(null);
-  const [video, setVideo] = useState("");
+  const [video, setVideo] = useState(null);
   const [status, setStatus] = useState("");
   const [loading, setLoading] = useState(false);
+  const [progressBar, setProgressBar] = useState(false);
   const [selectedOption, setSelectedOption] = useState("open");
+  const [videoProgress, setVideoProgress] = useState(0);
+  const [videoState, setVideoState] = useState(false);
+  const [imgState, setImgState] = useState(false);
   const handleOptionChange = (value) => {
     setSelectedOption(value);
     setStatus(value === "open" ? 1 : 0);
@@ -36,10 +42,39 @@ const EditEventDetail = () => {
     document.getElementById("mainImageInput").click();
   };
 
-  const handleVideoUpload = (event) => {
+  const handleVideoUpload = async (event) => {
     const file = event.target.files[0];
     setVideo(file);
-    // console.log(video);
+
+    const formData = new FormData();
+    formData.append("video", file);
+
+    try {
+      await axios.post(
+        `https://api.whiteeagles.net/public/api/events/update/${storedId}`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${token}`,
+            "ngrok-skip-browser-warning": "69420",
+          },
+          onUploadProgress: (progressEvent) => {
+            const percentCompleted = Math.round(
+              (progressEvent.loaded * 100) / progressEvent.total
+            );
+            setVideoProgress(percentCompleted);
+            setVideoState(true);
+          },
+        }
+      );
+      toast.success("Party has been changed successfully");
+      window.location.reload(); // Reload the page after successful upload
+      setVideoState(false);
+    } catch (error) {
+      console.error("Error uploading video:", error);
+      toast.error("Failed to upload video. Please try again.");
+    }
   };
   const handleNamePartyChange = (event) => {
     setNameParty(event.target.value);
@@ -114,13 +149,52 @@ const EditEventDetail = () => {
     fetchData();
   }, [storedId, token]);
 
-  const handleImageChange = (event) => {
+  const [progress, setProgress] = useState(0);
+
+  //   useEffect(() => {
+  //     if (progress === 100) {
+  //       toast.success("Party has been changed successfully");
+
+  //     }
+  //   }, [progress]);
+  const handleImageChange = async (event) => {
     const files = Array.from(event.target.files);
+    setProgressBar(true);
+    const formData = new FormData();
+    files.forEach((image, index) => {
+      formData.append(`image[${index}]`, image);
+    });
 
-    // Add all selected images to the state
-    setImages((prevImages) => [...prevImages, ...files]);
+    try {
+      await axios.post(
+        `https://api.whiteeagles.net/public/api/events/update/${storedId}`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${token}`,
+            "ngrok-skip-browser-warning": "69420",
+          },
+          onUploadProgress: (progressEvent) => {
+            const percentCompleted = Math.round(
+              (progressEvent.loaded * 100) / progressEvent.total
+            );
+            setProgress(percentCompleted);
+            setImgState(true);
+          },
+        }
+      );
+      toast.success("Party has been changed successfully");
+      setProgressBar(false);
+      setImgState(false);
+      window.location.reload(); // Reload the page after successful upload
+    } catch (error) {
+      console.error("Error uploading images:", error);
+      window.location.reload();
+      //   toast.error("Failed to upload images. Please try again.");
+      setProgressBar(false);
+    }
   };
-
   const handleSaveData = async () => {
     setLoading(true); // Step 2: Set loading to true
 
@@ -134,10 +208,10 @@ const EditEventDetail = () => {
       formData.append("banner", mainImage);
       formData.append("status", status);
 
-      // Append all images
-      images.forEach((image, index) => {
-        formData.append(`image[${index}]`, image);
-      });
+      //   // Append all images
+      //   images.forEach((image, index) => {
+      //     formData.append(`image[${index}]`, image);
+      //   });
 
       await axios.post(
         `https://api.whiteeagles.net/public/api/events/update/${storedId}`,
@@ -152,7 +226,7 @@ const EditEventDetail = () => {
       );
       toast.success("Party has been changed successfully");
       setTimeout(function () {
-        window.location.reload();
+        window.location.href = "/NewEvents";
       }, 1000); // 2000 milliseconds = 2 seconds
     } catch (error) {
       console.error("Error updating user data:", error);
@@ -197,6 +271,7 @@ const EditEventDetail = () => {
           },
         }
       );
+      setVideoState(true);
       window.location.reload();
     } catch (error) {
       console.error("Error deleting deleteimg:", error);
@@ -244,15 +319,15 @@ const EditEventDetail = () => {
             </div>
             <div className="content  col-span-2  ">
               <div className="one flex  pr-[15px] mb-[24px]">
-                <div className="w-[261px] nameParty">
+                <div className="w-[40%] nameParty">
                   <h3 className="text-[#29346c] text-[16px]">اسم الحفلة</h3>
                   <input
-                    className="text-[#041461] text-[15px] font-bold w-[261px] outline-0 border-b-2 py-[5px] bg-transparent "
+                    className="text-[#041461] text-[15px] font-bold w-full outline-0 border-b-2 py-[5px] bg-transparent "
                     value={nameParty}
                     onChange={handleNamePartyChange}
                   />
                 </div>
-                <div className="w-full locationParty mr-[40px]">
+                <div className="w-[57%] locationParty mr-[40px]">
                   <h3 className="text-[#29346c] text-[16px] flex items-center">
                     مكان الحفلة
                   </h3>
@@ -268,7 +343,7 @@ const EditEventDetail = () => {
                   </div>
                 </div>
               </div>
-              <div className="two flex  pr-[15px] mb-[24px] justify-between">
+              <div className="two flex  pr-[15px] mb-[24px] ">
                 <div className="w-[40%] dateParty">
                   <h3 className="text-[#29346c] text-[16px]">
                     {" "}
@@ -283,8 +358,8 @@ const EditEventDetail = () => {
                     />
                   </div>
                 </div>
-                <div className="   w-[57%]">
-                  <h3 className="text-[#29346c] text-[16px] ml-[24px] font-bold">
+                <div className="w-[57%] mr-[40px]">
+                  <h3 className="text-[#29346c] text-[16px] ml-[24px] ">
                     الوصف
                   </h3>
 
@@ -292,7 +367,7 @@ const EditEventDetail = () => {
                     id="description"
                     name="description"
                     value={descriptionParty}
-                    className="text-[#041461]  font-bold w-[400px] outline-0 py-[5px] bg-transparent h-[80px] ssc text-[12px]"
+                    className="text-[#041461]  font-bold w-full outline-0 py-[5px] bg-transparent h-[37px] ssc text-[12px] pr-[5px] border-b-2"
                     style={{ resize: " none" }}
                     onChange={handleDescriptionPartyChange}
                   ></textarea>
@@ -351,15 +426,20 @@ const EditEventDetail = () => {
                   {imgs.map((img) => (
                     <div className="flex-shrink-0 mr-4 relative" key={img.id}>
                       <img
+                        src={`https://api.whiteeagles.net/public/storage/${img.image}`}
+                        alt="party"
+                        className={`w-[224px] h-[144px] `}
+                      />
+                      <img
                         onClick={
                           removeClicked
                             ? () => handleDeleteImage(img.id)
                             : undefined
                         }
-                        src={`https://api.whiteeagles.net/public/storage/${img.image}`}
-                        alt="party"
-                        className={`w-[224px] h-[144px] cursor-pointer ${
-                          removeClicked ? "hover:opacity-80" : ""
+                        src={x}
+                        alt=""
+                        className={`absolute top-1 right-1 w-6 h-6  cursor-pointer ${
+                          removeClicked ? "block" : "hidden"
                         }`}
                       />
                     </div>
@@ -370,7 +450,13 @@ const EditEventDetail = () => {
                   <h3 className="text-[20px]">لا يوجد صور</h3>
                 </div>
               )}
-
+              {imgState && (
+                <div className="Progressbar w-full mb-[50px]">
+                  <div className="justify-center items-center text-[#041461] mx-auto w-[80%]">
+                    <Progressbar filled={progress} className="z-10 w-[300px]" />
+                  </div>
+                </div>
+              )}
               <div className="operationImgs flex justify-center items-center">
                 <label
                   htmlFor="uploadImage"
@@ -393,6 +479,7 @@ const EditEventDetail = () => {
                   <h3>حذف صورة</h3>
                 </div>
               </div>
+              <div className="progress absolute top-[58%] w-[800px] right-[30%]"></div>
             </div>
             <div className="video  w-full overflow-hidden mb-[70px]">
               <h3 className="text-[24px] font-bold">الفيديو</h3>
@@ -409,6 +496,16 @@ const EditEventDetail = () => {
                   </div>
                 )}
               </div>
+              {videoState && (
+                <div className="Progressbar w-full mb-[50px]">
+                  <div className="justify-center items-center text-[#041461] mx-auto w-[80%]">
+                    <Progressbar
+                      filled={videoProgress}
+                      className="z-10 w-[300px]"
+                    />
+                  </div>
+                </div>
+              )}
               <div className="operationVideo flex justify-center items-center">
                 <label
                   htmlFor="uploadVideo"
@@ -471,6 +568,22 @@ const EditEventDetail = () => {
           </div>
         </div>
       )}
+      {/* {progressBar && (
+        <div
+          className="fixed h-screen w-full top-0 left-0 flex justify-center items-center text-[#041461]"
+          style={{ background: "#66666657" }}
+        >
+          <Progressbar filled={progress} className="z-10 w-[300px]" />
+        </div>
+      )} */}
+      {/* {videoProgress > 0 && videoProgress < 100 && (
+        <div
+          className="fixed h-screen w-full top-0 left-0 flex justify-center items-center text-[#041461]"
+          style={{ background: "#66666657" }}
+        >
+          <Progressbar filled={videoProgress} className="z-10 w-[300px]" />
+        </div>
+      )} */}
     </div>
   );
 };

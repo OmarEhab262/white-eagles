@@ -106,9 +106,7 @@ const ContactUs = () => {
               <div className="img bg-[#3e4774] rounded-full w-[100px] h-[100px]  flex justify-center items-center">
                 <img src={mass} alt="" />
               </div>
-              <a href="mailto:Info@whiteeagles.net">
-                mailto:Info@whiteeagles.net
-              </a>
+              <a href="mailto:Info@whiteeagles.net">Info@whiteeagles.net</a>
             </div>
             <div className="gap-7 flex flex-col justify-center items-center">
               <div className="img bg-[#3e4774] rounded-full w-[100px] h-[100px] flex justify-center items-center">
@@ -123,15 +121,15 @@ const ContactUs = () => {
               </a>
             </div>
             <div className="gap-7 flex flex-col justify-center items-center">
-              <div className="img bg-[#3e4774] rounded-full w-[100px] h-[100px]  flex justify-center items-center">
-                <img src={loc} alt="" />
+              <div className="img bg-[#3e4774] rounded-full w-[100px] h-[100px] flex justify-center items-center">
+                <img src={phone} alt="" />
               </div>
               <a
-                href="https://maps.app.goo.gl/X9uJ3nyoy6SMWTbV8?g_st=ic"
+                href="https://wa.me/201022550788"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Mansouraa Elgalaaaa
+                01022550788
               </a>
             </div>
           </div>

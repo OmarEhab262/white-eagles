@@ -55,6 +55,20 @@ const User = () => {
     };
     fetchData();
   }, [token]);
+  const logOut = async () => {
+    try {
+      await axios.get("https://api.whiteeagles.net/public/api/logout", {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + token,
+          "ngrok-skip-browser-warning": "69420",
+        },
+      });
+      window.location.href = "/dashboard";
+    } catch (error) {
+      console.error("Error fetching user profile:", error);
+    }
+  };
   const handleSaveData = async () => {
     try {
       const formData = new FormData();
@@ -124,11 +138,19 @@ const User = () => {
                 </div>
               </div>
             </div>
-            <div
-              onClick={handleChange}
-              className="title w-[154px] h-[64px] bg-[#041461D9] flex justify-center items-center rounded-[8px] text-white text-[20px] cursor-pointer"
-            >
-              <h3>تعديل بيانات</h3>
+            <div className="flex gap-6">
+              <div
+                onClick={handleChange}
+                className="title w-[154px] h-[64px] bg-[#041461D9] flex justify-center items-center rounded-[8px] text-white text-[20px] cursor-pointer"
+              >
+                <h3>تعديل بيانات</h3>
+              </div>
+              <div
+                onClick={logOut}
+                className="title w-[154px] h-[64px] bg-red-500 flex justify-center items-center rounded-[8px] text-white text-[20px] cursor-pointer"
+              >
+                <h3>تسجيل خروج</h3>
+              </div>
             </div>
           </div>
           <div className="information w-[70%] ">

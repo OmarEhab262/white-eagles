@@ -98,7 +98,7 @@ const CheckEmail = () => {
 
       // Placeholder functionality to demonstrate submission
       //   console.log("Form submitted:", { email, num: enteredCode });
-      window.location.href = "/white-eagles/SuccessfulPassword";
+      window.location.href = "/SuccessfulPassword";
     } catch (error) {
       console.error("Error:", error);
       // Handle error
@@ -240,7 +240,7 @@ const CheckEmail = () => {
                 >
                   إعادة تعيين كلمة المرور
                 </button>
-                <Link to="/" className="text-[#041461] text-[14px] ">
+                <Link to="/dashboard" className="text-[#041461] text-[14px] ">
                   العودة لتسجيل الدخول
                   <img
                     src={leftarrow}

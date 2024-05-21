@@ -22,7 +22,7 @@ const ShowParties = () => {
   // UseEffect to filter events based on searchInput changes
   useEffect(() => {
     const filteredEvents = events.filter((event) =>
-      event.event.title.toLowerCase().startsWith(searchInput.toLowerCase())
+      event.event.title.toLowerCase().includes(searchInput.toLowerCase())
     );
     setSearchResults(filteredEvents);
   }, [searchInput, events]);
@@ -131,7 +131,7 @@ const ShowParties = () => {
             searchResults.map((party) => (
               <div
                 key={party.event.id}
-                className="box w-[280px] h-[280px] rounded-[16px] border border-[2px] mx-auto mt-[20px] cursor-pointer"
+                className="box w-[280px] h-[300px] rounded-[16px] border border-[2px] mx-auto mt-[20px] cursor-pointer"
                 onClick={() => goToBooking(party.event.id)} // Call goToBooking with party ID
               >
                 <div className="w-full">
@@ -156,13 +156,21 @@ const ShowParties = () => {
                         </h3>
                       </div>
                       <div className="location flex mt-[10px]">
-                        <img src={locationIcon} alt="location" />
-                        <h3 className="text-[12px] mr-[10px] overflow-hidden hover:font-bold">
+                        <img
+                          src={locationIcon}
+                          alt="location"
+                          className="w-[15px] h-[20px]"
+                        />
+                        <h3 className="text-[12px] mr-[10px] overflow-hidden ml-[5px]">
                           {party.event.location}
                         </h3>
                       </div>
-                      <div className="time flex mt-[10px]">
-                        <img src={time} alt="time" />
+                      <div className="time flex mt-[10px] ">
+                        <img
+                          src={time}
+                          alt="time"
+                          className="w-[20px] h-[25px]"
+                        />
                         <h3 className="text-[12px] mr-[10px]">
                           {parseDateString(party.event.date_time).timeComponent}
                         </h3>

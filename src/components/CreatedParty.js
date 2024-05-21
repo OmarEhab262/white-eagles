@@ -5,7 +5,7 @@ import SideBar from "./SideBar";
 const CreatedParty = () => {
   useEffect(() => {
     const redirectTimer = setTimeout(() => {
-      window.location.href = "/white-eagles/MainPage";
+      window.location.href = "/MainPage";
     }, 2000); // Total delay is 5 seconds (2 seconds for welcome image + 3 seconds for redirect)
 
     return () => {

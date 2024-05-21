@@ -17,7 +17,7 @@ const Calender = () => {
   const [currentEvents, setCurrentEvents] = useState([]);
   const [endEvents, setEndEvents] = useState([]);
 
-  console.log(selectedDate);
+  //   console.log(selectedDate);
   useEffect(() => {
     AOS.init({ duration: 1000 });
   }, []);
@@ -256,7 +256,6 @@ const Calender = () => {
                 >
                   <option
                     value="نوع الحفلات"
-                    selected
                     className="text-black cursor-pointer"
                   >
                     نوع الحفلات
@@ -303,18 +302,26 @@ const Calender = () => {
             </div>
             <div className="cards my-[50px] grid  xl:grid-cols-7 lg:grid-cols-4 md:grid-cols-3 max-sm:grid-cols-2 gap-10 grid-cols-2 justify-items-center ">
               {filnoEvents.length === 0 && (
-                <div className="cardNoParty h-[210px] w-[160px] bg-white">
+                <div
+                  className="cardNoParty h-[210px] w-[160px]"
+                  style={{
+                    backgroundImage: `url(${ggggg})`,
+                    backgroundSize: "cover",
+                  }}
+                >
                   <div className="head flex items-center justify-end gap-2 p-[5px] text-[10px] ">
-                    <h4>{getArabicDayName(selectedDate)}</h4>
-                    <span className="text-[#838389] text-[8px] w-[10px] h-[10px] text-center rounded-full bg-[#BFBFCE] flex items-center justify-center">
+                    <h4 className="text-white">
+                      {getArabicDayName(selectedDate)}
+                    </h4>
+                    <span className="text-[#041461] text-[10px] w-[15px] h-[15px] text-center rounded-full bg-white flex items-center justify-center">
                       {getDayNumber(selectedDate)}
                     </span>
                   </div>
 
-                  <div className="content text-center h-[140px] flex justify-center items-center flex-col text-[#041461] font-bold">
+                  <div className="content text-center h-[140px] flex justify-center items-center flex-col text-white font-bold">
                     <h3>لا توجد حفلات اليوم</h3>
                     <h3>انتظرونا قريبًا</h3>
-                    <div className="line w-[50%] h-[3px] bg-[#041461] mt-[3px] rounded-full"></div>
+                    <div className="line w-[50%] h-[3px] bg-white mt-[3px] rounded-full"></div>
                   </div>
                 </div>
               )}
@@ -323,8 +330,12 @@ const Calender = () => {
                     <div
                       className="cardEndParty h-[210px] w-[160px] bg-white"
                       key={event.id}
+                      style={{
+                        backgroundImage: `url(${ggggg})`,
+                        backgroundSize: "cover",
+                      }}
                     >
-                      <div className="head flex items-center justify-end gap-2 p-[5px] text-[10px]">
+                      <div className="head flex items-center justify-end gap-2 p-[5px] text-[13px] text-white">
                         <h4>
                           {((dateString) => {
                             const days = [
@@ -336,24 +347,40 @@ const Calender = () => {
                               "الجمعة",
                               "السبت",
                             ];
+                            const months = [
+                              "يناير",
+                              "فبراير",
+                              "مارس",
+                              "ابريل",
+                              "مايو",
+                              "يونيو",
+                              "يوليو",
+                              "أغسطس",
+                              "سبتمبر",
+                              "أكتوبر",
+                              "نوفمبر",
+                              "ديسمبر",
+                            ];
                             const date = new Date(dateString);
                             const dayIndex = date.getDay();
-                            return days[dayIndex];
+                            const dayName = days[dayIndex];
+
+                            const day = date.getDate();
+                            const monthIndex = date.getMonth();
+                            const monthName = months[monthIndex];
+
+                            const year = date.getFullYear();
+
+                            return `${dayName} ${day} ${monthName} ${year}`;
                           })(event.event.date_time)}
                         </h4>
-
-                        <span className="text-[#838389] text-[8px] w-[10px] h-[10px] text-center rounded-full bg-[#BFBFCE] flex items-center justify-center">
-                          {((dateString) => {
-                            const date = new Date(dateString);
-                            return date.getDate();
-                          })(event.event.date_time)}
-                        </span>
                       </div>
+
                       <div className="content flex-col mr-[14px] mt-[20px]">
-                        <h3 className="text-[#041461] font-bold text-[10px]">
+                        <h3 className="text-white font-bold text-[10px]">
                           {event.event.title}
                         </h3>
-                        <div className="line w-[40%] h-[2px] bg-[#041461] mt-[3px] rounded-full"></div>
+                        <div className="line w-[40%] h-[2px] bg-white mt-[3px] rounded-full"></div>
                       </div>
                       <div className="info text-[8px] mr-[14px] font-bold">
                         <div className="time flex items-center gap-1 my-[5px]">
@@ -366,6 +393,8 @@ const Calender = () => {
                           <h3 className="text-[#ABABB5]">المكان:</h3>
                           <a
                             href={event.event.location}
+                            target="_blank"
+                            rel="noreferrer"
                             className="text-[#838389] text-[7px]"
                           >
                             {event.event.location}
@@ -378,8 +407,12 @@ const Calender = () => {
                     <div
                       className="cardEndParty h-[210px] w-[160px] bg-white"
                       key={event.id}
+                      style={{
+                        backgroundImage: `url(${ggggg})`,
+                        backgroundSize: "cover",
+                      }}
                     >
-                      <div className="head flex items-center justify-end gap-2 p-[5px] text-[10px]">
+                      <div className="head flex items-center justify-end gap-2 p-[5px] text-[13px] text-white">
                         <h4>
                           {((dateString) => {
                             const days = [
@@ -391,21 +424,36 @@ const Calender = () => {
                               "الجمعة",
                               "السبت",
                             ];
+                            const months = [
+                              "يناير",
+                              "فبراير",
+                              "مارس",
+                              "ابريل",
+                              "مايو",
+                              "يونيو",
+                              "يوليو",
+                              "أغسطس",
+                              "سبتمبر",
+                              "أكتوبر",
+                              "نوفمبر",
+                              "ديسمبر",
+                            ];
                             const date = new Date(dateString);
                             const dayIndex = date.getDay();
-                            return days[dayIndex];
+                            const dayName = days[dayIndex];
+
+                            const day = date.getDate();
+                            const monthIndex = date.getMonth();
+                            const monthName = months[monthIndex];
+
+                            const year = date.getFullYear();
+
+                            return `${dayName} ${day} ${monthName} ${year}`;
                           })(event.event.date_time)}
                         </h4>
-
-                        <span className="text-[#838389] text-[8px] w-[10px] h-[10px] text-center rounded-full bg-[#BFBFCE] flex items-center justify-center">
-                          {((dateString) => {
-                            const date = new Date(dateString);
-                            return date.getDate();
-                          })(event.event.date_time)}
-                        </span>
                       </div>
                       <div className="content flex-col mr-[14px] mt-[20px]">
-                        <h3 className="text-[#041461] font-bold text-[10px]">
+                        <h3 className="text-white font-bold text-[10px]">
                           {event.event.title}
                         </h3>
                         <div className="line w-[40%] h-[2px] bg-[#041461] mt-[3px] rounded-full"></div>
@@ -434,10 +482,14 @@ const Calender = () => {
                 ? filCurrentEvents.map((event) => (
                     <div
                       key={event.id}
-                      className="cardCurrentParty h-[210px] w-[160px] bg-[#041461]"
+                      className="cardCurrentParty h-[210px] w-[160px]"
+                      style={{
+                        backgroundImage: `url(${ggggg})`,
+                        backgroundSize: "cover",
+                      }}
                     >
-                      <div className="head flex items-center justify-end gap-2 p-[5px] text-[10px] ">
-                        <h4 className="text-white">
+                      <div className="head flex items-center justify-end gap-2 p-[5px] text-[13px] text-white">
+                        <h4>
                           {((dateString) => {
                             const days = [
                               "الأحد",
@@ -448,18 +500,33 @@ const Calender = () => {
                               "الجمعة",
                               "السبت",
                             ];
+                            const months = [
+                              "يناير",
+                              "فبراير",
+                              "مارس",
+                              "ابريل",
+                              "مايو",
+                              "يونيو",
+                              "يوليو",
+                              "أغسطس",
+                              "سبتمبر",
+                              "أكتوبر",
+                              "نوفمبر",
+                              "ديسمبر",
+                            ];
                             const date = new Date(dateString);
                             const dayIndex = date.getDay();
-                            return days[dayIndex];
+                            const dayName = days[dayIndex];
+
+                            const day = date.getDate();
+                            const monthIndex = date.getMonth();
+                            const monthName = months[monthIndex];
+
+                            const year = date.getFullYear();
+
+                            return `${dayName} ${day} ${monthName} ${year}`;
                           })(event.event.date_time)}
                         </h4>
-
-                        <span className="text-[#838389] text-[8px] w-[10px] h-[10px] text-center rounded-full bg-[#BFBFCE] flex items-center justify-center">
-                          {((dateString) => {
-                            const date = new Date(dateString);
-                            return date.getDate();
-                          })(event.event.date_time)}
-                        </span>
                       </div>
                       <div className="content   flex-col mx-[10px] mt-[20px]">
                         <h3 className=" text-white font-bold text-[10px]">
@@ -485,8 +552,8 @@ const Calender = () => {
                           </a>
                         </div>
                       </div>
-                      <div className="tick cursor-pointer border border-white w-[60%] mx-auto text-center text-white mt-[30px] text-[8px] py-[4px] rounded-[2px]">
-                        <h3>اطلب تذكرتك</h3>
+                      <div className="tick border cursor-pointer hover:opacity-60 ease-in duration-150 border-[#041461] w-[60%] mx-auto text-center text-[#041461] bg-white py-[4px] rounded-[2px] mt-[30px] text-[8px]">
+                        <h3 className="font-bold">اطلب تذكرتك</h3>
                       </div>
                     </div>
                   ))
@@ -494,9 +561,13 @@ const Calender = () => {
                     <div
                       key={event.id}
                       className="cardCurrentParty h-[210px] w-[160px] bg-[#041461]"
+                      style={{
+                        backgroundImage: `url(${ggggg})`,
+                        backgroundSize: "cover",
+                      }}
                     >
-                      <div className="head flex items-center justify-end gap-2 p-[5px] text-[10px] ">
-                        <h4 className="text-white">
+                      <div className="head flex items-center justify-end gap-2 p-[5px] text-[13px] text-white">
+                        <h4>
                           {((dateString) => {
                             const days = [
                               "الأحد",
@@ -507,18 +578,33 @@ const Calender = () => {
                               "الجمعة",
                               "السبت",
                             ];
+                            const months = [
+                              "يناير",
+                              "فبراير",
+                              "مارس",
+                              "ابريل",
+                              "مايو",
+                              "يونيو",
+                              "يوليو",
+                              "أغسطس",
+                              "سبتمبر",
+                              "أكتوبر",
+                              "نوفمبر",
+                              "ديسمبر",
+                            ];
                             const date = new Date(dateString);
                             const dayIndex = date.getDay();
-                            return days[dayIndex];
+                            const dayName = days[dayIndex];
+
+                            const day = date.getDate();
+                            const monthIndex = date.getMonth();
+                            const monthName = months[monthIndex];
+
+                            const year = date.getFullYear();
+
+                            return `${dayName} ${day} ${monthName} ${year}`;
                           })(event.event.date_time)}
                         </h4>
-
-                        <span className="text-[#838389] text-[8px] w-[10px] h-[10px] text-center rounded-full bg-[#BFBFCE] flex items-center justify-center">
-                          {((dateString) => {
-                            const date = new Date(dateString);
-                            return date.getDate();
-                          })(event.event.date_time)}
-                        </span>
                       </div>
                       <div className="content   flex-col mx-[10px] mt-[20px]">
                         <h3 className=" text-white font-bold text-[10px]">
@@ -544,8 +630,8 @@ const Calender = () => {
                           </a>
                         </div>
                       </div>
-                      <div className="tick border cursor-pointer border-white w-[60%] mx-auto text-center text-white mt-[30px] text-[8px] py-[4px] rounded-[2px]">
-                        <h3>اطلب تذكرتك</h3>
+                      <div className="tick border cursor-pointer hover:opacity-60 ease-in duration-150 border-[#041461] w-[60%] mx-auto text-center text-[#041461] bg-white py-[4px] rounded-[2px] mt-[30px] text-[8px]">
+                        <h3 className="font-bold">اطلب تذكرتك</h3>
                       </div>
                     </div>
                   ))}
@@ -555,8 +641,12 @@ const Calender = () => {
                     <div
                       className="cardWillCometParty h-[210px] w-[160px] bg-white"
                       key={event.id}
+                      style={{
+                        backgroundImage: `url(${ggggg})`,
+                        backgroundSize: "cover",
+                      }}
                     >
-                      <div className="head flex items-center justify-end gap-2 p-[5px] text-[10px]">
+                      <div className="head flex items-center justify-end gap-2 p-[5px] text-[13px] text-white">
                         <h4>
                           {((dateString) => {
                             const days = [
@@ -568,20 +658,36 @@ const Calender = () => {
                               "الجمعة",
                               "السبت",
                             ];
+                            const months = [
+                              "يناير",
+                              "فبراير",
+                              "مارس",
+                              "ابريل",
+                              "مايو",
+                              "يونيو",
+                              "يوليو",
+                              "أغسطس",
+                              "سبتمبر",
+                              "أكتوبر",
+                              "نوفمبر",
+                              "ديسمبر",
+                            ];
                             const date = new Date(dateString);
                             const dayIndex = date.getDay();
-                            return days[dayIndex];
+                            const dayName = days[dayIndex];
+
+                            const day = date.getDate();
+                            const monthIndex = date.getMonth();
+                            const monthName = months[monthIndex];
+
+                            const year = date.getFullYear();
+
+                            return `${dayName} ${day} ${monthName} ${year}`;
                           })(event.event.date_time)}
                         </h4>
-                        <span className="text-[#838389] text-[8px] w-[10px] h-[10px] text-center rounded-full bg-[#BFBFCE] flex items-center justify-center">
-                          {((dateString) => {
-                            const date = new Date(dateString);
-                            return date.getDate();
-                          })(event.event.date_time)}
-                        </span>
                       </div>
                       <div className="content flex-col mx-[10px] mt-[20px]">
-                        <h3 className="text-[#041461] font-bold text-[10px]">
+                        <h3 className="text-white font-bold text-[10px]">
                           {event.event.title}
                         </h3>
                         <div className="line w-[40%] h-[2px] bg-[#041461] mt-[3px] rounded-full"></div>
@@ -603,8 +709,8 @@ const Calender = () => {
                           </a>
                         </div>
                       </div>
-                      <div className="tick border cursor-pointer border-[#041461] w-[60%] mx-auto text-center text-white bg-[#041461] py-[4px] rounded-[2px] mt-[30px] text-[8px]">
-                        <h3>اطلب تذكرتك</h3>
+                      <div className="tick border cursor-pointer hover:opacity-60 ease-in duration-150 border-[#041461] w-[60%] mx-auto text-center text-[#041461] bg-white py-[4px] rounded-[2px] mt-[30px] text-[8px]">
+                        <h3 className="font-bold">اطلب تذكرتك</h3>
                       </div>
                     </div>
                   ))
@@ -612,8 +718,12 @@ const Calender = () => {
                     <div
                       className="cardWillCometParty h-[210px] w-[160px] bg-white"
                       key={event.id}
+                      style={{
+                        backgroundImage: `url(${ggggg})`,
+                        backgroundSize: "cover",
+                      }}
                     >
-                      <div className="head flex items-center justify-end gap-2 p-[5px] text-[10px]">
+                      <div className="head flex items-center justify-end gap-2 p-[5px] text-[13px] text-white">
                         <h4>
                           {((dateString) => {
                             const days = [
@@ -625,20 +735,36 @@ const Calender = () => {
                               "الجمعة",
                               "السبت",
                             ];
+                            const months = [
+                              "يناير",
+                              "فبراير",
+                              "مارس",
+                              "ابريل",
+                              "مايو",
+                              "يونيو",
+                              "يوليو",
+                              "أغسطس",
+                              "سبتمبر",
+                              "أكتوبر",
+                              "نوفمبر",
+                              "ديسمبر",
+                            ];
                             const date = new Date(dateString);
                             const dayIndex = date.getDay();
-                            return days[dayIndex];
+                            const dayName = days[dayIndex];
+
+                            const day = date.getDate();
+                            const monthIndex = date.getMonth();
+                            const monthName = months[monthIndex];
+
+                            const year = date.getFullYear();
+
+                            return `${dayName} ${day} ${monthName} ${year}`;
                           })(event.event.date_time)}
                         </h4>
-                        <span className="text-[#838389] text-[8px] w-[10px] h-[10px] text-center rounded-full bg-[#BFBFCE] flex items-center justify-center">
-                          {((dateString) => {
-                            const date = new Date(dateString);
-                            return date.getDate();
-                          })(event.event.date_time)}
-                        </span>
                       </div>
                       <div className="content flex-col mx-[10px] mt-[20px]">
-                        <h3 className="text-[#041461] font-bold text-[10px]">
+                        <h3 className="text-white font-bold text-[10px]">
                           {event.event.title}
                         </h3>
                         <div className="line w-[40%] h-[2px] bg-[#041461] mt-[3px] rounded-full"></div>
@@ -660,8 +786,8 @@ const Calender = () => {
                           </a>
                         </div>
                       </div>
-                      <div className="tick border border-[#041461] cursor-pointer w-[60%] mx-auto text-center text-white bg-[#041461] py-[4px] rounded-[2px] mt-[30px] text-[8px]">
-                        <h3>اطلب تذكرتك</h3>
+                      <div className="tick border cursor-pointer hover:opacity-60 ease-in duration-150 border-[#041461] w-[60%] mx-auto text-center text-[#041461] bg-white py-[4px] rounded-[2px] mt-[30px] text-[8px]">
+                        <h3 className="font-bold">اطلب تذكرتك</h3>
                       </div>
                     </div>
                   ))}

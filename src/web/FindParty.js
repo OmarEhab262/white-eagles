@@ -34,7 +34,7 @@ const FindParty = () => {
 
   useEffect(() => {
     const newFilteredEvents = events.filter((event) =>
-      event.event.title.toLowerCase().startsWith(savedInputValue.toLowerCase())
+      event.event.title.toLowerCase().includes(savedInputValue.toLowerCase())
     );
     setFilteredEvents(newFilteredEvents);
   }, [events, savedInputValue]);

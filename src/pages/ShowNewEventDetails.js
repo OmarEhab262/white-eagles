@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import SideBar from "../components/SideBar";
 import date from "../assists/icon/date.png";
 import location from "../assists/icon/location.png";
+import time from "../assists/icon/time22.png";
 import arrow from "../assists/icon/arrow.png";
 import tick from "../assists/icon/tick.svg";
 import mony from "../assists/icon/mony.svg";
@@ -18,7 +19,28 @@ const ShowNewEventDetails = () => {
   const [imgs, setImgs] = useState(null);
   const [ticketsCount, setTicketsCount] = useState(null);
   const [eventTotal, setEventTotal] = useState(null);
+  const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
   const token = localStorage.getItem("token");
+
+  const deleteEvent = async () => {
+    try {
+      await axios.delete(
+        `https://api.whiteeagles.net/public/api/events/${id}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + token,
+          },
+        }
+      );
+      // Refresh the user list after deletion
+      setShowDeleteConfirmation(false);
+      window.location.href = "/MainPage";
+    } catch (error) {
+      console.error("Error deleting user:", error);
+    }
+  };
+
   //   console.log(id);
   useEffect(() => {
     const fetchData = async () => {
@@ -35,8 +57,6 @@ const ShowNewEventDetails = () => {
         );
         setParty(response.data.event); // Set party to response.data instead of response.data.events
         setImgs(response.data.images); // Set party to response.data instead of response.data.events
-        // console.log(response.data.images); // Set party to response.data instead of response.data.events
-        // console.log(response.data.event); // Logging the fetched data
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -155,6 +175,14 @@ const ShowNewEventDetails = () => {
             >
               <h3>تعديل حفلة</h3>
             </Link>
+            <div
+              className="cursor-pointer w-[155px] h-[50px] rounded-[16px] bg-red-600 text-white font-bold text-[16px] flex justify-center items-center ml-[30px]"
+              onClick={() => {
+                setShowDeleteConfirmation(true);
+              }}
+            >
+              <h3>حذف حفلة</h3>
+            </div>
           </div>
         </div>
         <div className=" flex w-[100%] justify-around mt-[30px] mb-[20px]">
@@ -163,7 +191,7 @@ const ShowNewEventDetails = () => {
             style={{ boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)" }}
           >
             <div className="flex justify-center items-center rounded-full w-[50px] h-[50px] text-white bg-[#041461] text-[14px]">
-              <img src={tick} alt="count" className="w-[70%]" />
+              <img src={tick} alt="count" className="w-[60%]" />
             </div>
 
             <div className=" mr-[20px]">
@@ -178,7 +206,7 @@ const ShowNewEventDetails = () => {
             style={{ boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)" }}
           >
             <div className="flex justify-center items-center rounded-full w-[50px] h-[50px] text-white bg-[#041461] text-[14px]">
-              <img src={mony} alt="chair" className="w-[70%]" />
+              <img src={mony} alt="chair" className="w-[60%]" />
             </div>
             <div className=" mr-[20px]">
               <h3 className="text-[16px] font-bold text-[#041461]">
@@ -209,7 +237,7 @@ const ShowNewEventDetails = () => {
                   <h3 className="text-[15px] mr-[10px]">{dateComponent}</h3>
                 </div>
                 <div className="time flex mt-[5px] mx-[12px] items-center border-r-4 border-gray-500 pr-[15px]">
-                  <img src={date} alt="date" className="w-[16px] h-[16px]" />
+                  <img src={time} alt="date" className="w-[16px] h-[16px]" />
                   <h3 className="text-[15px] mr-[10px]">{timeComponent}</h3>
                 </div>
                 <div className="location flex mt-[5px] mx-[32px] items-center w-[40%] border-r-4 border-gray-500 pr-[15px]">
@@ -286,6 +314,31 @@ const ShowNewEventDetails = () => {
           )}
         </div>
       </div>
+
+      {showDeleteConfirmation && (
+        <div
+          className="fixed h-screen w-full top-0 left-0 flex justify-center items-center text-[#041461]"
+          style={{ background: "#66666657" }}
+        >
+          <div className="w-[393px] h-[194px] bg-white rounded-[24px] flex justify-center items-center  flex-col">
+            <h3 className="text-[24px] font-[700]">هل تريد حذف الحفلة؟</h3>
+            <div className="flex gap-5">
+              <div
+                className="cursor-pointer w-[68px] h-[52px] rounded-[10px] bg-[#041461] text-white flex justify-center items-center border border-[#041461] mt-[20px]"
+                onClick={deleteEvent}
+              >
+                نعم
+              </div>
+              <div
+                className="cursor-pointer w-[68px] h-[52px] rounded-[10px] bg-white text-[#041461] flex justify-center items-center border border-[#041461] mt-[20px]"
+                onClick={() => setShowDeleteConfirmation(false)}
+              >
+                لا
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

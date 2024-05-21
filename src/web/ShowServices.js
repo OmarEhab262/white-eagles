@@ -58,7 +58,9 @@ const ShowServices = () => {
     const date = new Date(dateTimeString).toLocaleDateString("ar", options);
     return `${date}`;
   }
-
+  const sortedData = data.sort(
+    (a, b) => new Date(b.event.date_time) - new Date(a.event.date_time)
+  );
   return (
     <div
       className=""
@@ -117,10 +119,10 @@ const ShowServices = () => {
                       </h3>
                     </div>
                   ) : (
-                    data.map((event) => (
+                    sortedData.map((event) => (
                       <div
                         data-aos="fade-up"
-                        className="box border border-white w-[90%] md:h-[320px] h-full p-[20px] rounded-[24px] flex items-center my-[30px] gap-20 flex-wrap flex-row"
+                        className="box border border-white w-[90%]  md:h-[320px] h-full  p-[10px] rounded-[24px] flex items-center my-[30px] gap-20 flex-wrap flex-row"
                         key={event.event.id}
                       >
                         <div className="right lg:w-[35%] w-full h-full">
@@ -170,16 +172,20 @@ const ShowServices = () => {
                               {event.event.description}
                             </p>
                           </div>
-                          <div
-                            style={{
-                              backgroundImage: `url(${whiteBg}) `,
-                              backgroundPosition: "center",
-                              backgroundSize: "cover",
-                            }}
-                            className="btn cursor-pointer hover:font-bold ease-out duration-300 text-[#041461] text-[24px] font-[600] flex justify-center items-center w-[60%] py-[10px] rounded-[24px] my-[15px]"
-                          >
-                            <h3>احجز الآن</h3>
-                          </div>
+                          {event.event.status ? (
+                            <div
+                              style={{
+                                backgroundImage: `url(${whiteBg}) `,
+                                backgroundPosition: "center",
+                                backgroundSize: "cover",
+                              }}
+                              className="btn  cursor-pointer hover:font-bold ease-out duration-300 text-[#041461] text-[24px] font-[600] flex justify-center items-center w-[60%] py-[10px] rounded-[24px] my-[15px]"
+                            >
+                              <h3>احجز الآن</h3>
+                            </div>
+                          ) : (
+                            ""
+                          )}
                         </div>
                       </div>
                     ))

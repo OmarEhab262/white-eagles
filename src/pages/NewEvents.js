@@ -204,7 +204,7 @@ const NewEvents = () => {
                     <Link
                       to={`/ShowNewEventDetails/${item.event.id}`}
                       key={item.event.id}
-                      className="box w-[280px] h-[280px] rounded-[16px] border border-[2px] mr-[20px]"
+                      className="box w-[280px] h-[300px] rounded-[16px] border border-[2px] mr-[20px]"
                     >
                       <div className="w-full">
                         <img
@@ -231,8 +231,12 @@ const NewEvents = () => {
                               </h3>
                             </div>
                             <div className="location flex mt-[10px] w-full overflow-hidden">
-                              <img src={location} alt="location" />
-                              <h3 className="text-[12px] mr-[10px] overflow-hidden hover:font-bold  w-full h-[15px]">
+                              <img
+                                src={location}
+                                alt="location"
+                                className="w-[15px] h-[20px]"
+                              />
+                              <h3 className="text-[12px] mr-[10px] overflow-hidden   w-full h-[15px]">
                                 {item.event.location}
                               </h3>
                             </div>
@@ -283,7 +287,7 @@ const NewEvents = () => {
                     <Link
                       to={`/ShowNewEventDetails/${item.event.id}`}
                       key={item.event.id}
-                      className="box w-[280px] h-[280px] rounded-[16px] border border-[2px] mr-[20px]"
+                      className="box w-[280px] h-[300px] rounded-[16px] border border-[2px] mr-[20px]"
                     >
                       <div className="w-full">
                         <img
@@ -310,7 +314,11 @@ const NewEvents = () => {
                               </h3>
                             </div>
                             <div className="location flex mt-[10px]">
-                              <img src={location} alt="location" />
+                              <img
+                                src={location}
+                                alt="location"
+                                className="w-[15px] h-[20px]"
+                              />
                               <h3 className="text-[12px] mr-[10px] overflow-hidden hover:font-bold">
                                 {item.event.location}
                               </h3>
@@ -362,7 +370,7 @@ const NewEvents = () => {
                     <Link
                       to={`/ShowNewEventDetails/${item.event.id}`}
                       key={item.event.id}
-                      className="box w-[280px] h-[280px] rounded-[16px] border border-[2px] mr-[20px]"
+                      className="box w-[280px] h-[300px] rounded-[16px] border border-[2px] mr-[20px]"
                     >
                       <div className="w-full">
                         <img
@@ -389,7 +397,11 @@ const NewEvents = () => {
                               </h3>
                             </div>
                             <div className="location flex mt-[10px]">
-                              <img src={location} alt="location" />
+                              <img
+                                src={location}
+                                alt="location"
+                                className="w-[15px] h-[20px]"
+                              />
                               <h3 className="text-[12px] mr-[10px] overflow-hidden hover:font-bold">
                                 {item.event.location}
                               </h3>
@@ -441,7 +453,7 @@ const NewEvents = () => {
                     <Link
                       to={`/ShowNewEventDetails/${item.event.id}`}
                       key={item.event.id}
-                      className="box w-[280px] h-[280px] rounded-[16px] border border-[2px] mr-[20px]"
+                      className="box w-[280px] h-[300px] rounded-[16px] border border-[2px] mr-[20px]"
                     >
                       <div className="w-full">
                         <img
@@ -468,7 +480,11 @@ const NewEvents = () => {
                               </h3>
                             </div>
                             <div className="location flex mt-[10px]">
-                              <img src={location} alt="location" />
+                              <img
+                                src={location}
+                                alt="location"
+                                className="w-[15px] h-[20px]"
+                              />
                               <h3 className="text-[12px] mr-[10px] overflow-hidden hover:font-bold">
                                 {item.event.location}
                               </h3>
@@ -520,7 +536,7 @@ const NewEvents = () => {
                     <Link
                       to={`/ShowNewEventDetails/${item.event.id}`}
                       key={item.event.id}
-                      className="box w-[280px] h-[280px] rounded-[16px] border border-[2px] mr-[20px]"
+                      className="box w-[280px] h-[300px] rounded-[16px] border border-[2px] mr-[20px]"
                     >
                       <div className="w-full">
                         <img
@@ -547,7 +563,11 @@ const NewEvents = () => {
                               </h3>
                             </div>
                             <div className="location flex mt-[10px]">
-                              <img src={location} alt="location" />
+                              <img
+                                src={location}
+                                alt="location"
+                                className="w-[15px] h-[20px]"
+                              />
                               <h3 className="text-[12px] mr-[10px] overflow-hidden hover:font-bold">
                                 {item.event.location}
                               </h3>
@@ -599,7 +619,7 @@ const NewEvents = () => {
                     <Link
                       to={`/ShowNewEventDetails/${item.event.id}`}
                       key={item.event.id}
-                      className="box w-[280px] h-[280px] rounded-[16px] border border-[2px] mr-[20px]"
+                      className="box w-[280px] h-[300px] rounded-[16px] border border-[2px] mr-[20px]"
                     >
                       <div className="w-full">
                         <img
@@ -626,7 +646,11 @@ const NewEvents = () => {
                               </h3>
                             </div>
                             <div className="location flex mt-[10px]">
-                              <img src={location} alt="location" />
+                              <img
+                                src={location}
+                                alt="location"
+                                className="w-[15px] h-[20px]"
+                              />
                               <h3 className="text-[12px] mr-[10px] overflow-hidden hover:font-bold">
                                 {item.event.location}
                               </h3>

@@ -29,7 +29,7 @@ function ForgotUserPass() {
       );
       localStorage.setItem("email", email);
 
-      window.location.href = "/white-eagles/CheckEmail";
+      window.location.href = "/CheckEmail";
     } catch (error) {
       console.error("Error:", error);
       if (error.response && error.response.status === 404) {

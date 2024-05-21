@@ -34,8 +34,8 @@ const Navbar = ({ activeTab }) => {
   useEffect(() => {
     const handleKeyPress = (event) => {
       if (event.key === "Enter") {
-        window.location.href = "/white-eagles/FindParty";
         window.location.reload();
+        window.location.href = "/FindParty";
       }
     };
 
@@ -201,7 +201,7 @@ const Navbar = ({ activeTab }) => {
             <div className="text-white p-[10px] font-bold">
               <div className="gap-[30px] flex flex-col">
                 <Link
-                  to="/home"
+                  to="/"
                   className="cursor-pointer relative transition ease-in-out delay-150 hover:-translate-x-5  duration-150"
                 >
                   <h3 className="">الصفحة الرئيسية</h3>
