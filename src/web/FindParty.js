@@ -116,7 +116,7 @@ const FindParty = () => {
                     filteredEvents.map((event) => (
                       <div
                         data-aos="fade-up"
-                        className="box border border-white w-[90%] md:h-[320px] h-full p-[20px] rounded-[24px] flex items-center my-[30px] gap-20 flex-wrap flex-row"
+                        className="box border border-white w-[90%] lg:h-[320px] h-full p-[20px] rounded-[24px] flex items-center my-[30px] gap-20 flex-wrap flex-row"
                         key={event.event.id}
                       >
                         <div className="right lg:w-[35%] w-full h-full">
@@ -157,16 +157,20 @@ const FindParty = () => {
                               {event.event.description}
                             </p>
                           </div>
-                          <div
-                            style={{
-                              backgroundImage: `url(${whiteBg}) `,
-                              backgroundPosition: "center",
-                              backgroundSize: "cover",
-                            }}
-                            className="btn cursor-pointer hover:font-bold ease-out duration-300 text-[#041461] text-[24px] font-[600] flex justify-center items-center w-[60%] py-[10px] rounded-[24px] my-[15px]"
-                          >
-                            <h3>احجز الآن</h3>
-                          </div>
+                          {event.event.status ? (
+                            <div
+                              style={{
+                                backgroundImage: `url(${whiteBg}) `,
+                                backgroundPosition: "center",
+                                backgroundSize: "cover",
+                              }}
+                              className="btn  cursor-pointer hover:font-bold ease-out duration-300 text-[#041461] text-[24px] font-[600] flex justify-center items-center w-[60%] py-[10px] rounded-[24px] my-[15px]"
+                            >
+                              <h3>احجز الآن</h3>
+                            </div>
+                          ) : (
+                            ""
+                          )}
                         </div>
                       </div>
                     ))

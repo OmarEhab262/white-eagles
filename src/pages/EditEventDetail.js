@@ -20,7 +20,6 @@ const EditEventDetail = () => {
   const [video, setVideo] = useState(null);
   const [status, setStatus] = useState("");
   const [loading, setLoading] = useState(false);
-  const [progressBar, setProgressBar] = useState(false);
   const [selectedOption, setSelectedOption] = useState("open");
   const [videoProgress, setVideoProgress] = useState(0);
   const [videoState, setVideoState] = useState(false);
@@ -159,7 +158,6 @@ const EditEventDetail = () => {
   //   }, [progress]);
   const handleImageChange = async (event) => {
     const files = Array.from(event.target.files);
-    setProgressBar(true);
     const formData = new FormData();
     files.forEach((image, index) => {
       formData.append(`image[${index}]`, image);
@@ -185,14 +183,12 @@ const EditEventDetail = () => {
         }
       );
       toast.success("Party has been changed successfully");
-      setProgressBar(false);
       setImgState(false);
       window.location.reload(); // Reload the page after successful upload
     } catch (error) {
       console.error("Error uploading images:", error);
       window.location.reload();
       //   toast.error("Failed to upload images. Please try again.");
-      setProgressBar(false);
     }
   };
   const handleSaveData = async () => {

@@ -48,6 +48,7 @@ function App() {
         <Route path="/endedevents" element={<EndedEvents />} />
         <Route path="/newevents" element={<NewEvents />} />
         <Route path="/privacyPolicy" element={<PrivacyPolicy />} />
+
         <Route
           path="/showendedeventdetail/:id"
           element={<ShowEndedEventDetail />}

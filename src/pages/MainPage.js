@@ -310,10 +310,6 @@ const MainPage = () => {
                 searchResults
                   .filter((party) => party.event.date_time > formattedDate)
                   .map((party) => {
-                    const formattedDate = parseDateString(
-                      party.event.date_time
-                    );
-
                     return (
                       <Link
                         to={`/ShowNewEventDetails/${party.event.id}`}

@@ -148,7 +148,7 @@ const Users = () => {
                       className="w-[80px]
   text-center"
                     >
-                      {user.age >= 18 ? "أكبر من 18" : "أصغر من 18"}
+                      {user.age}
                     </h3>
                   </div>
                   <div

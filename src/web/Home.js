@@ -18,6 +18,7 @@ import ion_mic from "../assists/icon/ion_mic-outline.png";
 import llll from "../assists/icon/llll.png";
 import apple from "../assists/imgs/apple.png";
 import google from "../assists/imgs/google.png";
+import gall from "../assists/imgs/gall.png";
 import whiteBg from "../assists/imgs/whiteBg.png";
 import ggggg from "../assists/imgs/ggggg.png";
 import about from "../assists/imgs/about.jpeg";
@@ -154,9 +155,12 @@ const Home = () => {
         )}
       </div>
 
+      <div className="w-full flex justify-center absolute">
+        <Navbar activeTab="home" />
+      </div>
       <div className="w-[99%] p-1 mx-auto">
         <div
-          className="home w-full m-4 mx-auto   flex flex-col items-center relative  justify-between  rounded-[24px] lg:h-[90vh] "
+          className="home w-full m-4 mx-auto   flex flex-col items-center relative  lg:h-[90vh] justify-between lg:mt-[0px]  mt-[100px] rounded-[24px] "
           style={{
             backgroundImage:
               data && data.length > 0 && data[party] && data[party].banner
@@ -166,27 +170,27 @@ const Home = () => {
             backgroundSize: "cover",
           }}
         >
-          <div className="shade bg-black bg-opacity-50 absolute w-full h-full z-[1] rounded-[24px]"></div>
-          <Navbar activeTab="home" />
+          <div className="shade bg-black bg-opacity-50 absolute w-full h-full z-[1] rounded-[24px] "></div>
+          <div
+            onClick={handleNextParty}
+            data-aos="fade-left"
+            className="rArrow   border-white border-solid border-2 rounded-[8px] m-4 z-10 cursor-pointer md:w-[50px] md:h-[50px] w-[30px] h-[30px] flex justify-center items-center absolute right-0 top-[250px]"
+          >
+            <img src={rrr} alt="" className="md:w-[24px] w-[19px]" />
+          </div>
+          <div
+            onClick={handleLastParty}
+            data-aos="fade-right"
+            className="lArrow  border-white border-solid border-2 rounded-[8px] m-4 cursor-pointer z-10 md:w-[50px] md:h-[50px] w-[30px] h-[30px]  flex justify-center items-center absolute left-0  top-[250px]"
+          >
+            <img src={llll} alt="" className=" md:w-[24px] w-[19px] " />
+          </div>
+          <div></div>
+          <div></div>
           <div
             data-aos="fade-up"
             className="center w-full flex justify-center flex-col  z-[3] "
           >
-            <div
-              onClick={handleNextParty}
-              data-aos="fade-left"
-              className="rArrow   border-white border-solid border-2 rounded-[8px] m-4 cursor-pointer md:w-[50px] md:h-[50px] w-[30px] h-[30px] flex justify-center items-center absolute right-0 top-[150px]"
-            >
-              <img src={rrr} alt="" className="md:w-[24px] w-[19px]" />
-            </div>
-            <div
-              onClick={handleLastParty}
-              data-aos="fade-right"
-              className="lArrow  border-white border-solid border-2 rounded-[8px] m-4 cursor-pointer  md:w-[50px] md:h-[50px] w-[30px] h-[30px]  flex justify-center items-center absolute left-0  top-[150px]"
-            >
-              <img src={llll} alt="" className=" md:w-[24px] w-[19px] " />
-            </div>
-
             <div className="typography flex justify-center gap-[24px] lg:mt-[0px] mt-[50px] items-center flex-col text-[#E8E9F8] text-[37px] font-[600]  w-full text-center">
               <h3 className="sm:text-[37px] text-[27px] text-center w-[50%]">
                 {dateComponent}
@@ -194,7 +198,7 @@ const Home = () => {
               <h2 className="md:text-[45px] text-[25px] text-center md:w-[50%] w-[70%]">
                 {data && data.length > 0 && data[party].title}
               </h2>
-              <div className="flex md:justify-between justify-center gap-10 items-center text-[16px] mt-[10px] my-3   flex-wrap">
+              <div className="flex md:justify-between justify-center  items-center text-[16px] mt-[10px] my-3   flex-wrap ">
                 {data && data[party] ? (
                   data[party].status === 1 ? (
                     <div
@@ -211,10 +215,16 @@ const Home = () => {
                         alt=""
                         className="bg-white ml-[16px] p-[5px] rounded-full "
                       />
-                      <h3>احجز اﻷن</h3>
+                      <a
+                        href="https://play.google.com/store/apps/details?id=com.whiteeagle.ev"
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        احجز اﻷن
+                      </a>
                     </div>
                   ) : (
-                    <h3></h3>
+                    ""
                   )
                 ) : (
                   <h3>Loading...</h3> // Optional: Provide a fallback in case data is not yet loaded
@@ -297,13 +307,20 @@ const Home = () => {
           >
             <div className="text flex justify-center lg:items-start items-center flex-col p-4 lg:w-[85%] w-full max-sm:text-center ">
               <h3 className="leading-7">
-                باهتمامنا العميق بتوفير تجربة فريدة ولا تُنسى، نحن في صفحة حجز
-                الحفلات نسعى جاهدين لتحويل كل مناسبة إلى لحظات لا تُنسى. نفخر
-                بتقديم خدماتنا المتميزة في تنظيم وتخطيط الحفلات، سواء كانت
-                لحفلات الزفاف، الاحتفالات الخاصة، العروض الموسيقية، أو أي مناسبة
-                تحتاج إلى لمسة من السحر. بفريقنا المحترف والمبدع، نضمن لكم تجربة
-                استثنائية تتماشى مع تطلعاتكم وتفضيلاتكم. دعونا نساعدكم في تحويل
-                أفكاركم إلى واقع، ونخلق لكم لحظات تاريخية لا تُنسى.
+                شركة وايت إيجل لتنظيم المؤتمرات والمعارض هي إحدى الشركات الرائدة
+                في مجال تنظيم الفعاليات والمؤتمرات والمعارض . تأسست الشركة بهدف
+                تقديم خدمات متخصصة ومبتكرة في مجال تنظيم الفعاليات، سواء كانت
+                مؤتمرات ، أو معارض تجارية، أو فعاليات ثقافية وفنية أو حفلات
+                تخرج. تتميز شركة وايت إيجل بفريق عمل محترف ومتخصص يتمتع بخبرة
+                واسعة في تنظيم الفعاليات، بالإضافة إلى استخدامها لأحدث التقنيات
+                والمنصات الرقمية في تنظيم الفعاليات وتسهيل تجربة الحضور
+                والمشاركين. وتقدم الشركة مجموعة شاملة من الخدمات التي تشمل تخطيط
+                وتنظيم الفعاليات، وتصميم الديكور والمسرحيات، وإدارة الضيافة
+                والإقامة، وتسويق الفعاليات، وتوفير حلول التقنية والصوتية
+                والضوئية، وغيرها من الخدمات التي تضمن تنظيم فعاليات ناجحة
+                ومميزة، تعتبر شركة وايت إيجل شريكاً استراتيجياً لعملائها، حيث
+                تسعى دائماً لتحقيق رؤى العملاء وتلبية توقعاتهم بأعلى مستويات
+                الجودة والاحترافية.
               </h3>
               <Link
                 to={"/about"}
@@ -340,9 +357,9 @@ const Home = () => {
                 </div>
                 <div className="text w-[70%] text-center mx-auto text-[#838389] text-[16px] font-[700] mt-[16px]">
                   <h3>
-                    أن تكون الأكثر تميزاً وابداعا وزيادة في قيادة وتنظيم المعارض
-                    والمؤتمرات على المستوى المحلي عبر خدمات مبتكرة ومتجددة
-                    باحترافية ومهارة عالية
+                    أن تكون الأكثر تميزاً وابداعا وريادة فى ادارة وتنظيم
+                    المؤتمرات والمعارض على المستوي المحلى عبر خدمات مبتكرة
+                    ومتجددة ومهارة عالية
                   </h3>
                 </div>
               </div>
@@ -356,7 +373,7 @@ const Home = () => {
                   </h3>
                 </div>
                 <div className="text w-[70%] text-center mx-auto text-[#838389] text-[16px] font-[700] mt-[16px]">
-                  <h3>الشمولية | الاحترافية الشفافية الجودة | الأبداع</h3>
+                  <h3>الجودة ا الابداع ا التميز ا الابتكار ا رضا العملاء</h3>
                 </div>
               </div>
               <div className="box">
@@ -370,8 +387,9 @@ const Home = () => {
                 </div>
                 <div className="text w-[70%] text-center mx-auto text-[#838389] text-[16px] font-[700] mt-[16px]">
                   <h3>
-                    انشاء وتطوير نطاق واسع من خدمات تنظيمية متجددة و تقديم حلول
-                    مبتكرة ومتكاملة.
+                    انشاء وتطوير وتنفيذ الفعاليات بأعلى مستويات الجودة والإبداع،
+                    وتوفير تجارب مميزة للمشاركين، وبناء علاقات قوية ومستدامة مع
+                    الشركاء والمجتمع.
                   </h3>
                 </div>
               </div>
@@ -437,7 +455,26 @@ const Home = () => {
           </h1>
           <div className="icons flex gap-10 flex-wrap justify-center">
             <img src={apple} alt="" />
-            <img src={google} alt="" />
+
+            <a
+              href="https://play.google.com/store/apps/details?id=com.whiteeagle.ev"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img src={google} alt="" />
+            </a>
+
+            <a
+              href="https://play.google.com/store/apps/details?id=com.whiteeagle.ev"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img
+                src={gall}
+                alt=""
+                className="bg-[#1F1F23] rounded-[23px] w-[200px]"
+              />
+            </a>
           </div>
           <div className="mt-[80px]">
             <img src={phones} alt="" />

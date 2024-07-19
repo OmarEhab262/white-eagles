@@ -200,10 +200,8 @@ const Calender = () => {
                 الفعاليات
               </h3>
               <p className="text-center w-[90%] md:w-[700px] text-[16px] font-[500] text-[#E8E9F8]">
-                يعمل الجدول الزمني لدينا على تبسيط تخطيط الأحداث من خلال نظرة
-                عامة واضحة على الجلسات والأنشطة. يمكن للحاضرين بسهولة رؤية ما
-                يحدث ومتى وأين، مما يزيد من تجربة الحدث الخاصة بهم. حقق أقصى
-                استفادة من وقتك من خلال شاشة الجدول الزمني سهلة الاستخدام.
+                انضم إلينا لاستكشاف مجموعة متنوعة من الفعاليات المثيرة والمميزة
+                التي نقدمها لكم، واحصل على تجربة استثنائية لا تُنسى.
               </p>
             </div>
           </div>
@@ -553,7 +551,15 @@ const Calender = () => {
                         </div>
                       </div>
                       <div className="tick border cursor-pointer hover:opacity-60 ease-in duration-150 border-[#041461] w-[60%] mx-auto text-center text-[#041461] bg-white py-[4px] rounded-[2px] mt-[30px] text-[8px]">
-                        <h3 className="font-bold">اطلب تذكرتك</h3>
+                        <h3 className="font-bold">
+                          <a
+                            href="https://play.google.com/store/apps/details?id=com.whiteeagle.ev"
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            اطلب تذكرتك
+                          </a>
+                        </h3>
                       </div>
                     </div>
                   ))
@@ -631,7 +637,15 @@ const Calender = () => {
                         </div>
                       </div>
                       <div className="tick border cursor-pointer hover:opacity-60 ease-in duration-150 border-[#041461] w-[60%] mx-auto text-center text-[#041461] bg-white py-[4px] rounded-[2px] mt-[30px] text-[8px]">
-                        <h3 className="font-bold">اطلب تذكرتك</h3>
+                        <h3 className="font-bold">
+                          <a
+                            href="https://play.google.com/store/apps/details?id=com.whiteeagle.ev"
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            اطلب تذكرتك
+                          </a>
+                        </h3>
                       </div>
                     </div>
                   ))}
@@ -710,7 +724,15 @@ const Calender = () => {
                         </div>
                       </div>
                       <div className="tick border cursor-pointer hover:opacity-60 ease-in duration-150 border-[#041461] w-[60%] mx-auto text-center text-[#041461] bg-white py-[4px] rounded-[2px] mt-[30px] text-[8px]">
-                        <h3 className="font-bold">اطلب تذكرتك</h3>
+                        <h3 className="font-bold">
+                          <a
+                            href="https://play.google.com/store/apps/details?id=com.whiteeagle.ev"
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            اطلب تذكرتك
+                          </a>
+                        </h3>
                       </div>
                     </div>
                   ))
@@ -787,7 +809,15 @@ const Calender = () => {
                         </div>
                       </div>
                       <div className="tick border cursor-pointer hover:opacity-60 ease-in duration-150 border-[#041461] w-[60%] mx-auto text-center text-[#041461] bg-white py-[4px] rounded-[2px] mt-[30px] text-[8px]">
-                        <h3 className="font-bold">اطلب تذكرتك</h3>
+                        <h3 className="font-bold">
+                          <a
+                            href="https://play.google.com/store/apps/details?id=com.whiteeagle.ev"
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            اطلب تذكرتك
+                          </a>
+                        </h3>
                       </div>
                     </div>
                   ))}

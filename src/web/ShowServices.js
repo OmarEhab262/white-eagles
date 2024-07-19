@@ -58,9 +58,7 @@ const ShowServices = () => {
     const date = new Date(dateTimeString).toLocaleDateString("ar", options);
     return `${date}`;
   }
-  const sortedData = data.sort(
-    (a, b) => new Date(b.event.date_time) - new Date(a.event.date_time)
-  );
+
   return (
     <div
       className=""
@@ -119,10 +117,10 @@ const ShowServices = () => {
                       </h3>
                     </div>
                   ) : (
-                    sortedData.map((event) => (
+                    data.map((event) => (
                       <div
                         data-aos="fade-up"
-                        className="box border border-white w-[90%]  md:h-[320px] h-full  p-[10px] rounded-[24px] flex items-center my-[30px] gap-20 flex-wrap flex-row"
+                        className="box border border-white w-[90%]  lg:h-[320px] h-full  p-[10px] rounded-[24px] flex items-center my-[30px] gap-20 flex-wrap flex-row"
                         key={event.event.id}
                       >
                         <div className="right lg:w-[35%] w-full h-full">

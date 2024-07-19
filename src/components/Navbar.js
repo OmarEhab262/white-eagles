@@ -17,7 +17,7 @@ const Navbar = ({ activeTab }) => {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollPos = window.pageYOffset;
-      const visible = prevScrollPos > currentScrollPos;
+      const visible = prevScrollPos > currentScrollPos || prevScrollPos === 0;
 
       setPrevScrollPos(currentScrollPos);
       setVisible(visible);
@@ -157,7 +157,7 @@ const Navbar = ({ activeTab }) => {
       </div>
       {visible && (
         <div
-          className={`mobile w-[100%] flex justify-between mt-[15px] p-[5px] flex-col flex lg:hidden fixed top-[-15px] right-0 transition ease-in-out duration-300 ${
+          className={`mobile w-[100%]  justify-between mt-[15px] p-[5px] flex-col flex lg:hidden fixed top-[-15px] right-0 transition ease-in-out duration-300 ${
             visible ? "block" : "hidden"
           }`}
           style={{

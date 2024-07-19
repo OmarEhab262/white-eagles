@@ -48,91 +48,51 @@ const AddEvents = () => {
   const handleSinging = () => {
     setSinging(true);
   };
+
   const handleSeatsPlus = (e) => {
-    const value = parseInt(e.target.value);
-    setBoxDataPlus(
-      Array.from({ length: value }, (_, index) => ({
-        id: index + 1,
-        plusValue: "",
-      }))
-    );
-  };
-  const handleSeatsVip = (e) => {
-    const value = parseInt(e.target.value);
-    setBoxDataVip(
-      Array.from({ length: value }, (_, index) => ({
-        id: index + 1,
-        vipValue: "", // corrected to vipValue
-      }))
-    );
-  };
-  const handleSeatsVvip = (e) => {
-    const value = parseInt(e.target.value);
-    setBoxDataVvip(
-      Array.from({ length: value }, (_, index) => ({
-        id: index + 1,
-        vipValue: "", // Corrected from vvipValue
-      }))
-    );
+    const numSeats = parseInt(e.target.value);
+    const newData = [];
+    for (let i = 0; i < numSeats; i++) {
+      newData.push({ id: i + 1, plusValue: "" });
+    }
+    setBoxDataPlus(newData);
   };
 
   const handlePlusInputChange = (e, index) => {
-    const newData = [...boxDataPlus];
-    const newValue = e.target.value;
+    const newBoxDataPlus = [...boxDataPlus];
+    newBoxDataPlus[index].plusValue = e.target.value; // Store the value as a string
+    setBoxDataPlus(newBoxDataPlus);
+  };
 
-    // Check if the new value is a duplicate
-    const isDuplicate = newData.some(
-      (item, i) => i !== index && item.plusValue === newValue
-    );
-
-    if (isDuplicate) {
-      console.error("Duplicate value detected!");
-      // You can show an error message to the user here
+  const handleSeatsVip = (e) => {
+    const numSeats = parseInt(e.target.value);
+    const newData = [];
+    for (let i = 0; i < numSeats; i++) {
+      newData.push({ id: i + 1, vipValue: "" });
     }
-
-    newData[index].plusValue = newValue;
-    setBoxDataPlus(newData);
-    // console.log(newData);
+    setBoxDataVip(newData);
   };
 
   const handleVipInputChange = (e, index) => {
-    const newData = [...boxDataVip];
-    const newValue = e.target.value;
+    const newBoxDataVip = [...boxDataVip];
+    newBoxDataVip[index].vipValue = e.target.value; // Store the value as a string
+    setBoxDataVip(newBoxDataVip);
+  };
 
-    // Check if the new value is a duplicate
-    const isDuplicate = newData.some(
-      (item, i) => i !== index && item.vipValue === newValue
-    );
-
-    if (isDuplicate) {
-      console.error("Duplicate value detected in VIP section!");
-      // You can show an error message to the user here
+  const handleSeatsVvip = (e) => {
+    const numSeats = parseInt(e.target.value);
+    const newData = [];
+    for (let i = 0; i < numSeats; i++) {
+      newData.push({ id: i + 1, vvipValue: "" });
     }
-
-    newData[index].vipValue = newValue;
-    setBoxDataVip(newData);
-    // console.log(newData);
+    setBoxDataVvip(newData);
   };
 
   const handleVvipInputChange = (e, index) => {
-    const newData = [...boxDataVvip];
-    const newValue = e.target.value;
-
-    // Check if the new value is a duplicate
-    const isDuplicate = newData.some(
-      (item, i) => i !== index && item.vvipValue === newValue
-    );
-
-    if (isDuplicate) {
-      console.error("Duplicate value detected in VVIP section!");
-      // You can show an error message to the user here
-    }
-
-    newData[index].vvipValue = newValue;
-    setBoxDataVvip(newData);
-    // console.log(newData);
+    const newBoxDataVvip = [...boxDataVvip];
+    newBoxDataVvip[index].vvipValue = e.target.value; // Store the value as a string
+    setBoxDataVvip(newBoxDataVvip);
   };
-
   const handleInputChange = () => {
     setIsRotated(!isRotated);
   };
@@ -262,15 +222,12 @@ const AddEvents = () => {
         }
       );
       eventId = response.data.event.id;
-      toast.success("Party has been created successfully");
-      navigate("/CreatedParty");
     } catch (error) {
       setShowError(true);
       toast.error("Error creating a party");
       console.error("Error creating event:", error.response.data);
     }
   };
-
   const fetchPlusSeats = async () => {
     try {
       for (const box of boxDataPlus) {
@@ -279,20 +236,34 @@ const AddEvents = () => {
         formData.append("seat_number", box.plusValue);
         formData.append("tickets_category_id", 1);
 
-        await axios.post(
-          "https://api.whiteeagles.net/public/api/seat_numbers",
-          formData,
-          {
-            headers: {
-              "Content-Type": "multipart/form-data",
-              Authorization: "Bearer " + token,
-              "ngrok-skip-browser-warning": "69420",
-            },
-          }
-        );
+        console.log("Sending data (Plus):", {
+          event_id: eventId,
+          seat_number: box.plusValue,
+          tickets_category_id: 1,
+        });
+
+        try {
+          const response = await axios.post(
+            "https://api.whiteeagles.net/public/api/seat_numbers",
+            formData,
+            {
+              headers: {
+                "Content-Type": "multipart/form-data",
+                Authorization: "Bearer " + token,
+                "ngrok-skip-browser-warning": "69420",
+              },
+            }
+          );
+          console.log("Response from API (Plus):", response.data);
+        } catch (axiosError) {
+          console.error(
+            "Error sending request to API (Plus):",
+            axiosError.response ? axiosError.response.data : axiosError.message
+          );
+        }
       }
     } catch (error) {
-      console.error("Error creating event:", error.response.data);
+      console.error("Error creating event (Plus):", error.message);
     }
   };
 
@@ -303,20 +274,35 @@ const AddEvents = () => {
         formData.append("event_id", eventId);
         formData.append("seat_number", box.vipValue);
         formData.append("tickets_category_id", 2);
-        await axios.post(
-          "https://api.whiteeagles.net/public/api/seat_numbers",
-          formData,
-          {
-            headers: {
-              "Content-Type": "multipart/form-data",
-              Authorization: "Bearer " + token,
-              "ngrok-skip-browser-warning": "69420",
-            },
-          }
-        );
+
+        console.log("Sending data (VIP):", {
+          event_id: eventId,
+          seat_number: box.vipValue,
+          tickets_category_id: 2,
+        });
+
+        try {
+          const response = await axios.post(
+            "https://api.whiteeagles.net/public/api/seat_numbers",
+            formData,
+            {
+              headers: {
+                "Content-Type": "multipart/form-data",
+                Authorization: "Bearer " + token,
+                "ngrok-skip-browser-warning": "69420",
+              },
+            }
+          );
+          console.log("Response from API (VIP):", response.data);
+        } catch (axiosError) {
+          console.error(
+            "Error sending request to API (VIP):",
+            axiosError.response ? axiosError.response.data : axiosError.message
+          );
+        }
       }
     } catch (error) {
-      console.error("Error creating event:", error.response.data);
+      console.error("Error creating event (VIP):", error.message);
     }
   };
 
@@ -328,30 +314,45 @@ const AddEvents = () => {
         formData.append("seat_number", box.vvipValue);
         formData.append("tickets_category_id", 3);
 
-        await axios.post(
-          "https://api.whiteeagles.net/public/api/seat_numbers",
-          formData,
-          {
-            headers: {
-              "Content-Type": "multipart/form-data",
-              Authorization: "Bearer " + token,
-              "ngrok-skip-browser-warning": "69420",
-            },
-          }
-        );
+        console.log("Sending data (VVIP):", {
+          event_id: eventId,
+          seat_number: box.vvipValue,
+          tickets_category_id: 3,
+        });
+
+        try {
+          const response = await axios.post(
+            "https://api.whiteeagles.net/public/api/seat_numbers",
+            formData,
+            {
+              headers: {
+                "Content-Type": "multipart/form-data",
+                Authorization: "Bearer " + token,
+                "ngrok-skip-browser-warning": "69420",
+              },
+            }
+          );
+          console.log("Response from API (VVIP):", response.data);
+        } catch (axiosError) {
+          console.error(
+            "Error sending request to API (VVIP):",
+            axiosError.response ? axiosError.response.data : axiosError.message
+          );
+        }
       }
     } catch (error) {
-      console.error("Error creating event:", error.response.data);
+      console.error("Error creating event (VVIP):", error.message);
     }
   };
 
-  const fetchTicketPricesPlus = async () => {
+  const createTicketCategory = async (price, categoryId) => {
     try {
       const formData = new FormData();
-      formData.append("price", ticketPricesPlus);
+      formData.append("price", price);
       formData.append("is_available", 1);
-      formData.append("tickets_category_id", 1);
+      formData.append("tickets_category_id", categoryId);
       formData.append("event_id", eventId);
+
       await axios.post(
         "https://api.whiteeagles.net/public/api/events_ticketcategories",
         formData,
@@ -363,59 +364,23 @@ const AddEvents = () => {
           },
         }
       );
+
       //   console.log("Event created successfully:", response.data.events);
     } catch (error) {
-      console.error("Error creating event:", error.response.data);
+      console.error("Error creating ticket category:", error.response.data);
     }
   };
 
-  const fetchTicketPricesVIP = async () => {
+  const createAllTicketCategories = async () => {
     try {
-      const formData = new FormData();
-      formData.append("price", ticketPricesVIP);
-      formData.append("is_available", 1);
-      formData.append("tickets_category_id", 2);
-      formData.append("event_id", eventId);
-      await axios.post(
-        "https://api.whiteeagles.net/public/api/events_ticketcategories",
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-            Authorization: "Bearer " + token,
-            "ngrok-skip-browser-warning": "69420",
-          },
-        }
-      );
-      //   console.log("Event created successfully:", response.data.events);
+      await createTicketCategory(ticketPricesPlus, 1);
+      await createTicketCategory(ticketPricesVIP, 2);
+      await createTicketCategory(ticketPricesVVIP, 3);
     } catch (error) {
-      console.error("Error creating event:", error.response.data);
+      console.error("Error creating ticket categories:", error);
     }
   };
 
-  const fetchTicketPricesVVIP = async () => {
-    try {
-      const formData = new FormData();
-      formData.append("price", ticketPricesVVIP);
-      formData.append("is_available", 1);
-      formData.append("tickets_category_id", 3);
-      formData.append("event_id", eventId);
-      await axios.post(
-        "https://api.whiteeagles.net/public/api/events_ticketcategories",
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-            Authorization: "Bearer " + token,
-            "ngrok-skip-browser-warning": "69420",
-          },
-        }
-      );
-      //   console.log("Event created successfully:", response.data.events);
-    } catch (error) {
-      console.error("Error creating event:", error.response.data);
-    }
-  };
   const fetchTicketPrice = async () => {
     try {
       const formData = new FormData();
@@ -442,41 +407,16 @@ const AddEvents = () => {
   const goToCreatedParty = async () => {
     try {
       setLoading(true);
-      // Check for duplicates in boxDataPlus
-      const hasDuplicatesPlus = boxDataPlus.some(
-        (item, index) =>
-          boxDataPlus.findIndex((i) => i.plusValue === item.plusValue) !== index
-      );
-
-      // Check for duplicates in boxDataVip
-      const hasDuplicatesVip = boxDataVip.some(
-        (item, index) =>
-          boxDataVip.findIndex((i) => i.vipValue === item.vipValue) !== index
-      );
-
-      // Check for duplicates in boxDataVvip
-      const hasDuplicatesVvip = boxDataVvip.some(
-        (item, index) =>
-          boxDataVvip.findIndex((i) => i.vvipValue === item.vvipValue) !== index
-      );
-
-      if (hasDuplicatesPlus || hasDuplicatesVip || hasDuplicatesVvip) {
-        toast.error("Duplicate values detected. Please correct them.");
-        console.error(
-          "Duplicate values detected in boxDataPlus or boxDataVip or boxDataVvip"
-        );
-        return; // Stop execution
-      }
-
       // Rest of your code here
       if (showCategories === "ستاند اب" || showCategories === "حفلات غناء") {
         await fetchData();
         await fetchPlusSeats();
         await fetchVipSeats();
         await fetchVvipSeats();
-        await fetchTicketPricesPlus();
-        await fetchTicketPricesVIP();
-        await fetchTicketPricesVVIP();
+        await createAllTicketCategories();
+        toast.success("Party has been created successfully");
+
+        navigate("/CreatedParty");
       } else if (
         showCategories === "حفلات التخرج" ||
         showCategories === "مؤتمرات" ||
@@ -485,6 +425,9 @@ const AddEvents = () => {
       ) {
         await fetchData();
         await fetchTicketPrice();
+        toast.success("Party has been created successfully");
+
+        navigate("/CreatedParty");
       } else {
         console.log(
           "Cannot proceed: Some values are already unique or showCategories is not 'ستاند اب'."
@@ -705,7 +648,7 @@ const AddEvents = () => {
               }`}
             >
               <h3 className="text-[24px] font-[700]  ml-[20px]">
-                ارقام مقاعد Plus
+                عدد مقاعد Plus
               </h3>
               <input
                 type="text"
@@ -736,7 +679,7 @@ const AddEvents = () => {
               }`}
             >
               <h3 className=" text-[24px] font-[700]  ml-[20px]">
-                ارقام مقاعد Vip
+                عدد مقاعد Vip
               </h3>
               <input
                 type="text"
@@ -768,7 +711,7 @@ const AddEvents = () => {
               }`}
             >
               <h3 className="text-[24px] font-[700]  ml-[20px]">
-                ارقام مقاعد VVip
+                عدد مقاعد VVip
               </h3>
               <input
                 type="text"

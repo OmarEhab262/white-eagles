@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import contactUs from "../assists/imgs/ContactUs.jpeg";
 import mass from "../assists/icon/mass.png";
 import phone from "../assists/icon/phone.png";
-import loc from "../assists/icon/loc.png";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import whiteBg from "../assists/imgs/whiteBg.png";
@@ -93,11 +92,11 @@ const ContactUs = () => {
               </h3>
               <p className="text-center w-[90%] md:w-[700px] text-[16px] font-[500] text-[#E8E9F8]">
                 نحن هنا للمساعدة! سواء كانت لديك أسئلة حول خدماتنا أو كنت بحاجة
-                إلى مساعدة في التخطيط لحدثك، فإن فريقنا متاح لتقديم الدعم. تواصل
-                معنا من خلال نموذج الاتصال الخاص بنا أو عبر البريد الإلكتروني
-                على [عنوان بريدك الإلكتروني]، وسنقوم بالرد عليك في أقرب وقت
-                ممكن. نحن ملتزمون بمساعدتك في التخطيط لحدث ناجح، ونتطلع إلى
-                الاستماع إليك!
+                إلى مساعدة في التخطيط لفعاليتك فإن فريقنا متاح لتقديم الدعم.
+                تواصل معنا من خلال نموذج الاتصال الخاص بنا أويمكنك ايضا التواصل
+                معنا و متابعتنا على وسائل التواصل الاجتماعي مثل فيسبوك،
+                وإنستجرام للحصول على آخر التحديثات والأخبار حول
+                فعالياتنا وخدماتنا.
               </p>
             </div>
           </div>

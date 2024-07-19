@@ -1,5 +1,5 @@
 import React from "react";
-import homeLogo from "../assists/imgs/homeLogo.svg";
+import homeLogo from "../assists/imgs/homeLogo.png";
 import google from "../assists/imgs/google2.png";
 import apple from "../assists/imgs/apple2.png";
 import gall from "../assists/imgs/gall.png";
@@ -20,27 +20,32 @@ const Footer = () => {
             </h3>
           </div>
           <div className="bot flex justify-center flex-wrap w-full gap-7 mt-[20px]">
-            <img src={google} alt="" className="w-[160px]" />
+            <a
+              href="https://play.google.com/store/apps/details?id=com.whiteeagle.ev"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img src={google} alt="" className="w-[160px]" />
+            </a>
             <img src={apple} alt="" className="w-[160px]" />
-            <img src={gall} alt="" className="w-[160px]" />
+
+            <a
+              href="https://appgallery.huawei.com/app/C111217315"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img src={gall} alt="" className="w-[160px]" />
+            </a>
           </div>
         </div>
         <div className="policy text-[18px] font-[700] text-white flex flex-col items-center col-span-3 w-full gap-3">
           <div className="top mb-[10px] ">
-            <h3 className="text-[#838389] ">سياسة الخصوصية</h3>
-          </div>
-          <div className="bot text-[17px]">
-            <p className="leading-9">
-              نحن في شركة وايت إيجل إفنت ملتزمون بحماية خصوصية مستخدمي تطبيقنا.
-              يهدف هذا المستند إلى توضيح كيفية جمع واستخدام ومشاركة البيانات
-              الشخصية التي نتلقاها. يرجى قراءة هذه السياسة ...{" "}
-              <Link
-                to="/PrivacyPolicy"
-                className="bg-white hover:opacity-60 ease-in duration-150 rounded-[16px] text-black px-[14px] "
-              >
-                المزيد
-              </Link>
-            </p>
+            <Link
+              to="/PrivacyPolicy"
+              className="text-[#838389]  hover:text-white  ease-in duration-150  "
+            >
+              سياسة الخصوصية
+            </Link>
           </div>
         </div>
         <div className="connect text-[18px] font-[700] text-white flex flex-col items-center col-span-3 w-full gap-3">
